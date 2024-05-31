@@ -152,7 +152,7 @@
 @push('addon-style')
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.1.1/dist/select2-bootstrap-5-theme.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" />
-    <script src="https://cdn.tiny.cloud/1/ogh1hjs7mjdvv73x1cnv3g22gffopydlcw3143b5w576vk93/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/2mnuvdumk629n5613zlidutt34hfejr3ebqvxqiw7jgtq55z/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
 @endpush
 
 @push('addon-script')

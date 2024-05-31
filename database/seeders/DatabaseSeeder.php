@@ -22,22 +22,22 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
         User::create([
-            'name' => 'Agun Wiguna',
-            'email' => 'admin@texno.id',
-            'password' => bcrypt('admin123'),
+            'name' => 'Harlicuan',
+            'email' => 'admin@oasedata.com',
+            'password' => bcrypt('kecilkec1l'),
             'roles' => 'Administrator'
         ]);
 
         User::create([
             'name' => 'Jhon Doe',
-            'email' => 'editor@texno.id',
+            'email' => 'editor@oasedata.com',
             'password' => bcrypt('editor123'),
             'roles' => 'Editor'
         ]);
 
         User::create([
             'name' => 'Valeria Luna',
-            'email' => 'penulis@texno.id',
+            'email' => 'penulis@oasedata.com',
             'password' => bcrypt('penulis123'),
             'roles' => 'Penulis'
         ]);
@@ -85,23 +85,23 @@ class DatabaseSeeder extends Seeder
         Redaction::create([
             'redaction_content' => '
             <p>
-                Dikelola oleh : <b> PT Harapan Rakyat Media </b> <br/><br/>
+                Dikelola oleh : <b> OaseData </b> <br/><br/>
 
-                <b>Pimpinan Umum </b>: Subagja Hamara <br/><br/>
+                <b>Pimpinan Umum </b>: Harli <br/><br/>
 
-                <b> Pimpinan Redaksi </b> : Subagja Hamara <br/>
-                <b> Sekretaris Redaksi </b> : Deni Supendi <br/>
+                <b> Pimpinan Redaksi </b> : Harli <br/>
+                <b> Sekretaris Redaksi </b> : T. Hisyam <br/>
                 <b> Redaktur Pelaksana </b> : – <br/>
-                <b> Redaktur </b> : Deni Supendi, <br/>
+                <b> Redaktur </b> : T. Hisyam, <br/>
                 <b> Staf Redaksi </b> : <br/><br/>
 
                 <b> Penulis Konten </b> : <br/><br/>
 
-                <b> Ass. Pimpinan Perusahaan </b> : Deni Supendi <br/>
+                <b> Ass. Pimpinan Perusahaan </b> : T. Hisyam <br/>
                 <b> Keuangan </b> : Muhafid <br/>
                 <b> Iklan </b> : <br/><br/>
 
-                <b> WebMaster </b> : NamaKamu.com
+                <b> WebMaster </b> : OaseData.com
             <p>'
         ]);
 

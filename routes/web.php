@@ -1,3 +1,6 @@
+<!-- Email: harlicuan@gmail.com
+Password: kecilkec1l -->
+
 <?php
 
 use Illuminate\Support\Facades\Route;
@@ -74,7 +77,7 @@ Route::prefix('admin')
 	->middleware('auth')
 	->group(function(){
 		Route::get('/dashboard',[DashboardController::class, 'index'])->name('admin-dashboard');	
-		
+
 		//POS	
 		Route::resource('pos/post', PostController::class);
 		Route::post('/post', [PostController::class, 'store'])->name('store-post');

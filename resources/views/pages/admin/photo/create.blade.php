@@ -172,7 +172,7 @@
             max-width: 100px;
         }
     </style>
-    <script src="https://cdn.tiny.cloud/1/ogh1hjs7mjdvv73x1cnv3g22gffopydlcw3143b5w576vk93/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/2mnuvdumk629n5613zlidutt34hfejr3ebqvxqiw7jgtq55z/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
 @endpush
 
 @push('addon-script')
