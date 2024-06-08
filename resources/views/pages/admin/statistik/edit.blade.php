@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-   Tambah Pos
+   Ubah Pos
 @endsection
 
 @section('container')
@@ -13,7 +13,7 @@
                         <div class="col-auto mb-3">
                             <h1 class="page-header-title">
                                 <div class="page-header-icon"><i data-feather="file-text"></i></div>
-                                Tambah Pos
+                                Ubah Pos
                             </h1>
                         </div>
                         <div class="col-12 col-xl-auto mb-3">
@@ -28,6 +28,13 @@
         </header>
         <!-- Main page content-->
         <div class="container-fluid px-4">
+            {{-- Alert --}}
+            @if (session()->has('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ session('success') }}
+                    <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
             @if ($errors->any())
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
                     <ul>
@@ -38,7 +45,8 @@
                     <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             @endif
-            <form action="{{ route('store-post') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('post.update', $item->id) }}" method="post" enctype="multipart/form-data">
+                @method('PUT')
                 @csrf
                 <div class="row gx-4">
                     <div class="col-lg-8">
@@ -47,7 +55,7 @@
                             <div class="card-body">
                                 <div class="mb-3">
                                     <label for="post_title">Judul</label>
-                                    <input type="text" class="form-control @error('post_title') is-invalid @enderror" value="{{ old('post_title') }}" name="post_title" placeholder="Tambahkan Judul.." required autofocus>
+                                    <input type="text" class="form-control @error('post_title') is-invalid @enderror" value="{{ $item->post_title }}" name="post_title" placeholder="Ubahkan Judul.." required>
                                     @error('post_title')
                                         <div class="invalid-feedback">
                                             {{ $message; }}
@@ -56,11 +64,13 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="post_title">Teaser</label>
-                                    <textarea name="post_teaser" class="form-control"></textarea>
+                                    <textarea name="post_teaser" class="form-control">{{ $item->post_teaser }}</textarea>
                                 </div>
                                 <div class="mb-0">
-                                    <label for="exampleFormControlTextarea1">Konten</label>
-                                    <textarea class="form-control" name="post_content" id="full-featured"></textarea>
+                                    <label for="post_content">Konten</label>
+                                    <textarea class="form-control" name="post_content" id="full-featured">
+                                        {{ $item->post_content }}
+                                    </textarea>
                                 </div>
                             </div>
                         </div>
@@ -76,14 +86,16 @@
                                     <select class="form-control cat" id="category" name="categories_id" required>
                                         <option>Pilih..</option>
                                         @foreach ($categories as $category)
-                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                            <option value="{{ $category->id }}" {{ $item->categories_id == $category->id ? 'selected':'' }}>{{ $category->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="mb-3">
                                     <label for="subcategory">Sub Kategori</label>
-                                    <select class="form-control cat" name="sub_categories" id="subcategory">
-
+                                    <select class="form-control cat" id="subcategory" name="sub_categories">
+                                        @foreach ($sub_categories as $subcategory)
+                                            <option value="{{ $subcategory->id }}" {{ $item->sub_categories == $subcategory->id ? 'selected':'' }}>{{ $subcategory->name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -96,7 +108,15 @@
                                 <div class="mb-3">
                                     <select class="form-select tag-multiple" multiple data-placeholder="Pilih.." name="tags[]" data-allow-clear="1">
                                         @foreach ($tags as $tag)
-                                            <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                                            <option value="{{ $tag->id }}"
+                                                @foreach ($item->tag as $post)
+                                                    @if ($tag->id == $post->id)
+                                                        selected
+                                                    @endif
+                                                @endforeach
+                                            >
+                                                {{ $tag->name }}
+                                            </option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -107,10 +127,14 @@
                                 Thumbnail
                             </div>
                             <div class="card-body">
-                                <img id="preview-img" src="/admin/assets/img/empty-image.jpg" class="img-fluid rounded mb-2" alt="Preview Image" style="height: 165px;">
+                                @if ($item->post_image != NULL)
+                                    <img id="preview-img" src="{{ Storage::url($item->post_image) }}" class="img-fluid rounded mb-2" alt="Preview Image" style="height: 165px;">
+                                @else
+                                    <img id="preview-img" src="/admin/assets/img/empty-image.jpg" class="img-fluid rounded mb-2" alt="Preview Image" style="height: 165px;">
+                                @endif
                                 <div class="mb-3">
                                     <label for="post-image">Pilih Foto</label>
-                                    <input type="file" id="post-image" name="post_image" class="form-control" accept="image/*" required>
+                                    <input type="file" id="post-image" name="post_image" class="form-control" accept="image/*">
                                     @error('post_image')
                                         <div class="invalid-feedback">
                                             {{ $message; }}
@@ -119,7 +143,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="post-image">Deskripsi Foto</label>
-                                    <textarea name="post_image_description" class="form-control @error('post_image_description') is-invalid @enderror" required></textarea>
+                                    <textarea name="post_image_description" class="form-control @error('post_image_description') is-invalid @enderror" required>{{ $item->post_image_description }}</textarea>
                                     @error('post_image_description')
                                         <div class="invalid-feedback">
                                             {{ $message; }}
@@ -133,16 +157,9 @@
                                 Jadwalkan Post
                             </div>
                             <div class="card-body">
-                                <select name="is_schedule" id="is_schedule" oninput="checkSchedule()" class="form-control" required>
-                                    <option value="">Pilih..</option>
-                                    <option value="Ya">Ya</option>
-                                    <option value="Tidak">Tidak</option>
-                                </select>
-                                <div id="show_schedule" style="display: none;">
-                                    <div class="mt-3">
-                                        <label for="post-image">Tanggal Post</label>
-                                        <input type="datetime-local" name="published_at" id="published_at" class="form-control">
-                                    </div>
+                                <div class="mt-1">
+                                    <label for="post-image">Tanggal Post</label>
+                                    <input type="datetime-local" name="published_at" value="{{ $item->published_at }}" id="published_at" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -152,14 +169,16 @@
                                 <i class="text-muted" data-feather="info" data-bs-toggle="tooltip" data-bs-placement="left" title="Setelah mengirimkan, posting Anda akan ditinjau untuk dipublikasikan."></i>
                             </div>
                             <div class="card-body">
-                                <div class="d-grid mb-3">
-                                    <input type="submit" name="draft" value="Simpan Sebagai Draft" class="fw-500 btn btn-primary-soft text-primary">
-                                </div>
-                                @if (Auth::user()->roles == 'Administrator' || Auth::user()->roles == 'Editor')
-                                    <div class="d-grid">
-                                        <input type="submit" name="publish" value="Simpan untuk Publikasi" class="fw-500 btn btn-primary">
+                                <div class="d-grid">
+                                    <div class="d-grid mb-3">
+                                        <input type="submit" name="draft" value="Simpan Sebagai Draft" class="fw-500 btn btn-primary-soft text-primary">
                                     </div>
-                                @endif
+                                    @if (Auth::user()->roles == 'Administrator' || Auth::user()->roles == 'Editor')
+                                        <div class="d-grid">
+                                            <input type="submit" name="publish" value="Simpan untuk Publikasi" class="fw-500 btn btn-primary">   
+                                        </div>
+                                    @endif
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -172,8 +191,7 @@
 @push('addon-style')
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.1.1/dist/select2-bootstrap-5-theme.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" />
-    {{-- <script src="https://cdn.tiny.cloud/1/2mnuvdumk629n5613zlidutt34hfejr3ebqvxqiw7jgtq55z/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script> --}}
-    <script src="https://cdn.tiny.cloud/1/ybp5gw925kdvxtzt5l0m0lzczary0ndj7akrpg8br02z5gq3/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/2mnuvdumk629n5613zlidutt34hfejr3ebqvxqiw7jgtq55z/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
 @endpush
 
 @push('addon-script')
@@ -197,17 +215,17 @@
 
         $(document).ready(function() {
             $('#category').on('change',function(e) {
-
+                
                 var cat_id = e.target.value;
 
                 $.ajax({
-
+                    
                     url:"{{ route('get-sub-categories') }}",
                     type:"POST",
                     data: {
                         cat_id: cat_id
                     },
-
+                    
                     success:function (data) {
 
                         $('#subcategory').empty();
@@ -215,7 +233,7 @@
                         //$('#subcategory').append('<option value="">Pilih</option>');
 
                         $.each(data.subcategories[0].subcategory,function(index,subcategory){
-
+                            
                             $('#subcategory').append('<option value="'+subcategory.id+'">'+subcategory.name+'</option>');
                         })
                     }
@@ -230,7 +248,7 @@
                 reader.onload = function(e) {
                     $('#preview-img').attr('src', e.target.result);
                 }
-                reader.readAsDataURL(input.files[0]);
+                reader.readAsDataURL(input.files[0]); 
             }
         }
 
@@ -246,9 +264,6 @@
         $(".cat").select2({
             theme: "bootstrap-5"
         });
-
-        //tiny editor
-        //var useDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
         tinymce.init({
             selector: 'textarea#full-featured',
@@ -313,4 +328,3 @@
         });
     </script>
 @endpush
-

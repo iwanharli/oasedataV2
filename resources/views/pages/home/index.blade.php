@@ -12,7 +12,7 @@
         @php
             $headlineNo = 1;
         @endphp
-        @foreach ($headlines as $headline)        
+        @foreach ($headlines as $headline)
         <div class="post-thumb position-relative">
             <div class="thumb-overlay img-hover-slide position-relative" style="background-image: url({{ Storage::url($headline->post->post_image) }})">
                 <a class="img-link" href="{{ route('post-detail', $headline->post->slug) }}"></a>
@@ -43,7 +43,7 @@
                     <div class="entry-meta meta-1 font-small color-grey mt-10 pr-5 pl-5">
                         <span class="post-on">{{ date('d F Y', strtotime($headline->post->published_at));}}</span>
                         <span class="hit-count has-dot">
-                            {{ splitName($headline->post->user->name); }}
+                            {{ splitName(@$headline->post->user->name); }}
                         </span>
                         <a class="float-right" href="#"><i class="ti-heart"></i></a>
                     </div>
@@ -158,13 +158,13 @@
                                             @endif
 
                                             <?php
-                                                $start = $post->currentPage() - 1; 
-                                                $end = $post->currentPage() + 1; 
+                                                $start = $post->currentPage() - 1;
+                                                $end = $post->currentPage() + 1;
                                                 if($start < 1) {
-                                                    $start = 1; 
+                                                    $start = 1;
                                                     $end += 1;
-                                                } 
-                                                if($end >= $post->lastPage() ) $end = $post->lastPage(); 
+                                                }
+                                                if($end >= $post->lastPage() ) $end = $post->lastPage();
                                             ?>
 
                                             @if($start > 1)
@@ -223,7 +223,7 @@
                                 <!--Tab Tutorial-->
                                 <div class="tab-pane fade show active" id="nav-popular" role="tabpanel" aria-labelledby="nav-popular-tab">
                                     <div class="row">
-                                        @foreach ($tutorials as $item)                                       
+                                        @foreach ($tutorials as $item)
                                         <div class="col-md-6 col-sm-6 sm-grid-content mb-30">
                                             <div class="post-thumb d-flex border-radius-5 img-hover-scale mb-15">
                                                 <a href="{{ route('post-detail', $item->slug) }}">
@@ -232,7 +232,7 @@
                                             </div>
                                             <div class="post-content media-body">
                                                 <h6 class="post-title mb-10 text-limit-2-row">
-                                                    {{ $item->post_title; }} 
+                                                    {{ $item->post_title; }}
                                                 </h6>
                                                 <div class="entry-meta meta-1 font-x-small color-grey">
                                                     <span class="post-on"><i class="ti-marker-alt"></i>
@@ -272,7 +272,7 @@
                 </div>
                 <div class="col-lg-8 col-md-12">
                     <div class="news-flash-cover text-right">
-                        
+
                     </div>
                 </div>
             </div>

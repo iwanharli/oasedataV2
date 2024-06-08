@@ -1,8 +1,6 @@
-<!-- Email: harlicuan@gmail.com
-Password: kecilkec1l -->
-
 <?php
 
+use App\Http\Controllers\Admin\StatistikController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\HomeController;
@@ -35,8 +33,8 @@ use App\Http\Controllers\Admin\AppsController;
 */
 
 Route::get('/foo', function () {
-    $targetFolder = base_path().'/storage/app/public'; 
-    $linkFolder = $_SERVER['DOCUMENT_ROOT'].'/storage'; 
+    $targetFolder = base_path().'/storage/app/public';
+    $linkFolder = $_SERVER['DOCUMENT_ROOT'].'/storage';
     symlink($targetFolder, $linkFolder);
 });
 
@@ -47,6 +45,11 @@ Route::get('/clear-cache', function () {
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/posts/{post:slug}', [HomeController::class, 'detail'])->name('post-detail');
 Route::get('/images/{post:slug}', [HomeController::class, 'detail_images'])->name('images-detail');
+
+// Statistik
+
+Route::get('/statistik/all', [HomeController::class, 'statistikAll'])->name('statistik-detail');
+Route::get('/statistik/{slug}', [HomeController::class, 'statistikDetail'])->name('statistik-detail');
 
 //Category
 Route::get('/category/{category:slug}', [HomeController::class, 'homeCategory'])->name('home-category');
@@ -76,9 +79,9 @@ Route::post('/logout', [LoginController::class, 'logout']);
 Route::prefix('admin')
 	->middleware('auth')
 	->group(function(){
-		Route::get('/dashboard',[DashboardController::class, 'index'])->name('admin-dashboard');	
+		Route::get('/dashboard',[DashboardController::class, 'index'])->name('admin-dashboard');
 
-		//POS	
+		//POS
 		Route::resource('pos/post', PostController::class);
 		Route::post('/post', [PostController::class, 'store'])->name('store-post');
 		Route::post('/get-sub-categories', [PostController::class, 'get_sub_categories'])->name('get-sub-categories');
@@ -89,6 +92,32 @@ Route::prefix('admin')
 		Route::delete('/pos/force-delete/{id}', [PostController::class, 'force_delete'])->name('post-force-delete');
 		Route::resource('pos/category', CategoryController::class);
 		Route::resource('pos/tag', TagController::class);
+
+        //Statistik
+		Route::resource('statistik', StatistikController::class, [
+			'except' => [ 'show' ]
+		]);
+		Route::post('statistik', [StatistikController::class, 'store'])->name('store-statistik');
+		Route::get('statistik/published', [StatistikController::class, 'published'])->name('statistik-published');
+		Route::get('statistik/draft', [StatistikController::class, 'draft'])->name('statistik-draft');
+		Route::get('statistik/trash', [StatistikController::class, 'trash'])->name('statistik-trash');
+		Route::get('statistik/restore/{id}', [StatistikController::class, 'restore_data'])->name('statistik-restore');
+		Route::delete('statistik/force-delete/{id}', [StatistikController::class, 'force_delete'])->name('statistik-force-delete');
+
+
+        //Foto
+		Route::resource('photo', PhotoController::class, [
+			'except' => [ 'show' ]
+		]);
+		Route::post('photo', [PhotoController::class, 'store'])->name('store-photo');
+		Route::post('photo/gallery/upload', [PhotoController::class, 'uploadGallery'])->name('photo-gallery-upload');
+		Route::get('photo/gallery/delete/{id}', [PhotoController::class, 'deleteGallery'])->name('photo-gallery-delete');
+		Route::get('photo/published', [PhotoController::class, 'published'])->name('photo-published');
+		Route::get('photo/draft', [PhotoController::class, 'draft'])->name('photo-draft');
+		Route::get('photo/trash', [PhotoController::class, 'trash'])->name('photo-trash');
+		Route::get('photo/restore/{id}', [PhotoController::class, 'restore_data'])->name('photo-restore');
+		Route::delete('photo/force-delete/{id}', [PhotoController::class, 'force_delete'])->name('photo-force-delete');
+
 
 		//Video
 		Route::resource('video', VideoController::class, [
@@ -101,18 +130,8 @@ Route::prefix('admin')
 		Route::get('video/restore/{id}', [VideoController::class, 'restore_data'])->name('video-restore');
 		Route::delete('video/force-delete/{id}', [VideoController::class, 'force_delete'])->name('video-force-delete');
 
-		//Foto
-		Route::resource('photo', PhotoController::class, [
-			'except' => [ 'show' ]
-		]);
-		Route::post('photo', [PhotoController::class, 'store'])->name('store-photo');
-		Route::post('photo/gallery/upload', [PhotoController::class, 'uploadGallery'])->name('photo-gallery-upload');
-		Route::get('photo/gallery/delete/{id}', [PhotoController::class, 'deleteGallery'])->name('photo-gallery-delete');
-		Route::get('photo/published', [PhotoController::class, 'published'])->name('photo-published');
-		Route::get('photo/draft', [PhotoController::class, 'draft'])->name('photo-draft');
-		Route::get('photo/trash', [PhotoController::class, 'trash'])->name('photo-trash');
-		Route::get('photo/restore/{id}', [PhotoController::class, 'restore_data'])->name('photo-restore');
-		Route::delete('photo/force-delete/{id}', [PhotoController::class, 'force_delete'])->name('photo-force-delete');
+
+
 
 		//User
 		Route::resource('users/user', UserController::class);
