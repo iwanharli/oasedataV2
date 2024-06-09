@@ -60,6 +60,9 @@
                                     <label for="post_title">Teaser</label>
                                     <textarea name="post_teaser" class="form-control"></textarea>
                                 </div>
+
+                                {{-- START --}}
+
                                 <div class="mb-3">
                                     <label for="post_title">Jenis Grafik</label>
                                     <div class="chart-selector">
@@ -121,11 +124,11 @@
                                                     {{-- <td>{{ $i }}</td> --}}
                                                     <td>
                                                         <input type="text" name="data_label[]"
-                                                            value="Example {{ $i }}" class="form-control" />
+                                                            value="" class="form-control" />
                                                     </td>
                                                     <td>
                                                         <input type="number" name="data_value[]" step="any"
-                                                            value="{{ rand(10, 100) }}" class="form-control" />
+                                                            value="" placeholder="0" class="form-control" />
                                                     </td>
                                                     <td style="display: flex; gap: 10px">
                                                         <button type="button" class="btn btn-outline-success"
@@ -139,6 +142,9 @@
 
                                     </div>
                                 </div>
+
+                                {{-- END --}}
+
                                 <div class="mb-0">
                                     <label for="exampleFormControlTextarea1">Konten</label>
                                     <textarea class="form-control" name="post_content" id="full-featured"></textarea>
@@ -258,20 +264,11 @@
             </form>
         </div>
     </main>
+
+    @include('pages.admin.statistik.statistikadditional')
 @endsection
 
 @push('addon-style')
-    <style>
-        .chart-selector {
-            display: flex;
-            gap: 50px;
-        }
-
-        .chart-selector>label {
-            flex: 1;
-            cursor: pointer;
-        }
-    </style>
 
     <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.1.1/dist/select2-bootstrap-5-theme.min.css" />
@@ -449,37 +446,5 @@
             content_css: 'default',
             content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
         });
-    </script>
-
-    <script>
-        function dataAddRow() {
-
-            console.log("add data id", 0)
-            id = Math.floor(Math.random() * 6) + 1
-            var elemen = `<tr data-rowid="${id}" id="data-rowid-${id}">
-                    <td>
-                        <input type="text" name="data_label[]"
-                            value="" class="form-control" />
-                    </td>
-                    <td>
-                        <input type="number" name="data_value[]" step="any"
-                            value="0" class="form-control" />
-                    </td>
-                    <td style="display: flex; gap: 10px">
-                        <button type="button" class="btn btn-outline-success"
-                            onclick="dataAddRow()">+</button>
-                        <button type="button" class="btn btn-outline-danger"
-                            onclick="dataDeleteRow(${id})">-</button>
-                    </td>
-                </tr>`
-
-            $('#data-container').append(elemen)
-
-        }
-
-        function dataDeleteRow(id) {
-            $('#data-rowid-' + id).remove()
-            console.log("remove data id", id)
-        }
     </script>
 @endpush

@@ -24,6 +24,9 @@ class CreateStatisticPostsTable extends Migration
             $table->jsonb('json_data');
             $table->string('chart_type')->default('bar');
             $table->string('post_status');
+            $table->string('post_image');
+            $table->text('post_image_description');
+            $table->timestamp('published_at');
             $table->timestamps();
 
             $table->softDeletes();

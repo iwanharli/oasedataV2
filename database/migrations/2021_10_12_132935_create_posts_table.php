@@ -25,6 +25,7 @@ class CreatePostsTable extends Migration
             $table->string('post_status');
             $table->string('post_image');
             $table->text('post_image_description');
+            $table->timestamp('published_at');
 
             $table->softDeletes();
             $table->timestamps();

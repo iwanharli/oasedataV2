@@ -5,10 +5,12 @@ namespace App\Models;
 use DateTimeInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class StatisticPost extends Model
 {
     use HasFactory;
+    use SoftDeletes;
 
     /**
      * The table associated with the model.
@@ -31,6 +33,10 @@ class StatisticPost extends Model
         'json_data',
         'post_status',
         'categories_id',
+        'chart_type',
+        'post_image',
+        'post_image_description',
+        'published_at',
     ];
 
     /**

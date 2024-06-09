@@ -8,6 +8,7 @@ use App\Models\StatisticPost;
 use App\Models\Tag;
 use App\Services\Admin\StatistikService;
 use Illuminate\Http\Request;
+use Storage;
 
 class StatistikController extends Controller
 {
@@ -43,58 +44,69 @@ class StatistikController extends Controller
     {
         $post = StatistikService::save_data($request);
 
-        var_dump($post); exit;
+        return redirect()
+                    ->route('statistik.index')
+                    ->with('success', 'Sukses! Statistik Berhasil Disimpan');
+    }
+
+
+    public function edit($id)
+    {
+        $item = StatisticPost::findOrFail($id);
+        $categories = Category::where('parent_id', null)->orderby('name', 'asc')->get();
+        $sub_categories = Category::where('parent_id', $item->categories_id)->orderby('name', 'asc')->get();
+        $tags = Tag::all();
+        $json_data = json_decode($item->json_data, true);
+
+        return view('pages.admin.statistik.edit',[
+            'item' => $item,
+            'categories' => $categories,
+            'sub_categories' => $sub_categories,
+            'tags' => $tags,
+            'json_data' => $json_data
+        ]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $post = StatistikService::update_data($id, $request);
 
         return redirect()
                     ->route('statistik.index')
                     ->with('success', 'Sukses! Statistik Berhasil Disimpan');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\StatisticPost  $statisticPost
-     * @return \Illuminate\Http\Response
-     */
-    public function show(StatisticPost $statisticPost)
+
+    public function destroy($id)
     {
-        return response()->json($statisticPost);
+        $item = StatisticPost::findorFail($id);
+
+        $item->delete();
+
+        return redirect()
+                    ->route('statistik.index')
+                    ->with('success', 'Sukses! Pos Berhasil Dihapus');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\StatisticPost  $statisticPost
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, StatisticPost $statisticPost)
+    public function force_delete($id)
     {
-        $validatedData = $request->validate([
-            'user_id' => 'sometimes|exists:users,id',
-            'post_title' => 'sometimes|string|max:255',
-            'post_teaser' => 'sometimes|string|max:255',
-            'post_content' => 'sometimes|string',
-            'slug' => 'sometimes|string|max:255|unique:statistic_posts,slug,' . $statisticPost->id,
-            'json_data' => 'sometimes|json',
-            'post_status' => 'sometimes|string|max:255',
-        ]);
+        $item = StatisticPost::onlyTrashed()->findOrFail($id);
 
-        $statisticPost->update($validatedData);
+        Storage::delete($item->post_image);
 
-        return response()->json($statisticPost);
+        $item->forceDelete();
+
+        return redirect()
+                    ->route('statistik-trash')
+                    ->with('success', 'Sukses! 1 Pos dihapus secara permanen.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\StatisticPost  $statisticPost
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(StatisticPost $statisticPost)
+    public function restore_data($id)
     {
-        $statisticPost->delete();
+        StatisticPost::withTrashed()->find($id)->restore();
 
-        return response()->json(null, 204);
+        return redirect()
+                    ->route('statistik-trash')
+                    ->with('success', 'Sukses! 1 Pos berhasil dikembalikan dari sampah.');
     }
 }
