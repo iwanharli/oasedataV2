@@ -1,6 +1,3 @@
-<!-- Email: harlicuan@gmail.com
-Password: kecilkec1l -->
-
 <?php
 
 use Illuminate\Support\Facades\Route;
