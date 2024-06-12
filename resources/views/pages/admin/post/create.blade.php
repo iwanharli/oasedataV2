@@ -83,7 +83,7 @@
                                 <div class="mb-3">
                                     <label for="subcategory">Sub Kategori</label>
                                     <select class="form-control cat" name="sub_categories" id="subcategory">
-                           
+
                                     </select>
                                 </div>
                             </div>
@@ -157,7 +157,7 @@
                                 </div>
                                 @if (Auth::user()->roles == 'Administrator' || Auth::user()->roles == 'Editor')
                                     <div class="d-grid">
-                                        <input type="submit" name="publish" value="Simpan untuk Publikasi" class="fw-500 btn btn-primary">   
+                                        <input type="submit" name="publish" value="Simpan untuk Publikasi" class="fw-500 btn btn-primary">
                                     </div>
                                 @endif
                             </div>
@@ -172,7 +172,8 @@
 @push('addon-style')
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.1.1/dist/select2-bootstrap-5-theme.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" />
-    <script src="https://cdn.tiny.cloud/1/2mnuvdumk629n5613zlidutt34hfejr3ebqvxqiw7jgtq55z/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+    {{-- <script src="https://cdn.tiny.cloud/1/2mnuvdumk629n5613zlidutt34hfejr3ebqvxqiw7jgtq55z/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script> --}}
+    <script src="https://cdn.tiny.cloud/1/ybp5gw925kdvxtzt5l0m0lzczary0ndj7akrpg8br02z5gq3/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
 @endpush
 
 @push('addon-script')
@@ -196,17 +197,17 @@
 
         $(document).ready(function() {
             $('#category').on('change',function(e) {
-                
+
                 var cat_id = e.target.value;
 
                 $.ajax({
-                    
+
                     url:"{{ route('get-sub-categories') }}",
                     type:"POST",
                     data: {
                         cat_id: cat_id
                     },
-                    
+
                     success:function (data) {
 
                         $('#subcategory').empty();
@@ -214,7 +215,7 @@
                         //$('#subcategory').append('<option value="">Pilih</option>');
 
                         $.each(data.subcategories[0].subcategory,function(index,subcategory){
-                            
+
                             $('#subcategory').append('<option value="'+subcategory.id+'">'+subcategory.name+'</option>');
                         })
                     }
@@ -229,7 +230,7 @@
                 reader.onload = function(e) {
                     $('#preview-img').attr('src', e.target.result);
                 }
-                reader.readAsDataURL(input.files[0]); 
+                reader.readAsDataURL(input.files[0]);
             }
         }
 

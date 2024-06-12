@@ -23,7 +23,7 @@ class PostController extends Controller
                 $query = Post::with(['user','category'])->latest()->get();
             }else{
                 $query = Post::where('users_id', Auth::user()->id)->with(['user','category'])->latest()->get();
-            }    
+            }
 
             return Datatables::of($query)
                 ->addColumn('action', function ($item) {
@@ -79,7 +79,7 @@ class PostController extends Controller
                 $query = Post::where('post_status','Published')->with(['user','category'])->latest()->get();
             }else{
                 $query = Post::where(['post_status' => 'Published', 'users_id' => Auth::user()->id])->with(['user','category'])->latest()->get();
-            }    
+            }
             return Datatables::of($query)
                 ->addColumn('action', function ($item) {
                     return Auth::user()->roles == 'Administrator'? '
@@ -244,7 +244,7 @@ class PostController extends Controller
             'post_teaser' => 'required',
             'post_content' => 'required',
             'slug' => 'unique:posts',
-            'post_image' => 'required|image|file|max:1024',
+            'post_image' => 'required|image|file|max:10240',
             'post_image_description' => 'required',
         ]);
 
@@ -254,9 +254,9 @@ class PostController extends Controller
         $validatedData['post_teaser'] = Str::limit(strip_tags($request->post_teaser), 140);
 
         if($request->file('post_image')){
-            
+
             $image = $request->file('post_image');
-            $path = $image->hashName('assets/post-images');
+            $path = $image->hashName('public/assets/post-images');
 
             $image_resize = Image::make($image->getRealPath());
             $image_resize->resize(1200,675);
@@ -369,8 +369,8 @@ class PostController extends Controller
     {
         $item = Post::onlyTrashed()->findOrFail($id);
 
-        Storage::delete($item->post_image); 
-        
+        Storage::delete($item->post_image);
+
         $item->forceDelete();
 
         return redirect()
@@ -394,7 +394,7 @@ class PostController extends Controller
         $subcategories = Category::where('id',$parent_id)
                           ->with('subcategory')
                           ->get();
-        
+
         return response()->json([
             'subcategories' => $subcategories
         ]);
