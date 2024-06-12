@@ -300,6 +300,9 @@ class HomeController extends Controller
         // var_dump($json_data); exit;
 
         foreach ($json_data as $key => $value):
+            if(empty($value['label']))
+                continue;
+
             $data_fix['labels'][] = $value['label'];
             $data_fix['values'][] = $value['value'];
         endforeach;
