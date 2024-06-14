@@ -15,7 +15,7 @@
         @foreach ($headlines as $headline)
         <div class="post-thumb position-relative">
             <div class="thumb-overlay img-hover-slide position-relative" style="background-image: url({{ Storage::url($headline->post->post_image) }})">
-                <a class="img-link" href="{{ route('post-detail', $headline->post->slug) }}"></a>
+                <a class="img-link" href="{{ route('news-detail', $headline->post->slug) }}"></a>
                 <div class="post-content-overlay ml-30 mr-30">
                     <div class="entry-meta meta-0 font-small mb-20">
                         @php
@@ -36,7 +36,7 @@
                         @endif
                     </div>
                     <h3 class="post-title">
-                        <a class="color-white" href="{{ route('post-detail', $headline->post->slug) }}">
+                        <a class="color-white" href="{{ route('news-detail', $headline->post->slug) }}">
                             {{ $headline->post->post_title; }}
                         </a>
                     </h3>
@@ -54,6 +54,7 @@
     </div>
 </div>
 <!--Featured post End-->
+
 <!--  Recent Articles start -->
 <div class="recent-area pt-50 pb-50 background12">
     <div class="container">
@@ -71,7 +72,7 @@
                         <ul class="right-0">
                             @foreach ($breaking_news as $item)
                                 <li>
-                                    <a class="font-medium" href="{{ route('post-detail', $item->post->slug) }}">
+                                    <a class="font-medium" href="{{ route('news-detail', $item->post->slug) }}">
                                         {{ $item->post->post_title }}
                                     </a>
                                 </li>
@@ -92,7 +93,7 @@
                         <div class="col-md-6">
                             <div class="post-thumb position-relative thumb-overlay mr-20">
                                 <div class="img-hover-slide border-radius-5 position-relative" style="background-image: url({{ Storage::url($item->post_image) }})">
-                                    <a class="img-link" href="{{ route('post-detail', $item->slug) }}"></a>
+                                    <a class="img-link" href="{{ route('news-detail', $item->slug) }}"></a>
                                 </div>
                             </div>
                         </div>
@@ -117,7 +118,7 @@
                                     @endif
                                 </div>
                                 <h4 class="post-title">
-                                    <a href="{{ route('post-detail', $item->slug) }}">{{ $item->post_title; }}</a>
+                                    <a href="{{ route('news-detail', $item->slug) }}">{{ $item->post_title; }}</a>
                                 </h4>
                                 <div class="entry-meta meta-1 font-small color-grey mt-15 mb-15">
                                     <span class="time-reading">
@@ -130,7 +131,7 @@
                                 <p class="font-medium">
                                     {{ $item->post_teaser; }}
                                 </p>
-                                <a class="readmore-btn font-small text-uppercase font-weight-ultra" href="{{ route('post-detail', $item->slug) }}">
+                                <a class="readmore-btn font-small text-uppercase font-weight-ultra" href="{{ route('news-detail', $item->slug) }}">
                                     Baca Selengkapnya<i class="ti-arrow-right ml-5"></i>
                                 </a>
                             </div>
@@ -226,7 +227,7 @@
                                         @foreach ($tutorials as $item)
                                         <div class="col-md-6 col-sm-6 sm-grid-content mb-30">
                                             <div class="post-thumb d-flex border-radius-5 img-hover-scale mb-15">
-                                                <a href="{{ route('post-detail', $item->slug) }}">
+                                                <a href="{{ route('news-detail', $item->slug) }}">
                                                     <img src="{{ Storage::url($item->post_image) }}" alt="">
                                                 </a>
                                             </div>
@@ -259,6 +260,7 @@
     </div>
 </div>
 <!--Recent Articles End -->
+
 <!-- Recent Posts Start -->
 <div class="pt-50 pb-50 background-white">
     <div class="container mb-50">
@@ -284,7 +286,7 @@
                 <div class="col-lg-4 col-md-6 col-sm-12 mb-30">
                     <div class="post-thumb position-relative thumb-overlay hover-box-shadow-2 mb-30">
                         <div class="img-hover-slide border-radius-5 position-relative" style="background-image: url({{ Storage::url($item->post_image) }})">
-                            <a class="img-link" href="{{ route('post-detail', $item->slug) }}"></a>
+                            <a class="img-link" href="{{ route('news-detail', $item->slug) }}"></a>
                             <span class="top-right-icon background8"><i class="mdi mdi-camera-alt"></i></span>
                         </div>
                     </div>
@@ -297,7 +299,7 @@
                             </a>
                         </div>
                         <h4 class="post-title">
-                            <a href="{{ route('post-detail', $item->slug) }}">{{ $item->post_title; }}</a>
+                            <a href="{{ route('news-detail', $item->slug) }}">{{ $item->post_title; }}</a>
                         </h4>
                         <div class="entry-meta meta-1 font-small color-grey mt-15 mb-15">
                             <span class="time-reading">
@@ -327,18 +329,18 @@
                 <div class="col">
                     <div class="post-thumb position-relative">
                         <div class="thumb-overlay img-hover-slide border-radius-5 position-relative" style="background-image: url({{ Storage::url($item->post_image) }})">
-                            <a class="img-link" href="{{ route('post-detail', $item->slug) }}"></a>
+                            <a class="img-link" href="{{ route('news-detail', $item->slug) }}"></a>
                             <span class="top-right-icon background2"><i class="mdi mdi-gamepad"></i></span>
                             <div class="post-content-overlay">
                                 <div class="entry-meta meta-0 font-small mb-10">
-                                    <a href="{{ route('post-detail', $item->slug) }}">
+                                    <a href="{{ route('news-detail', $item->slug) }}">
                                         <span class="post-cat background2 color-white">
                                             {{ $item->category->name; }}
                                         </span>
                                     </a>
                                 </div>
                                 <h6 class="post-title">
-                                    <a class="color-white" href="{{ route('post-detail', $item->slug) }}">{{ $item->post_title; }}</a>
+                                    <a class="color-white" href="{{ route('news-detail', $item->slug) }}">{{ $item->post_title; }}</a>
                                 </h6>
                                 <div class="entry-meta meta-1 font-small color-grey mt-10 pr-5 pl-5">
                                     <span class="time-reading">

@@ -14,7 +14,7 @@
     {{-- Meta Facebook --}}
     <meta property="og:title" content="{{ (isset($post->post_title))? $post->post_title : $app->title }}" />
     <meta property="og:type" content="{{ (isset($post->category->name))? $post->category->name : 'News' }}" />
-    <meta property="og:url" content="{{ (isset($post->slug))? route('post-detail', @$item->slug) : $app->link_web }}" />
+    <meta property="og:url" content="{{ (isset($post->slug))? route('news-detail', @$item->slug) : $app->link_web }}" />
     <meta property="og:image" content="{{ (isset($post->post_image))? Storage::url($post->post_image) : $app->link_web }}" />
 
     {{-- Meta Twitter --}}

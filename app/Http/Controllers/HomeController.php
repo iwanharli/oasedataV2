@@ -30,7 +30,13 @@ class HomeController extends Controller
             ['published_at', '<', now()],
         ])->latest()->paginate(3);
 
+        $news = Post::with(['user', 'category'])->where([
+            ['post_status', '=', 'Published'],
+            ['published_at', '<', now()],
+        ])->latest()->paginate(3);
+
         $breaking_news = BreakingNews::with(['post'])->latest()->get();
+
         $headlines = Headline::with(['post'])->latest()->get();
         $gadget = Post::with(['user', 'category'])->where([
             ['categories_id', '=', 3],
@@ -48,8 +54,9 @@ class HomeController extends Controller
             ['published_at', '<', now()],
         ])->latest()->get();
 
-        return view('pages.home.index', [
+        return view('pages.portal.index', [
             'post' => $post,
+            'news' => $news,
             'breaking_news' => $breaking_news,
             'headlines' => $headlines,
             'gadget' => $gadget,
@@ -93,7 +100,6 @@ class HomeController extends Controller
             'count' => $count,
             'latest_post' => $latest_post
         ]);
-
     }
 
     public function detail($slug)
@@ -299,7 +305,7 @@ class HomeController extends Controller
 
         // var_dump($json_data); exit;
 
-        foreach ($json_data as $key => $value):
+        foreach ($json_data as $key => $value) :
             $data_fix['labels'][] = $value['label'];
             $data_fix['values'][] = $value['value'];
         endforeach;

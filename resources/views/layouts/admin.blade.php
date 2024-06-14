@@ -23,7 +23,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js" crossorigin="anonymous">
     </script>
     {{-- <script src="https://cdn.tiny.cloud/1/2mnuvdumk629n5613zlidutt34hfejr3ebqvxqiw7jgtq55z/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script> --}}
-    <script src="https://cdn.tiny.cloud/1/ybp5gw925kdvxtzt5l0m0lzczary0ndj7akrpg8br02z5gq3/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+    {{-- <script src="https://cdn.tiny.cloud/1/ybp5gw925kdvxtzt5l0m0lzczary0ndj7akrpg8br02z5gq3/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script> --}}
+
+    <script src="https://cdn.tiny.cloud/1/2mnuvdumk629n5613zlidutt34hfejr3ebqvxqiw7jgtq55z/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
 </head>
 
 <body class="nav-fixed">

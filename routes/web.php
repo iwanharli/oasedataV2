@@ -20,6 +20,7 @@ use App\Http\Controllers\Admin\RedactionController;
 use App\Http\Controllers\Admin\DisclaimerController;
 use App\Http\Controllers\Admin\BreakingNewsController;
 use App\Http\Controllers\Admin\AppsController;
+use App\Http\Controllers\NewsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,13 +44,16 @@ Route::get('/clear-cache', function () {
 });
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/posts/{post:slug}', [HomeController::class, 'detail'])->name('post-detail');
-Route::get('/images/{post:slug}', [HomeController::class, 'detail_images'])->name('images-detail');
 
-// Statistik
+// NEWS 
+Route::get('/news', [NewsController::class, 'index'])->name('news-all');
+Route::get('/news/{slug}', [NewsController::class, 'newsDetail'])->name('news-detail');
 
-Route::get('/statistik/all', [HomeController::class, 'statistikAll'])->name('statistik-detail');
-Route::get('/statistik/{slug}', [HomeController::class, 'statistikDetail'])->name('statistik-detail');
+// STATISTIC
+Route::get('/statistic', [HomeController::class, 'statisticAll'])->name('statistic-all');
+Route::get('/statistic/{slug}', [HomeController::class, 'statisticDetail'])->name('statistic-detail');
+
+Route::get('/images/{slug}', [HomeController::class, 'detail_images'])->name('images-detail');
 
 //Category
 Route::get('/category/{category:slug}', [HomeController::class, 'homeCategory'])->name('home-category');
