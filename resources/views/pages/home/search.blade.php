@@ -26,7 +26,7 @@
                     @foreach ($post as $item)                  
                     <article class="col-lg-6 mb-50 animate-conner">
                         <div class="post-thumb d-flex mb-30 border-radius-5 img-hover-scale animate-conner-box">
-                            <a href="{{ route('post-detail', $item->slug) }}">
+                            <a href="{{ route('news-detail', $item->slug) }}">
                                 <img src="{{ Storage::url($item->post_image) }}" alt="">
                             </a>
                         </div>
@@ -50,7 +50,7 @@
                                 @endif
                             </div>
                             <h3 class="post-title">
-                                <a href="{{ route('post-detail', $item->slug) }}">{{ $item->post_title; }}</a>
+                                <a href="{{ route('news-detail', $item->slug) }}">{{ $item->post_title; }}</a>
                             </h3>
                             <div class="entry-meta meta-1 font-small color-grey mt-15 mb-15">
                                 <span class="post-by">By <a href="{{ route('author', $item->user->id) }}">{{ splitName($item->user->name); }}</a></span>
@@ -153,7 +153,7 @@
                                 <li class="mb-30">
                                     <div class="d-flex">
                                         <div class="post-thumb d-flex mr-15 border-radius-5 img-hover-scale">
-                                            <a href="{{ route('post-detail', $latest->slug) }}">
+                                            <a href="{{ route('news-detail', $latest->slug) }}">
                                                 <img src="{{ Storage::url($latest->post_image) }}" alt="">
                                             </a>
                                         </div>

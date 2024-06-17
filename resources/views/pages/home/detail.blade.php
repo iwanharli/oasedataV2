@@ -8,11 +8,14 @@
 @php
     $app = App\Models\App::where('id', '1')->first();
 @endphp
+
+
 <!--main content-->
 <div class="main_content sidebar_right pb-50 pt-50">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-md-12 col-sm-12">
+                {{-- Header --}}
                 <div class="entry-header entry-header-1 mb-30">
                     <div class="entry-meta meta-0 font-small mb-15">
                         <ul class="breadcrumb">
@@ -40,6 +43,8 @@
                     </div>
                 </div>
                 <!--end entry header-->
+                
+                {{-- Berita --}}
                 <figure class="single-thumnail">
                     <div class="featured-slider-1 border-radius-5">
                         <div class="featured-slider-1-items">
@@ -64,6 +69,8 @@
                     </div>
                 </div>
                 <div class="bt-1 border-color-1 mt-30 mb-30"></div>
+                {{-- Ending Berita  --}}
+
                 <!--author box-->
                 <div class="author-bio">
                     <div class="author-image mb-30">
@@ -92,6 +99,7 @@
                         <a href="{{ route('author', $post->user->id) }}" class="author-bio-link">Lihat Semua Post</a>
                     </div>
                 </div>
+
                 <!--related posts-->
                 <div class="related-posts">
                     <h3 class="mb-30">Berita Terkait</h3>

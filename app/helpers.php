@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 function splitName($name)
 {
@@ -8,4 +8,16 @@ function splitName($name)
     return $first_name;
 }
 
-?>
+if (!function_exists('getInitials')) {
+    function getInitials($name)
+    {
+        $words = explode(' ', $name);
+        $initials = '';
+
+        foreach ($words as $word) {
+            $initials .= strtoupper($word[0]);
+        }
+
+        return $initials;
+    }
+}

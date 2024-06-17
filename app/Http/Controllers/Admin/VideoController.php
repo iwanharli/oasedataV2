@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Models\Video;
-use App\Models\Category;
+use App\Models\NewsCategory;
 use App\Models\Tag;
 use Illuminate\Support\Str;
 use Yajra\DataTables\Facades\DataTables;

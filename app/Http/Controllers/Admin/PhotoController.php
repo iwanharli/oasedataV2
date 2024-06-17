@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Tag;
 use App\Models\Photo;
 
-use App\Models\Category;
+use App\Models\NewsCategory;
 use Illuminate\Support\Str;
 use App\Models\PhotoGallery;
 use Illuminate\Http\Request;

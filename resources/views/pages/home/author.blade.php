@@ -54,7 +54,7 @@
                             <div class="col-md-4">
                                 <div class="post-thumb position-relative thumb-overlay">
                                     <div class="img-hover-slide border-radius-5 position-relative" style="background-image: url({{ Storage::url($item->post_image) }})">
-                                        <a class="img-link" href="{{ route('post-detail', $item->slug) }}"></a>
+                                        <a class="img-link" href="{{ route('news-detail', $item->slug) }}"></a>
                                     </div>
                                 </div>
                             </div>
@@ -79,7 +79,7 @@
                                         @endif
                                     </div>
                                     <h4 class="post-title">
-                                        <a href="{{ route('post-detail', $item->slug) }}">{{ $item->post_title; }}</a>
+                                        <a href="{{ route('news-detail', $item->slug) }}">{{ $item->post_title; }}</a>
                                     </h4>
                                     <div class="entry-meta meta-1 font-small color-grey mt-15 mb-15">
                                         <span class="time-reading"><i class="ti-user"></i>
@@ -183,7 +183,7 @@
                             @foreach ($latest_post as $item)                          
                             <div class="col-md-6 col-sm-6 sm-grid-content mb-30">
                                 <div class="post-thumb d-flex border-radius-5 img-hover-scale mb-15">
-                                    <a href="{{ route('post-detail', $item->slug) }}">
+                                    <a href="{{ route('news-detail', $item->slug) }}">
                                         <img src="{{ Storage::url($item->post_image) }}" alt="">
                                     </a>
                                 </div>

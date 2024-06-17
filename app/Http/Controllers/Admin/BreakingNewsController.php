@@ -8,7 +8,7 @@ use App\Models\BreakingNewsCategory;
 use Illuminate\Http\Request;
 
 use App\Models\Post;
-use App\Models\Category;
+use App\Models\NewsCategory;
 use Yajra\DataTables\Facades\DataTables;
 
 class BreakingNewsController extends Controller
@@ -102,7 +102,7 @@ class BreakingNewsController extends Controller
     {
         
         if (request()->ajax()) {
-            $query = BreakingNewsCategory::with(['post'])->where('category_id', $id)->latest()->get();
+            $query = BreakingCategory::with(['post'])->where('category_id', $id)->latest()->get();
 
             return Datatables::of($query)
                 ->addColumn('action', function ($item) {
@@ -127,7 +127,7 @@ class BreakingNewsController extends Controller
         $categories = Category::where('parent_id', null)->orderby('name', 'asc')->get();
         $posts = Post::with(['user','category'])->where('categories_id', $id)->orWhere('sub_categories', $id)->latest()->get();
 
-        $breaking = BreakingNewsCategory::latest()->get();
+        $breaking = BreakingCategory::latest()->get();
         $row = Category::findOrFail($id);
 
         return view('pages.admin.breaking-news.list',[
@@ -147,7 +147,7 @@ class BreakingNewsController extends Controller
 
         $category_id = $request->category_id;
 
-        BreakingNewsCategory::create($validatedData);
+        BreakingCategory::create($validatedData);
 
         return redirect()
                     ->route('breaking-news-list', $category_id)
@@ -163,7 +163,7 @@ class BreakingNewsController extends Controller
 
         $category_id = $request->category_id;
 
-        BreakingNewsCategory::where('id', $id)
+        BreakingCategory::where('id', $id)
                 ->update([
                     'post_id' => $request->post_id,
                     'category_id' => $request->category_id
@@ -176,7 +176,7 @@ class BreakingNewsController extends Controller
 
     public function destroy_category($id)
     {
-        $item = BreakingNewsCategory::findorFail($id);
+        $item = BreakingCategory::findorFail($id);
 
         $category_id = $item->category_id;
 

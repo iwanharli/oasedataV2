@@ -36,7 +36,7 @@
                                             </a>
                                         </div>
                                         <h2 class="post-title">
-                                            <a href="{{ route('post-detail', $item->post->slug) }}">{{ $item->post->post_title; }}</a>
+                                            <a href="{{ route('news-detail', $item->post->slug) }}">{{ $item->post->post_title; }}</a>
                                         </h2>
                                         <div class="entry-meta meta-1 font-small color-grey mt-20 mb-20">
                                             <span class="post-on"><i class="ti-marker-alt"></i>
@@ -65,7 +65,7 @@
                                 <div class="slider-img col-lg-6 order-lg-2 order-1 col-md-12">
                                     <div class="img-hover-scale">
                                         <span class="top-right-icon background8"><i class="mdi mdi-favorite"></i></span>
-                                        <a href="{{ route('post-detail', $item->post->slug) }}">
+                                        <a href="{{ route('news-detail', $item->post->slug) }}">
                                             <img src="{{ Storage::url($item->post->post_image) }}" alt="post-slider">
                                         </a>
                                     </div>
@@ -95,7 +95,7 @@
                     @foreach ($post as $item)                  
                     <article class="col-lg-6 mb-50 animate-conner">
                         <div class="post-thumb d-flex mb-30 border-radius-5 img-hover-scale animate-conner-box">
-                            <a href="{{ route('post-detail', $item->slug) }}">
+                            <a href="{{ route('news-detail', $item->slug) }}">
                                 <img src="{{ Storage::url($item->post_image) }}" alt="">
                             </a>
                         </div>
@@ -119,7 +119,7 @@
                                 @endif
                             </div>
                             <h3 class="post-title">
-                                <a href="{{ route('post-detail', $item->slug) }}">{{ $item->post_title; }}</a>
+                                <a href="{{ route('news-detail', $item->slug) }}">{{ $item->post_title; }}</a>
                             </h3>
                             <div class="entry-meta meta-1 font-small color-grey mt-15 mb-15">
                                 <span class="post-by">
@@ -224,7 +224,7 @@
                                 <li class="mb-30">
                                     <div class="d-flex">
                                         <div class="post-thumb d-flex mr-15 border-radius-5 img-hover-scale">
-                                            <a href="{{ route('post-detail', $latest->slug) }}">
+                                            <a href="{{ route('news-detail', $latest->slug) }}">
                                                 <img src="{{ Storage::url($latest->post_image) }}" alt="">
                                             </a>
                                         </div>

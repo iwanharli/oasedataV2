@@ -88,7 +88,7 @@
                     @php
                         $no = 1;
                     @endphp
-                    @foreach ($post as $item)
+                    @foreach ($news_home as $item)
                     <article class="row mb-50">
                         <div class="col-md-6">
                             <div class="post-thumb position-relative thumb-overlay mr-20">
@@ -145,56 +145,56 @@
                         <div class="row">
                             <div class="col-xl-12">
                                 <div class="single-wrap d-flex justify-content-center">
-                                    @if ($post->hasPages())
+                                    @if ($news_home->hasPages())
                                         <ul class="pagination" role="navigation">
                                             {{-- Previous Page Link --}}
-                                            @if ($post->onFirstPage())
+                                            @if ($news_home->onFirstPage())
                                                 <li class="page-item disabled" aria-disabled="true" aria-label="@lang('pagination.previous')">
                                                     <span class="page-link" aria-hidden="true">&lsaquo;</span>
                                                 </li>
                                             @else
                                                 <li class="page-item">
-                                                    <a class="page-link" href="{{ $post->previousPageUrl() }}" rel="prev" aria-label="@lang('pagination.previous')">&lsaquo;</a>
+                                                    <a class="page-link" href="{{ $news_home->previousPageUrl() }}" rel="prev" aria-label="@lang('pagination.previous')">&lsaquo;</a>
                                                 </li>
                                             @endif
 
                                             <?php
-                                                $start = $post->currentPage() - 1;
-                                                $end = $post->currentPage() + 1;
+                                                $start = $news_home->currentPage() - 1;
+                                                $end = $news_home->currentPage() + 1;
                                                 if($start < 1) {
                                                     $start = 1;
                                                     $end += 1;
                                                 }
-                                                if($end >= $post->lastPage() ) $end = $post->lastPage();
+                                                if($end >= $news_home->lastPage() ) $end = $news_home->lastPage();
                                             ?>
 
                                             @if($start > 1)
                                                 <li class="page-item">
-                                                    <a class="page-link" href="{{ $post->url(1) }}">{{1}}</a>
+                                                    <a class="page-link" href="{{ $news_home->url(1) }}">{{1}}</a>
                                                 </li>
-                                                @if($post->currentPage() != 4)
+                                                @if($news_home->currentPage() != 4)
                                                     <li class="page-item disabled" aria-disabled="true"><span class="page-link">...</span></li>
                                                 @endif
                                             @endif
                                                 @for ($i = $start; $i <= $end; $i++)
-                                                    <li class="page-item {{ ($post->currentPage() == $i) ? ' active' : '' }}">
-                                                        <a class="page-link" href="{{ $post->url($i) }}">{{$i}}</a>
+                                                    <li class="page-item {{ ($news_home->currentPage() == $i) ? ' active' : '' }}">
+                                                        <a class="page-link" href="{{ $news_home->url($i) }}">{{$i}}</a>
                                                     </li>
                                                 @endfor
-                                            @if($end < $post->lastPage())
-                                                @if($post->currentPage() + 3 != $post->lastPage())
+                                            @if($end < $news_home->lastPage())
+                                                @if($news_home->currentPage() + 3 != $news_home->lastPage())
                                                     {{-- "Three Dots" Separator --}}
                                                     <li class="page-item disabled" aria-disabled="true"><span class="page-link">...</span></li>
                                                 @endif
                                                 <li class="page-item">
-                                                    <a class="page-link" href="{{ $post->url($post->lastPage()) }}">{{$post->lastPage()}}</a>
+                                                    <a class="page-link" href="{{ $news_home->url($news_home->lastPage()) }}">{{$news_home->lastPage()}}</a>
                                                 </li>
                                             @endif
 
                                             {{-- Next Page Link --}}
-                                            @if ($post->hasMorePages())
+                                            @if ($news_home->hasMorePages())
                                                 <li class="page-item">
-                                                    <a class="page-link" href="{{ $post->nextPageUrl() }}" rel="next" aria-label="@lang('pagination.next')">&rsaquo;</a>
+                                                    <a class="page-link" href="{{ $news_home->nextPageUrl() }}" rel="next" aria-label="@lang('pagination.next')">&rsaquo;</a>
                                                 </li>
                                             @else
                                                 <li class="page-item disabled" aria-disabled="true" aria-label="@lang('pagination.next')">

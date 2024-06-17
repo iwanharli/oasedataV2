@@ -155,7 +155,7 @@
                                 <li class="mb-30">
                                     <div class="d-flex">
                                         <div class="post-thumb d-flex mr-15 border-radius-5 img-hover-scale">
-                                            <a href="{{ route('post-detail', $latest->slug) }}">
+                                            <a href="{{ route('news-detail', $latest->slug) }}">
                                                 <img src="{{ Storage::url($latest->post_image) }}" alt="">
                                             </a>
                                         </div>

@@ -93,7 +93,7 @@
                             terbaru
                         </h2>
                         <p class="color-666">Dapatkan artikel terbaru dari pers kami, diskusikan, dan bagikan.</p>
-                        <a href="#" class="btn btn-icon-circle rounded-pill bg-blue7 fw-bold text-white">
+                        <a href="{{ route('news-all') }}" class="btn btn-icon-circle rounded-pill bg-blue7 fw-bold text-white">
                             <small> Lihat semua berita <i class="fas fa-long-arrow-alt-right"></i> </small>
                         </a>
                     </div>
@@ -132,7 +132,7 @@
                                     @php
                                         $no = 1;
                                     @endphp
-                                    @foreach ($news as $item)
+                                    @foreach ($news_home as $item)
                                         <div class="item wow fadeInUp" data-wow-delay="0.2s">
 
                                             <a href="{{ route('news-detail', $item->slug) }}">

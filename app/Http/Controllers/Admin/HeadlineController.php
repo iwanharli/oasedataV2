@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Headline;
 use App\Models\HeadlineCategory;
-use App\Models\Category;
+use App\Models\NewsCategory;
 use Yajra\DataTables\Facades\DataTables;
 
 class HeadlineController extends Controller

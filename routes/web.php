@@ -3,7 +3,10 @@
 use App\Http\Controllers\Admin\StatistikController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
-use App\Http\Controllers\HomeController;
+
+use App\Http\Controllers\Portal\HomeController;
+use App\Http\Controllers\Portal\NewsController;
+
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\Admin\TagController;
@@ -20,7 +23,7 @@ use App\Http\Controllers\Admin\RedactionController;
 use App\Http\Controllers\Admin\DisclaimerController;
 use App\Http\Controllers\Admin\BreakingNewsController;
 use App\Http\Controllers\Admin\AppsController;
-use App\Http\Controllers\NewsController;
+use App\Http\Controllers\Portal\StatisticController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,25 +37,16 @@ use App\Http\Controllers\NewsController;
 */
 
 Route::get('/foo', function () {
-    $targetFolder = base_path().'/storage/app/public';
-    $linkFolder = $_SERVER['DOCUMENT_ROOT'].'/storage';
-    symlink($targetFolder, $linkFolder);
+	$targetFolder = base_path() . '/storage/app/public';
+	$linkFolder = $_SERVER['DOCUMENT_ROOT'] . '/storage';
+	symlink($targetFolder, $linkFolder);
 });
 
 Route::get('/clear-cache', function () {
-    Artisan::call('route:cache');
+	Artisan::call('route:cache');
 });
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
-
-// NEWS 
-Route::get('/news', [NewsController::class, 'index'])->name('news-all');
-Route::get('/news/{slug}', [NewsController::class, 'newsDetail'])->name('news-detail');
-
-// STATISTIC
-Route::get('/statistic', [HomeController::class, 'statisticAll'])->name('statistic-all');
-Route::get('/statistic/{slug}', [HomeController::class, 'statisticDetail'])->name('statistic-detail');
-
+//Images
 Route::get('/images/{slug}', [HomeController::class, 'detail_images'])->name('images-detail');
 
 //Category
@@ -76,14 +70,30 @@ Route::get('/disclaimer', [HomeController::class, 'disclaimer'])->name('disclaim
 Route::get('/kontak', [HomeController::class, 'kontak'])->name('kontak');
 
 // Authentication
-Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::get('/arboc', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
+// PORTAL BERITA
+Route::prefix('/')
+	->namespace('Portal')
+	->group(function () {
+		Route::get('/', [HomeController::class, 'index'])->name('home');
+
+		Route::get('/news', [NewsController::class, 'index'])->name('news-all');
+		Route::get('/news/{slug}', [NewsController::class, 'newsDetail'])->name('news-detail');
+
+		Route::get('/statistic', [StatisticController::class, 'statistikAll'])->name('statistic-all');
+		Route::get('/statistic/{slug}', [StatisticController::class, 'statisticDetail'])->name('statistic-detail');
+	});
+
+
+
+// ADMIN DASHBOARD 
 Route::prefix('admin')
 	->middleware('auth')
-	->group(function(){
-		Route::get('/dashboard',[DashboardController::class, 'index'])->name('admin-dashboard');
+	->group(function () {
+		Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin-dashboard');
 
 		//POS
 		Route::resource('pos/post', PostController::class);
@@ -97,9 +107,9 @@ Route::prefix('admin')
 		Route::resource('pos/category', CategoryController::class);
 		Route::resource('pos/tag', TagController::class);
 
-        //Statistik
+		//Statistik
 		Route::resource('statistik', StatistikController::class, [
-			'except' => [ 'show' ]
+			'except' => ['show']
 		]);
 		Route::post('statistik', [StatistikController::class, 'store'])->name('store-statistik');
 		Route::get('statistik/published', [StatistikController::class, 'published'])->name('statistik-published');
@@ -109,9 +119,9 @@ Route::prefix('admin')
 		Route::delete('statistik/force-delete/{id}', [StatistikController::class, 'force_delete'])->name('statistik-force-delete');
 
 
-        //Foto
+		//Foto
 		Route::resource('photo', PhotoController::class, [
-			'except' => [ 'show' ]
+			'except' => ['show']
 		]);
 		Route::post('photo', [PhotoController::class, 'store'])->name('store-photo');
 		Route::post('photo/gallery/upload', [PhotoController::class, 'uploadGallery'])->name('photo-gallery-upload');
@@ -125,7 +135,7 @@ Route::prefix('admin')
 
 		//Video
 		Route::resource('video', VideoController::class, [
-			'except' => [ 'show' ]
+			'except' => ['show']
 		]);
 		Route::post('video', [VideoController::class, 'store'])->name('store-video');
 		Route::get('video/published', [VideoController::class, 'published'])->name('video-published');
@@ -140,12 +150,12 @@ Route::prefix('admin')
 		//User
 		Route::resource('users/user', UserController::class);
 		Route::post('/user', [UserController::class, 'store'])->name('store-user');
-		Route::get('/users/user/profile',[UserController::class, 'show'])->name('profile-user');
-		Route::get('/users/user/profile/password',[UserController::class, 'change_password'])->name('change-password');
+		Route::get('/users/user/profile', [UserController::class, 'show'])->name('profile-user');
+		Route::get('/users/user/profile/password', [UserController::class, 'change_password'])->name('change-password');
 		Route::put('/users/user/profile/{id}', [UserController::class, 'update_profile'])
-        ->name('profile-update');
+			->name('profile-update');
 		Route::post('/users/user/upload-profile', [UserController::class, 'upload_profile'])
-        ->name('profile-upload');
+			->name('profile-upload');
 		Route::post('change-password', [UserController::class, 'update_password'])->name('update.password');
 
 		//Page
@@ -161,7 +171,7 @@ Route::prefix('admin')
 		Route::put('/breaking-news/category/{id}', [BreakingNewsController::class, 'update_category'])->name('update-breaking-news-category');
 		Route::delete('/breaking-news/category/{id}', [BreakingNewsController::class, 'destroy_category'])->name('destroy-breaking-news-category');
 		Route::resource('settings/breaking-news', BreakingNewsController::class, [
-			'except' => [ 'show' ]
+			'except' => ['show']
 		]);
 		Route::post('breaking-news', [BreakingNewsController::class, 'store'])->name('store-breaking-news');
 
@@ -172,12 +182,11 @@ Route::prefix('admin')
 		Route::put('/headline/category/{id}', [HeadlineController::class, 'update_category'])->name('update-headline-category');
 		Route::delete('/headline/category/{id}', [HeadlineController::class, 'destroy_category'])->name('destroy-headline-category');
 		Route::resource('settings/headline', HeadlineController::class, [
-			'except' => [ 'show' ]
+			'except' => ['show']
 		]);
 		Route::post('headline', [HeadlineController::class, 'store'])->name('store-headline');
 		Route::get('/settings/apps', [AppsController::class, 'index'])->name('apps.index');
 		Route::put('/settings/apps/{id}', [AppsController::class, 'update'])->name('apps.update');
 		Route::put('/settings/logo-apps/{id}', [AppsController::class, 'update_logo'])->name('logo-apps.update');
 		Route::put('/settings/favicon-apps/{id}', [AppsController::class, 'update_favicon'])->name('favicon-apps.update');
-
 	});

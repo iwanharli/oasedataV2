@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
+use App\Models\NewsCategory;
 use App\Models\StatisticPost;
 use App\Models\Tag;
 use App\Services\Admin\StatistikService;
 use Illuminate\Http\Request;
-use Storage;
+use Illuminate\Support\Facades\Storage;
 
 class StatistikController extends Controller
 {
@@ -18,7 +18,13 @@ class StatistikController extends Controller
         if (request()->ajax()) {
             return StatistikService::datatable_get_all();
         }
-        return view('pages.admin.statistik.index',[
+
+        // $all = Category::count();
+        // $published = Category::where('status', 'published')->count();
+        // $draft = Category::where('status', 'draft')->count();
+        // $trash = Category::onlyTrashed()->count();
+
+        return view('pages.admin.statistik.index', [
             'all' => @$all,
             'published' => @$published,
             'draft' => @$draft,
@@ -32,7 +38,7 @@ class StatistikController extends Controller
         $categories = Category::where('parent_id', null)->orderby('name', 'asc')->get();
         $tags = Tag::all();
 
-        return view('pages.admin.statistik.create',[
+        return view('pages.admin.statistik.create', [
             'categories' => $categories,
             'tags' => $tags,
         ]);
@@ -45,8 +51,8 @@ class StatistikController extends Controller
         $post = StatistikService::save_data($request);
 
         return redirect()
-                    ->route('statistik.index')
-                    ->with('success', 'Sukses! Statistik Berhasil Disimpan');
+            ->route('statistik.index')
+            ->with('success', 'Sukses! Statistik Berhasil Disimpan');
     }
 
 
@@ -58,7 +64,7 @@ class StatistikController extends Controller
         $tags = Tag::all();
         $json_data = json_decode($item->json_data, true);
 
-        return view('pages.admin.statistik.edit',[
+        return view('pages.admin.statistik.edit', [
             'item' => $item,
             'categories' => $categories,
             'sub_categories' => $sub_categories,
@@ -72,8 +78,8 @@ class StatistikController extends Controller
         $post = StatistikService::update_data($id, $request);
 
         return redirect()
-                    ->route('statistik.index')
-                    ->with('success', 'Sukses! Statistik Berhasil Disimpan');
+            ->route('statistik.index')
+            ->with('success', 'Sukses! Statistik Berhasil Disimpan');
     }
 
 
@@ -84,8 +90,8 @@ class StatistikController extends Controller
         $item->delete();
 
         return redirect()
-                    ->route('statistik.index')
-                    ->with('success', 'Sukses! Pos Berhasil Dihapus');
+            ->route('statistik.index')
+            ->with('success', 'Sukses! Pos Berhasil Dihapus');
     }
 
     public function force_delete($id)
@@ -97,8 +103,8 @@ class StatistikController extends Controller
         $item->forceDelete();
 
         return redirect()
-                    ->route('statistik-trash')
-                    ->with('success', 'Sukses! 1 Pos dihapus secara permanen.');
+            ->route('statistik-trash')
+            ->with('success', 'Sukses! 1 Pos dihapus secara permanen.');
     }
 
     public function restore_data($id)
@@ -106,7 +112,7 @@ class StatistikController extends Controller
         StatisticPost::withTrashed()->find($id)->restore();
 
         return redirect()
-                    ->route('statistik-trash')
-                    ->with('success', 'Sukses! 1 Pos berhasil dikembalikan dari sampah.');
+            ->route('statistik-trash')
+            ->with('success', 'Sukses! 1 Pos berhasil dikembalikan dari sampah.');
     }
 }

@@ -20,8 +20,7 @@
 <link rel="stylesheet" href="{{ asset('portal/css/lib/bootstrap.min.css') }}">
 
 <!-- ====== font family ====== -->
-<link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
     rel="stylesheet">
 
 <link rel="stylesheet" href="{{ asset('portal/css/lib/all.min.css') }}" />

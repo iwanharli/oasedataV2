@@ -4,7 +4,7 @@
     <!--Contents-->
     <main class="blog-page style-5">
 
-        <!-- ====== start blog-slider ====== -->
+        <!-- ====== start news-slider ====== -->
         <section class="blog-slider pt-50 pb-10 style-1">
             <div class="container">
                 <div class="section-head text-center mb-40 style-5">
@@ -79,344 +79,173 @@
                 </div>
             </div>
         </section>
-        <!-- ====== end blog-slider ====== -->
+        <!-- ====== end news-slider ====== -->
 
 
         <!-- ====== start all-news ====== -->
         <section class="all-news section-padding blog bg-transparent style-3">
             <div class="container">
                 <div class="row gx-4 gx-lg-5">
-                    <div class="col-lg-8">
-                        <div class="card border-0 bg-transparent rounded-0 border-bottom brd-gray pb-30 mb-30">
-                            <div class="row">
-                                <div class="col-lg-5">
-                                    <div class="img img-cover">
-                                        <img src="{{ asset('portal/img/blog/6.png') }}" class="radius-7" alt="...">
-                                    </div>
-                                </div>
-                                <div class="col-lg-7">
-                                    <div class="card-body p-0">
-                                        <small class="d-block date text">
-                                            <a href="#"
-                                                class="text-uppercase border-end brd-gray pe-3 me-3 color-blue5 fw-bold">
-                                                news </a>
-                                            <i class="bi bi-clock me-1"></i>
-                                            <a href="#" class="op-8">12 Days ago</a>
-                                        </small>
-                                        <a href="page-single-post-5.html" class="card-title mb-10">How To Become A Python
-                                            Develop Expert</a>
-                                        <p class="fs-13px color-666">If there’s one way that wireless technology has
-                                            changed the way we work, it’s that will everyone [...]</p>
-                                        <div
-                                            class="auther-comments d-flex small align-items-center justify-content-between op-9">
-                                            <div class="l_side d-flex align-items-center">
-                                                <span
-                                                    class="icon-10 rounded-circle d-inline-flex justify-content-center align-items-center text-uppercase bg-blue5 p-2 me-2 text-white">
-                                                    a
-                                                </span>
-                                                <a href="#">
-                                                    <small class="text-muted">By</small> Admin
-                                                </a>
-                                            </div>
-                                            <div class="r-side mt-1">
-                                                <i class="bi bi-chat-left-text me-1"></i>
-                                                <a href="#">24</a>
-                                                <i class="bi bi-eye ms-4 me-1"></i>
-                                                <a href="#">774k</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card border-0 bg-transparent rounded-0 border-bottom brd-gray pb-30 mb-30">
-                            <div class="row">
-                                <div class="col-lg-5">
-                                    <div class="img img-cover">
-                                        <img src="{{ asset('portal/img/blog/4.jpg') }}" class="radius-7" alt="...">
-                                    </div>
-                                </div>
-                                <div class="col-lg-7">
-                                    <div class="card-body p-0">
-                                        <small class="d-block date text">
-                                            <a href="#"
-                                                class="text-uppercase border-end brd-gray pe-3 me-3 color-blue5 fw-bold">news</a>
-                                            <i class="bi bi-clock me-1"></i>
-                                            <a href="#" class="op-8">12 Days ago</a>
-                                        </small>
-                                        <a href="page-single-post-5.html" class="card-title mb-10">VR Game, Oppoturnity &
-                                            Challenge</a>
-                                        <p class="fs-13px color-666">If there’s one way that wireless technology has
-                                            changed the way we work, it’s that will everyone [...]</p>
-                                        <div
-                                            class="auther-comments d-flex small align-items-center justify-content-between op-9">
-                                            <div class="l_side d-flex align-items-center">
-                                                <span
-                                                    class="icon-10 rounded-circle d-inline-flex justify-content-center align-items-center text-uppercase bg-blue5 p-2 me-2 text-white">
-                                                    a
-                                                </span>
-                                                <a href="#">
-                                                    <small class="text-muted">By</small> Admin
-                                                </a>
-                                            </div>
-                                            <div class="r-side mt-1">
-                                                <i class="bi bi-chat-left-text me-1"></i>
-                                                <a href="#">24</a>
-                                                <i class="bi bi-eye ms-4 me-1"></i>
-                                                <a href="#">774k</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card border-0 bg-transparent rounded-0 border-bottom brd-gray pb-30 mb-30">
-                            <div class="row">
-                                <div class="col-lg-5">
-                                    <div class="img img-cover">
-                                        <img src="{{ asset('portal/img/blog/10.png') }}" class="radius-7" alt="...">
-                                    </div>
-                                </div>
-                                <div class="col-lg-7">
-                                    <div class="card-body p-0">
-                                        <small class="d-block date text">
-                                            <a href="#"
-                                                class="text-uppercase border-end brd-gray pe-3 me-3 color-blue5 fw-bold">tips
-                                                & tricks</a>
-                                            <i class="bi bi-clock me-1"></i>
-                                            <a href="#" class="op-8">12 Days ago</a>
-                                        </small>
-                                        <a href="page-single-post-5.html" class="card-title mb-10">6 Tips To Help You
-                                            Build Your Social Media Effeciency & Better</a>
-                                        <p class="fs-13px color-666">If there’s one way that wireless technology has
-                                            changed the way we work, it’s that will everyone [...]</p>
-                                        <div
-                                            class="auther-comments d-flex small align-items-center justify-content-between op-9">
-                                            <div class="l_side d-flex align-items-center">
-                                                <span
-                                                    class="icon-10 rounded-circle d-inline-flex justify-content-center align-items-center text-uppercase bg-blue5 p-2 me-2 text-white">
-                                                    a
-                                                </span>
-                                                <a href="#">
-                                                    <small class="text-muted">By</small> Admin
-                                                </a>
-                                            </div>
-                                            <div class="r-side mt-1">
-                                                <i class="bi bi-chat-left-text me-1"></i>
-                                                <a href="#">24</a>
-                                                <i class="bi bi-eye ms-4 me-1"></i>
-                                                <a href="#">774k</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card border-0 bg-transparent rounded-0 border-bottom brd-gray pb-30 mb-30">
-                            <div class="row">
-                                <div class="col-lg-5">
-                                    <div class="img img-cover">
-                                        <img src="{{ asset('portal/img/blog/11.png') }}" class="radius-7"
-                                            alt="...">
-                                    </div>
-                                </div>
-                                <div class="col-lg-7">
-                                    <div class="card-body p-0">
-                                        <small class="d-block date text">
-                                            <a href="#"
-                                                class="text-uppercase border-end brd-gray pe-3 me-3 color-blue5 fw-bold">tips
-                                                & tricks</a>
-                                            <i class="bi bi-clock me-1"></i>
-                                            <a href="#" class="op-8">12 Days ago</a>
-                                        </small>
-                                        <a href="page-single-post-5.html" class="card-title mb-10">The New Trend Of
-                                            Marketing With Tiktok, Should Or Not?</a>
-                                        <p class="fs-13px color-666">If there’s one way that wireless technology has
-                                            changed the way we work, it’s that will everyone [...]</p>
-                                        <div
-                                            class="auther-comments d-flex small align-items-center justify-content-between op-9">
-                                            <div class="l_side d-flex align-items-center">
-                                                <span
-                                                    class="icon-10 rounded-circle d-inline-flex justify-content-center align-items-center text-uppercase bg-blue5 p-2 me-2 text-white">
-                                                    a
-                                                </span>
-                                                <a href="#">
-                                                    <small class="text-muted">By</small> Admin
-                                                </a>
-                                            </div>
-                                            <div class="r-side mt-1">
-                                                <i class="bi bi-chat-left-text me-1"></i>
-                                                <a href="#">24</a>
-                                                <i class="bi bi-eye ms-4 me-1"></i>
-                                                <a href="#">774k</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card border-0 bg-transparent rounded-0 border-bottom brd-gray pb-30 mb-30">
-                            <div class="row">
-                                <div class="col-lg-5">
-                                    <div class="img img-cover">
-                                        <img src="{{ asset('portal/img/blog/9.png') }}" class="radius-7" alt="...">
-                                    </div>
-                                </div>
-                                <div class="col-lg-7">
-                                    <div class="card-body p-0">
-                                        <small class="d-block date text">
-                                            <a href="#"
-                                                class="text-uppercase border-end brd-gray pe-3 me-3 color-blue5 fw-bold">tips
-                                                & tricks</a>
-                                            <i class="bi bi-clock me-1"></i>
-                                            <a href="#" class="op-8">12 Days ago</a>
-                                        </small>
-                                        <a href="page-single-post-5.html" class="card-title mb-10">Workflow Strategy For
-                                            E-Shop</a>
-                                        <p class="fs-13px color-666">If there’s one way that wireless technology has
-                                            changed the way we work, it’s that will everyone [...]</p>
-                                        <div
-                                            class="auther-comments d-flex small align-items-center justify-content-between op-9">
-                                            <div class="l_side d-flex align-items-center">
-                                                <span
-                                                    class="icon-10 rounded-circle d-inline-flex justify-content-center align-items-center text-uppercase bg-blue5 p-2 me-2 text-white">
-                                                    a
-                                                </span>
-                                                <a href="#">
-                                                    <small class="text-muted">By</small> Admin
-                                                </a>
-                                            </div>
-                                            <div class="r-side mt-1">
-                                                <i class="bi bi-chat-left-text me-1"></i>
-                                                <a href="#">24</a>
-                                                <i class="bi bi-eye ms-4 me-1"></i>
-                                                <a href="#">774k</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card border-0 bg-transparent rounded-0 border-bottom brd-gray pb-30 mb-30">
-                            <div class="row">
-                                <div class="col-lg-5">
-                                    <div class="img img-cover">
-                                        <img src="{{ asset('portal/img/blog/3.jpg') }}" class="radius-7" alt="...">
-                                    </div>
-                                </div>
-                                <div class="col-lg-7">
-                                    <div class="card-body p-0">
-                                        <small class="d-block date text">
-                                            <a href="#"
-                                                class="text-uppercase border-end brd-gray pe-3 me-3 color-blue5 fw-bold">tips
-                                                & tricks</a>
-                                            <i class="bi bi-clock me-1"></i>
-                                            <a href="#" class="op-8">12 Days ago</a>
-                                        </small>
-                                        <a href="page-single-post-5.html" class="card-title mb-10">Wireframe For UI/UX</a>
-                                        <p class="fs-13px color-666">If there’s one way that wireless technology has
-                                            changed the way we work, it’s that will everyone [...]</p>
-                                        <div
-                                            class="auther-comments d-flex small align-items-center justify-content-between op-9">
-                                            <div class="l_side d-flex align-items-center">
-                                                <span
-                                                    class="icon-10 rounded-circle d-inline-flex justify-content-center align-items-center text-uppercase bg-blue5 p-2 me-2 text-white">
-                                                    a
-                                                </span>
-                                                <a href="#">
-                                                    <small class="text-muted">By</small> Admin
-                                                </a>
-                                            </div>
-                                            <div class="r-side mt-1">
-                                                <i class="bi bi-chat-left-text me-1"></i>
-                                                <a href="#">24</a>
-                                                <i class="bi bi-eye ms-4 me-1"></i>
-                                                <a href="#">774k</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card border-0 bg-transparent rounded-0 pb-30 mb-30 mb-lg-0 pb-lg-0">
-                            <div class="row">
-                                <div class="col-lg-5">
-                                    <div class="img img-cover">
-                                        <img src="{{ asset('portal/img/blog/12.png') }}" class="radius-7"
-                                            alt="...">
-                                    </div>
-                                </div>
-                                <div class="col-lg-7">
-                                    <div class="card-body p-0">
-                                        <small class="d-block date text">
-                                            <a href="#"
-                                                class="text-uppercase border-end brd-gray pe-3 me-3 color-blue5 fw-bold">tips
-                                                & tricks</a>
-                                            <i class="bi bi-clock me-1"></i>
-                                            <a href="#" class="op-8">12 Days ago</a>
-                                        </small>
-                                        <a href="page-single-post-5.html" class="card-title mb-10">Freelancer Days 2023,
-                                            What’s new?</a>
-                                        <p class="fs-13px color-666">If there’s one way that wireless technology has
-                                            changed the way we work, it’s that will everyone [...]</p>
-                                        <div
-                                            class="auther-comments d-flex small align-items-center justify-content-between op-9">
-                                            <div class="l_side d-flex align-items-center">
-                                                <span
-                                                    class="icon-10 rounded-circle d-inline-flex justify-content-center align-items-center text-uppercase bg-blue5 p-2 me-2 text-white">
-                                                    a
-                                                </span>
-                                                <a href="#">
-                                                    <small class="text-muted">By</small> Admin
-                                                </a>
-                                            </div>
-                                            <div class="r-side mt-1">
-                                                <i class="bi bi-chat-left-text me-1"></i>
-                                                <a href="#">24</a>
-                                                <i class="bi bi-eye ms-4 me-1"></i>
-                                                <a href="#">774k</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
+
+
+                    {{-- BERITA  --}}
+                    <div class="col-lg-8">
+                        @php
+                            $no = 1;
+                        @endphp
+                        @foreach ($news as $item)
+                            <div class="card border-0 bg-transparent rounded-0 border-bottom brd-gray pb-30 mb-30">
+                                <div class="row">
+                                    <div class="col-lg-5">
+                                        <div class="img img-cover">
+                                            <a href="{{ route('news-detail', $item->slug) }}">
+                                                <img src="{{ Storage::url($item->post_image) }}" class="radius-7"
+                                                    alt="...">
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-7">
+                                        <div class="card-body p-0">
+                                            <small class="d-block date text">
+                                                <span class="category"
+                                                    style="background: #2499ff; padding: 3px 5px 3px 5px; border-radius: 10px; color: white;">
+                                                    @php
+                                                        $sc = App\Models\Category::where(
+                                                            'id',
+                                                            $item->sub_categories,
+                                                        )->first();
+                                                    @endphp
+                                                    @if ($item->sub_categories != null)
+                                                        <a
+                                                            href="{{ route('home-category', $sc->slug) }}{{ route('home-category', $sc->slug) }}">
+                                                            <span
+                                                                class="post-cat background{{ $no++ }} color-white">
+                                                                {{ $sc->name }}
+                                                            </span>
+                                                        </a>
+                                                    @else
+                                                        <a href="{{ route('home-category', $item->category->slug) }}">
+                                                            <span
+                                                                class="post-cat background{{ $no++ }} color-white">
+                                                                {{ $item->category->name }}
+                                                            </span>
+                                                        </a>
+                                                    @endif
+                                                </span>
+
+                                                <i class="bi bi-clock me-1"></i>
+                                                <span class="op-8">
+                                                    {{ date('d F Y', strtotime($item->published_at)) }}
+                                                </span>
+                                            </small>
+                                            <a href="{{ route('news-detail', $item->slug) }}" class="card-title mb-10">
+                                                {{ $item->post_title }}
+                                            </a>
+                                            <p class="fs-13px color-666">
+                                                {{ $item->post_teaser }}
+                                            </p>
+                                            <div
+                                                class="auther-comments d-flex small align-items-center justify-content-between op-9">
+                                                <div class="l_side d-flex align-items-center">
+                                                    <span
+                                                        class="icon-10 rounded-circle d-inline-flex justify-content-center align-items-center text-uppercase bg-blue5 p-2 me-2 text-white">
+                                                        {{ getInitials($item->user->name) }}
+                                                    </span>
+                                                    <a href="{{ route('author', $item->user->id) }}">
+                                                        <small class="text-muted">By</small>
+                                                        {{ splitName($item->user->name) }}
+                                                    </a>
+                                                </div>
+                                                {{-- <div class="r-side mt-1">
+                                                    <i class="bi bi-chat-left-text me-1"></i>
+                                                    <a href="#">24</a>
+                                                    <i class="bi bi-eye ms-4 me-1"></i>
+                                                    <a href="#">774k</a>
+                                                </div> --}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+
+                        <!--Start pagination -->
                         <div class="pagination style-5 color-5 justify-content-center mt-60">
-                            <a href="#" class="active">
-                                <span>1</span>
-                            </a>
-                            <a href="#">
-                                <span>2</span>
-                            </a>
-                            <a href="#">
-                                <span>3</span>
-                            </a>
-                            <a href="#">
-                                <span>4</span>
-                            </a>
-                            <a href="#">
-                                <span>...</span>
-                            </a>
-                            <a href="#">
-                                <span>20</span>
-                            </a>
-                            <a href="#">
-                                <span class="text">next <i class="fas fa-chevron-right"></i> </span>
-                            </a>
+                            @if ($news->hasPages())
+                                {{-- Previous Page Link --}}
+                                @if (!$news->onFirstPage())
+                                    <a href="{{ $news->previousPageUrl() }}">
+                                        <span class="text"><i class="fas fa-chevron-left"></i> prev</span>
+                                    </a>
+                                @endif
+
+                                <?php
+                                $start = $news->currentPage() - 1;
+                                $end = $news->currentPage() + 1;
+                                if ($start < 1) {
+                                    $start = 1;
+                                    $end += 1;
+                                }
+                                if ($end >= $news->lastPage()) {
+                                    $end = $news->lastPage();
+                                }
+                                ?>
+
+                                @if ($start > 1)
+                                    <a href="{{ $news->url(1) }}">
+                                        <span>1</span>
+                                    </a>
+                                    @if ($news->currentPage() > 3)
+                                        <a href="#">
+                                            <span>...</span>
+                                        </a>
+                                    @endif
+                                @endif
+
+                                @for ($i = $start; $i <= $end; $i++)
+                                    <a href="{{ $news->url($i) }}"
+                                        class="{{ $news->currentPage() == $i ? 'active' : '' }}">
+                                        <span>{{ $i }}</span>
+                                    </a>
+                                @endfor
+
+                                @if ($end < $news->lastPage())
+                                    @if ($news->currentPage() + 2 < $news->lastPage())
+                                        <a href="#">
+                                            <span>...</span>
+                                        </a>
+                                    @endif
+                                    <a href="{{ $news->url($news->lastPage()) }}">
+                                        <span>{{ $news->lastPage() }}</span>
+                                    </a>
+                                @endif
+
+                                {{-- Next Page Link --}}
+                                @if ($news->hasMorePages())
+                                    <a href="{{ $news->nextPageUrl() }}">
+                                        <span class="text">next <i class="fas fa-chevron-right"></i></span>
+                                    </a>
+                                @endif
+                            @endif
                         </div>
+                        <!-- End pagination  -->
                     </div>
 
+
+
+
+
+                    {{-- SIDEBAR  --}}
                     <div class="col-lg-4">
                         <div class="side-blog style-5 ps-lg-5 mt-5 mt-lg-0">
 
-                            <form action="https://iteck-html.themescamp.com/contact.php" class="search-form mb-50"
-                                method="post">
+                            <form action="{{ route('search-article') }}" class="search-form mb-50" method="get" autocomplete="off">
                                 <h6 class="title mb-20 text-uppercase fw-normal">
-                                    Pencarian
+                                    Pencarian Berita
                                 </h6>
                                 <div class="form-group position-relative">
-                                    <input type="text" class="form-control rounded-pill"
+                                    <input type="text" name="keyword" class="form-control rounded-pill search_field" id="search_field"
                                         placeholder="Type and hit enter">
                                     <button class="search-btn border-0 bg-transparent"> <i class="fas fa-search"></i>
                                     </button>
@@ -427,83 +256,56 @@
                                 <h6 class="title mb-20 text-uppercase fw-normal">
                                     BERITA LAINNYA
                                 </h6>
-                                <a href="page-single-post-5.html" class="post-card pb-3 mb-3 border-bottom brd-gray">
-                                    <div class="img me-3">
-                                        <img src="{{ asset('portal/img/blog/1.jpg') }}" alt="">
-                                    </div>
-                                    <div class="inf">
-                                        <h6> Crypto Trend 2023 </h6>
-                                        <p> If there’s one way that wireless technology has [...] </p>
-                                    </div>
-                                </a>
-                                <a href="page-single-post-5.html" class="post-card pb-3 mb-3 border-bottom brd-gray">
-                                    <div class="img me-3">
-                                        <img src="{{ asset('portal/img/blog/2.jpg') }}" alt="">
-                                    </div>
-                                    <div class="inf">
-                                        <h6> How To Become Web Developer </h6>
-                                        <p> If there’s one way that wireless technology has [...] </p>
-                                    </div>
-                                </a>
-                                <a href="page-single-post-5.html" class="post-card pb-3 mb-3 border-bottom brd-gray">
-                                    <div class="img me-3">
-                                        <img src="{{ asset('portal/img/blog/3.jpg') }}" alt="">
-                                    </div>
-                                    <div class="inf">
-                                        <h6> Wireframe for UI/UX </h6>
-                                        <p> If there’s one way that wireless technology has [...] </p>
-                                    </div>
-                                </a>
-                                <a href="page-single-post-5.html" class="post-card">
-                                    <div class="img me-3">
-                                        <img src="{{ asset('portal/img/blog/7.png') }}" alt="">
-                                    </div>
-                                    <div class="inf">
-                                        <h6> AI With Fingerprint </h6>
-                                        <p> If there’s one way that wireless technology has [...] </p>
-                                    </div>
-                                </a>
+                                @foreach ($random_news as $item)
+                                    <a href="{{ route('news-detail', $item->slug) }}"
+                                        class="post-card pb-3 mb-3 border-bottom brd-gray">
+                                        <div class="img me-3">
+                                            <img src="{{ Storage::url($item->post_image) }}" alt="">
+                                        </div>
+                                        <div class="inf">
+                                            <h6> {{ $item->post_title }} </h6>
+                                            {{-- <p> {{ $item->post_teaser }} </p> --}}
+                                            <p>{{ date('d F Y', strtotime($item->published_at)) }}</p>
+                                        </div>
+                                    </a>
+                                @endforeach
                             </div>
 
+
+                            {{-- KATEGORI BERITA  --}}
                             <div class="side-categories mb-50">
                                 <h6 class="title mb-20 text-uppercase fw-normal">
                                     KATEGORI
                                 </h6>
-                                <a href="#" class="cat-item">
-                                    <span> all </span>
-                                    <span> 265 </span>
-                                </a>
-                                <a href="#" class="cat-item">
-                                    <span> News </span>
-                                    <span> 38 </span>
-                                </a>
-                                <a href="#" class="cat-item">
-                                    <span> Technology </span>
-                                    <span> 16 </span>
-                                </a>
-                                <a href="#" class="cat-item">
-                                    <span> Tips & Tricks </span>
-                                    <span> 85 </span>
-                                </a>
-                                <a href="#" class="cat-item">
-                                    <span> Career </span>
-                                    <span> 21 </span>
-                                </a>
-                                <a href="#" class="cat-item">
-                                    <span> Community </span>
-                                    <span> 874 </span>
-                                </a>
-                                <a href="#" class="cat-item">
-                                    <span> Videos </span>
-                                    <span> 54 </span>
-                                </a>
-                                <a href="#" class="cat-item border-0">
-                                    <span> Others </span>
-                                    <span> 85 </span>
-                                </a>
+
+                                @php
+                                    $categories = App\Models\Category::where('parent_id', null)->get();
+                                @endphp
+                                @foreach ($categories as $menu)
+                                    @php
+                                        $check_sc = App\Models\Category::where('parent_id', $menu->id)->count();
+                                        $sub_categories = App\Models\Category::where('parent_id', $menu->id)->get();
+                                    @endphp
+                                    <a href="{{ route('home-category', $menu->slug) }}" class="cat-item">
+                                        <span> {{ $menu->name }} </span>
+                                        {{-- <span> 265 </span>  --}}
+                                    </a>
+                                    {{-- @if ($check_sc > 0)
+                                        <ul class="sub-menu">
+                                            @foreach ($sub_categories as $submenu)
+                                                <li><a
+                                                        href="{{ route('home-category', $submenu->slug) }}">{{ $submenu->name }}</a>
+                                                </li>
+                                            @endforeach
+                                            @if ($menu->name == 'Multimedia')
+                                                <li><a href="{{ route('images') }}">Images</a></li>
+                                            @endif
+                                        </ul>
+                                    @endif --}}
+                                @endforeach
                             </div>
 
-                            <div class="side-newsletter mb-50">
+                            {{-- <div class="side-newsletter mb-50">
                                 <h6 class="title mb-10 text-uppercase fw-normal">
                                     newsletter
                                 </h6>
@@ -524,9 +326,9 @@
                                         <span>Subscribe</span>
                                     </button>
                                 </form>
-                            </div>
+                            </div> --}}
 
-                            <div class="side-share mb-50">
+                            {{-- <div class="side-share mb-50">
                                 <h6 class="title mb-20 text-uppercase fw-normal">
                                     social
                                 </h6>
@@ -545,9 +347,9 @@
                                 <a href="#" class="social-icon">
                                     <i class="fab fa-linkedin-in"></i>
                                 </a>
-                            </div>
+                            </div> --}}
 
-                            <div class="side-insta mb-50">
+                            {{-- <div class="side-insta mb-50">
                                 <h6 class="title mb-20 text-uppercase fw-normal">
                                     our instagram
                                 </h6>
@@ -583,23 +385,19 @@
                                         <i class="fab fa-instagram icon"></i>
                                     </a>
                                 </div>
-                            </div>
+                            </div> --}}
 
+
+                            {{-- TAG  --}}
                             <div class="side-tags">
                                 <h6 class="title mb-20 text-uppercase fw-normal">
-                                    popular tags
+                                    Tags
                                 </h6>
+
                                 <div class="content">
-                                    <a href="#">WordPress</a>
-                                    <a href="#">PHP</a>
-                                    <a href="#">HTML/CSS</a>
-                                    <a href="#">Figma</a>
-                                    <a href="#">Technology</a>
-                                    <a href="#">Marketing</a>
-                                    <a href="#">Consultation</a>
-                                    <a href="#">Seo</a>
-                                    <a href="#">Envato</a>
-                                    <a href="#">Psd</a>
+                                    @foreach ($tags as $item)
+                                        <a href="{{ route('home-tag', $item->slug) }}">{{ $item->name }}</a>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
@@ -608,6 +406,54 @@
             </div>
         </section>
         <!-- ====== end all-news ====== -->
+
+        <!--Search Form-->
+        <div class="main-search-form transition-02s">
+            <div class="container">
+                <div class="pt-50 pb-50 main-search-form-cover">
+                    <div class="row mb-20">
+                        <div class="col-12">
+                            <form action="{{ route('search-article') }}" method="get"
+                                class="search-form position-relative" autocomplete="off">
+                                <div class="search-form-icon"><i class="ti-search"></i></div>
+                                <label>
+                                    <input type="text" name="keyword" class="search_field" id="search_field"
+                                        placeholder="Enter keywords for search..." value="" name="s">
+                                </label>
+                                <div class="search-switch">
+                                    <ul class="list-inline">
+                                        <li class="list-inline-item"><a href="#" class="active">Articles</a></li>
+                                    </ul>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @push('addon-script')
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
+            <script>
+                var path = "{{ route('autocomplete') }}";
+
+                $('#search_field').typeahead({
+
+                    source: function(query, process) {
+
+                        return $.get(path, {
+                            query: query
+                        }, function(data) {
+
+                            return process(data);
+
+                        });
+
+                    }
+
+                });
+            </script>
+        @endpush
 
     </main>
     <!--End-Contents-->
