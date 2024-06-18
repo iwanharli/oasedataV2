@@ -151,7 +151,7 @@
                             @php
                                 $related = 1;
                             @endphp
-                            @foreach ($related_post as $item)
+                            @foreach ($related_statistics as $item)
                                 <article class="row mb-30">
                                     <div class="col-md-4">
                                         <div class="post-thumb position-relative thumb-overlay">
@@ -218,7 +218,7 @@
                                 <div class="bt-1 border-color-1"></div>
                             </div>
                             <div class="row">
-                                @foreach ($latest_post as $item)
+                                @foreach ($latest_statistics as $item)
                                     <div class="col-md-6 col-sm-6 sm-grid-content mb-30">
                                         <div class="post-thumb d-flex border-radius-5 img-hover-scale mb-15">
                                             <a href="{{ route('news-detail', $item->slug) }}">

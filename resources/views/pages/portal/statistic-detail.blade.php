@@ -1,5 +1,9 @@
 @extends('layouts.portal')
 
+@section('title')
+    {{ $post->post_title }}
+@endsection
+
 @section('portal_content')
     @php
         $app = App\Models\App::where('id', '1')->first();
@@ -7,17 +11,7 @@
 
 
     <main class="blog-page style-5">
-        {{-- <div class="entry-meta meta-0 font-small mb-15">
-            <ul class="breadcrumb">
-                <li><a href="{{ route('home') }}">Beranda</a></li>
-                <li><a href="{{ route('home-category', $post->category->slug) }}">{{ $post->category->name; }}</a></li>
-                @if ($post->sub_categories != null)
-                    <li><a href="{{ route('home-category', $sc->slug) }}">{{ $sc->name }}</a></li>
-                @endif
-                <li>{{ $post->post_title; }}</li>
-            </ul>
-        </div> --}}
-
+        {{-- BREADCRUMB --}}
         <div class="section-head text-center mt-50 mb-10 style-5">
             <div class="page-links color-999">
                 <a href="{{ route('home') }}" class="me-2">
@@ -35,13 +29,12 @@
                 @endif
                 <span class="me-2">/</span>
                 <span class="color-000">
-                    {{ $post->post_title; }}
+                    {{ $post->post_title }}
                 </span>
             </div>
         </div>
 
-
-        <!-- ====== start all-news ====== -->
+        <!-- ====== start statistic ====== -->
         <section class="all-news section-padding pt-20 blog bg-transparent style-3">
             <div class="container">
 
@@ -68,7 +61,7 @@
                 </div>
 
                 <div class="row gx-4 gx-lg-5">
-                    {{-- ISI BERITA  --}}
+                    {{-- ISI STATISTIC  --}}
                     <div class="col-lg-8">
                         <div class="d-flex small align-items-center justify-content-between mb-30 fs-12px">
                             <div class="l_side d-flex align-items-center">
@@ -82,20 +75,69 @@
                                     </span>
                                 </a>
                                 {{-- <a href="#" class="me-3 me-lg-5">
-                                    <i class="bi bi-chat-left-text me-1"></i>
-                                    <span>24 Comments</span>
-                                </a>
-                                <a href="#">
-                                    <i class="bi bi-eye me-1"></i>
-                                    <span>774k Views</span>
-                                </a> --}}
+                            <i class="bi bi-chat-left-text me-1"></i>
+                            <span>24 Comments</span>
+                        </a>
+                        <a href="#">
+                            <i class="bi bi-eye me-1"></i>
+                            <span>774k Views</span>
+                        </a> --}}
                             </div>
                         </div>
 
                         <div class="blog-content-info">
+                            <div>
+                                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link active" id="pills-chart-tab" data-toggle="pill"
+                                            data-target="#pills-chart" type="button" role="tab"
+                                            aria-controls="pills-chart" aria-selected="true">Chart</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="pills-table-tab" data-toggle="pill"
+                                            data-target="#pills-table" type="button" role="tab"
+                                            aria-controls="pills-table" aria-selected="false">Table</button>
+                                    </li>
+                                </ul>
+                                <div class="tab-content" id="pills-tabContent">
+                                    <div class="tab-pane fade show active" id="pills-chart" role="tabpanel"
+                                        aria-labelledby="pills-chart-tab">
+                                        <div id="chart" style="height: 300px">
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="pills-table" role="tabpanel"
+                                        aria-labelledby="pills-table-tab">
+                                        <div>
+                                            <table class="table table-striped table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">#</th>
+
+                                                        <th scope="col">DATA</th>
+                                                        <th scope="col">VALUE</th>
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach ($apex_data['categories'] as $key => $value)
+                                                        <tr>
+                                                            <th scope="row">{{ $key + 1 }}</th>
+                                                            <td>{{ $value }}</td>
+                                                            <td>{{ $apex_data['data'][$key] }}</td>
+                                                        </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
                             {!! $post->post_content !!}
 
-                            @if ($post->tag->count() > 0)
+                            {{-- @if ($post->tag->count() > 0)
                                 <div class="side-tags mt-50"
                                     style="background: rgba(0, 0, 0, 0.096); padding: 10px; border-radius: 5px;">
                                     <h6 class="title mb-10 text-uppercase fw-normal">
@@ -108,7 +150,7 @@
                                         @endforeach
                                     </div>
                                 </div>
-                            @endif
+                            @endif --}}
                         </div>
 
                         <div class="blog-comments mt-70">
@@ -159,13 +201,13 @@
                             {{-- Berita Terbaru --}}
                             <div class="side-recent-post mb-50">
                                 <h6 class="title mb-20 text-uppercase fw-normal">
-                                    Berita Terbaru
+                                    Statistik Terbaru
                                 </h6>
 
                                 @php
                                     $related = 1;
                                 @endphp
-                                @foreach ($latest_news as $item)
+                                @foreach ($latest_statistics as $item)
                                     <a href="{{ route('news-detail', $item->slug) }}"
                                         class="post-card pb-3 mb-3 border-bottom brd-gray">
                                         <div class="img me-3">
@@ -196,17 +238,17 @@
                 </div>
             </div>
         </section>
-        <!-- ====== end all-news ====== -->
+        <!-- ====== end Statistic ====== -->
 
 
-        <!-- ====== start Related News ====== -->
-        <section class="popular-posts related Posts section-padding pb-100 bg-gray5">
+        <!-- ====== start Related Statistic ====== -->
+        {{-- <section class="popular-posts related Posts section-padding pb-100 bg-gray5">
             <div class="container">
-                <h5 class="fw-bold text-uppercase mb-50">Berita Terkait</h5>
+                <h5 class="fw-bold text-uppercase mb-50">Statistik Terkait</h5>
                 <div class="related-postes-slider position-relative">
                     <div class="swiper-container">
                         <div class="swiper-wrapper">
-                            @foreach ($related_news as $item)
+                            @foreach ($related_statistics as $item)
                                 <div class="swiper-slide">
                                     <div class="card border-0 bg-transparent rounded-0 p-0  d-block">
                                         <a href="{{ route('news-detail', $item->slug) }}"
@@ -262,12 +304,6 @@
                                                         By {{ $post->user->name }}
                                                     </span>
                                                 </div>
-                                                {{-- <div class="r-side mt-1">
-                                                    <i class="bi bi-chat-left-text me-1"></i>
-                                                    <a href="#">24</a>
-                                                    <i class="bi bi-eye ms-4 me-1"></i>
-                                                    <a href="#">774k</a>
-                                                </div> --}}
                                             </div>
                                         </div>
                                     </div>
@@ -279,9 +315,76 @@
                     <div class="swiper-button-prev"></div>
                 </div>
             </div>
-        </section>
-        <!-- ====== end Popular News ====== -->
+        </section> --}}
+        <!-- ====== end Popular Statistic ====== -->
 
     </main>
     <!--End-Contents-->
+
+
+    {{--  --}}
+
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+    <script>
+        var options = {
+            chart: {
+                type: "{{ $post->chart_type ?? 'bar' }}"
+            },
+            series: [{
+                name: "{{ $apex_data['name'] }}",
+                data: {!! json_encode($apex_data['data']) !!},
+            }],
+            xaxis: {
+                categories: {!! json_encode($apex_data['categories']) !!},
+            }
+        }
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+
+        chart.render();
+    </script>
 @endsection
+
+@push('addon-style')
+    <style>
+        ul.breadcrumb {
+            padding: 10px 16px;
+            list-style: none;
+            background-color: #eee;
+        }
+
+        ul.breadcrumb li {
+            display: inline;
+            font-size: 14px;
+        }
+
+        ul.breadcrumb li+li:before {
+            padding: 8px;
+            color: black;
+            content: "/\00a0";
+        }
+
+        ul.breadcrumb li a {
+            color: #0275d8;
+            text-decoration: none;
+        }
+
+        ul.breadcrumb li a:hover {
+            color: #01447e;
+            text-decoration: underline;
+        }
+
+        .nav-pills li button {
+            border: 0px !important;
+            margin: 5px;
+            cursor: pointer;
+        }
+    </style>
+
+    <script type="text/javascript"
+        src="https://platform-api.sharethis.com/js/sharethis.js#property=61acbda059afaf001ae4aa06&product=inline-share-buttons"
+        async="async"></script>
+@endpush
+
+{{--  --}}

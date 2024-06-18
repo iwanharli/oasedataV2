@@ -6,9 +6,11 @@ use Illuminate\Support\Facades\Artisan;
 
 use App\Http\Controllers\Portal\HomeController;
 use App\Http\Controllers\Portal\NewsController;
+use App\Http\Controllers\Portal\StatisticController;
 
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+
 use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\UserController;
@@ -23,7 +25,6 @@ use App\Http\Controllers\Admin\RedactionController;
 use App\Http\Controllers\Admin\DisclaimerController;
 use App\Http\Controllers\Admin\BreakingNewsController;
 use App\Http\Controllers\Admin\AppsController;
-use App\Http\Controllers\Portal\StatisticController;
 
 /*
 |--------------------------------------------------------------------------
@@ -83,7 +84,7 @@ Route::prefix('/')
 		Route::get('/news', [NewsController::class, 'index'])->name('news-all');
 		Route::get('/news/{slug}', [NewsController::class, 'newsDetail'])->name('news-detail');
 
-		Route::get('/statistic', [StatisticController::class, 'statistikAll'])->name('statistic-all');
+		Route::get('/statistic', [StatisticController::class, 'index'])->name('statistic-all');
 		Route::get('/statistic/{slug}', [StatisticController::class, 'statisticDetail'])->name('statistic-detail');
 	});
 
