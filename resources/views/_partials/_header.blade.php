@@ -9,8 +9,8 @@
                         <p class="text">Oasedata membawa kehebatan Data Science dan Artificial Intelligence ke setiap
                             bisnis Anda, Transformasi Digital Melalui Teknologi Terkini.</p>
                         <div class="d-flex align-items-center mt-50">
-                            <a href="#" class="btn rounded-pill bg-blue4 fw-bold text-white me-4" target="_blank">
-                                <small> <i class="fa fa-user me-2 pe-2 border-end"></i> Join Telegram Sekarang </small>
+                            <a href="https://whatsapp.com/channel/0029VaLHTTL77qVXN6sIne0a" class="btn rounded-pill bg-success fw-bold text-white me-4" target="_blank">
+                                <small> <i class="fa fa-user me-2 pe-2 border-end"></i> Join Whatsapp Sekarang </small>
                             </a>
                             {{-- <a href="https://youtu.be/pGbIOC83-So?t=21" data-lity class="play-btn">
                                 <span class="icon me-2">

@@ -26,14 +26,32 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $news = Post::with(['user', 'category'])->where([
+        $news_latest = Post::with(['user', 'category'])->where([
             ['post_status', '=', 'Published'],
             ['published_at', '<', now()],
-        ])->latest()->paginate(3);
+        ])
+            ->latest()
+            ->take(4)
+            ->get();
+
+        $news_home1 = $news_latest->slice(0, 1);
+        $news_home2 = $news_latest->slice(1, 3);
+
+        $statistic_latest = StatisticPost::with(['user'])
+            ->where([
+                ['post_status', '=', 'Published'],
+                ['created_at', '<', now()],
+            ])
+            ->latest()
+            ->take(10)
+            ->get();
+
+        $statistic_home1 = $statistic_latest->slice(0, 5);
+        $statistic_home2 = $statistic_latest->slice(5);
 
         $breaking_news = BreakingNews::with(['post'])->latest()->get();
-
         $headlines = Headline::with(['post'])->latest()->get();
+
         $gadget = Post::with(['user', 'category'])->where([
             ['categories_id', '=', 3],
             ['post_status', '=', 'Published'],
@@ -51,12 +69,13 @@ class HomeController extends Controller
         ])->latest()->get();
 
         return view('pages.portal.index', [
-            'news_home' => $news,
+            'news_home1' => $news_home1,
+            'news_home2' => $news_home2,
+            // 'statistic_latest' => $statistic_latest,
+            'statistic_home1' => $statistic_home1,
+            'statistic_home2' => $statistic_home2,
             'breaking_news' => $breaking_news,
             'headlines' => $headlines,
-            'gadget' => $gadget,
-            'games' => $games,
-            'tutorials' => $tutorials
         ]);
     }
 

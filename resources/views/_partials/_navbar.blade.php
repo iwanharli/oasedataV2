@@ -75,9 +75,9 @@
                     {{-- <a href="#" class="search-icon me-4">
                         <i class="bi bi-person"></i>
                     </a> --}}
-                    <a href="#"
-                        class="btn btn-primary text-white rounded-pill brd-gray hover-blue4 sm-butn fw-bold">
-                        <span>Join Telegram Kami<i class="bi bi-arrow-right ms-1"></i> </span>
+                    <a href="https://whatsapp.com/channel/0029VaLHTTL77qVXN6sIne0a"
+                        class="btn btn-success text-white rounded-pill brd-gray hover-blue4 sm-butn fw-bold" target="_blank">
+                        <span>Join Whatsapp Kami<i class="bi bi-arrow-right ms-1"></i> </span>
                     </a>
                 </div>
             </div>

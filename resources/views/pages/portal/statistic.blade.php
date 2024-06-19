@@ -8,9 +8,9 @@
                 {{-- HEADER  --}}
                 <div class="section-head text-center style-4 mb-80">
                     <div class="top-title mb-10">
-                        <img src="assets/img/line_l.png" alt="">
+                        <img src="{{ asset('portal/img/line_l.png') }}" alt="">
                         <h5> infografis </h5>
-                        <img src="assets/img/line_r.png" alt="">
+                        <img src="{{ asset('portal/img/line_r.png') }}" alt="">
                     </div>
                     <h2 class="">
                         Statistik <span> Insights </span>
@@ -37,7 +37,7 @@
                                                     {{ $item->category->name }}
                                                 </a>
                                             </div>
-                                            <span class="date">
+                                            <span class="date" style="font-size: 10px;">
                                                 {{ date('d F Y', strtotime($item->published_at)) }}
                                             </span>
                                             <span class="color-999"> | </span>
@@ -61,7 +61,7 @@
                     </div>
                 </div>
             </div>
-            <img src="assets/img/shap_color_7.png" alt="" class="shap_color">
+            <img src="{{ asset('portal/img/shap_color_7.png') }}" alt="" class="shap_color">
         </section>
     </main>
 
