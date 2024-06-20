@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\NewsCategory;
+use App\Models\Category;
 use App\Models\StatisticPost;
 use App\Models\Tag;
 use App\Services\Admin\StatistikService;

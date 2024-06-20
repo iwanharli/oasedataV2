@@ -23,27 +23,7 @@
                                         <div class="blog_box">
                                             <div class="tags">
                                                 <a href="#">
-                                                    @php
-                                                        $sc = App\Models\Category::where(
-                                                            'id',
-                                                            $headline->post->sub_categories,
-                                                        )->first();
-                                                    @endphp
-                                                    @if ($headline->post->sub_categories != null)
-                                                        <a href="#">
-                                                            <span
-                                                                class="post-cat background{{ $headlineNo++ }} color-white">
-                                                                {{ $sc->name }}
-                                                            </span>
-                                                        </a>
-                                                    @else
-                                                        <a href="#">
-                                                            <span
-                                                                class="post-cat background{{ $headlineNo++ }} color-white">
-                                                                {{ $headline->post->category->name }}
-                                                            </span>
-                                                        </a>
-                                                    @endif
+                                                    {{-- {{ $headline->category->name }} --}}
                                                 </a>
                                             </div>
                                             <div class="img">
@@ -109,7 +89,7 @@
                                         <div class="img img-cover">
                                             <img src="{{ Storage::url($item->post_image) }}" alt="">
                                             <div class="tags">
-                                                <a href="#">
+                                                <a href="{{ route('home-category', $item->category->slug) }}">
                                                     {{ $item->category->name }}
                                                 </a>
                                             </div>
@@ -220,7 +200,7 @@
                         <span> <small>Statistik</small> </span>
                         terbaru
                     </h2>
-                    <a href="#" class="btn btn-icon-circle rounded-pill bg-blue7 fw-bold text-white">
+                    <a href="{{ route('statistic-all') }}" class="btn btn-icon-circle rounded-pill bg-blue7 fw-bold text-white">
                         <small> Lihat semua statistik <i class="fas fa-long-arrow-alt-right"></i> </small>
                     </a>
                 </div>

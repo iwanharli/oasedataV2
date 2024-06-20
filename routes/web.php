@@ -71,7 +71,7 @@ Route::get('/disclaimer', [HomeController::class, 'disclaimer'])->name('disclaim
 Route::get('/kontak', [HomeController::class, 'kontak'])->name('kontak');
 
 // Authentication
-Route::get('/arboc', [LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
