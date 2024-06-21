@@ -308,7 +308,7 @@ class HomeController extends Controller
         endforeach;
 
         $apex_data = [
-            'name' => 'Test Chart',
+            'name' => 'Nilai',
             'data' => $data_fix['values'],
             'categories' => $data_fix['labels']
         ];
