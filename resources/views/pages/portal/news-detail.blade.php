@@ -35,7 +35,7 @@
                 @endif
                 <span class="me-2">/</span>
                 <span class="color-000">
-                    {{ $post->post_title; }}
+                    {{ $post->post_title }}
                 </span>
             </div>
         </div>
@@ -50,7 +50,8 @@
                     <div class="section-head text-center mb-60 style-5">
                         <h2 class="mb-20 color-000"> {{ $post->post_title }} </h2>
                         <small class="d-block date text">
-                            <a href="{{ route('home-category', $post->category->slug) }}" class="text-uppercase border-end brd-gray pe-3 me-3 color-blue5 fw-bold">
+                            <a href="{{ route('home-category', $post->category->slug) }}"
+                                class="text-uppercase border-end brd-gray pe-3 me-3 color-blue5 fw-bold">
                                 {{ $post->category->name }}
                             </a>
                             <i class="bi bi-clock me-1"></i>
@@ -110,6 +111,33 @@
                                 </div>
                             @endif
                         </div>
+
+                        {{-- DISQUSS KOMENTAR  --}}
+                        <div id="disqus_thread"></div>
+
+                        <script>
+                            /**
+                             *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                             *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    
+                             **/
+
+                            var disqus_config = function() {
+                                this.page.url = '{{ URL::current() }}'; // Replace PAGE_URL with your page's canonical URL variable
+                                this.page.identifier =
+                                    {{ $post->slug }}; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                            };
+
+                            (function() { // DON'T EDIT BELOW THIS LINE
+                                var d = document,
+                                    s = d.createElement('script');
+                                s.src = 'https://oasedata.disqus.com/embed.js';
+                                s.setAttribute('data-timestamp', +new Date());
+                                (d.head || d.body).appendChild(s);
+                            })();
+                        </script>
+                        <noscript>Please enable JavaScript to view the <a href="#">comments powered by
+                                Licuanqus.</a>
+                        </noscript>
 
                         <div class="blog-comments mt-70">
                             <div class="comment-card card p-5 radius-5 border-0 mt-50">
