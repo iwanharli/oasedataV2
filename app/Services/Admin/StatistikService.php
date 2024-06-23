@@ -68,6 +68,7 @@ class StatistikService
             $validatedData = $request->validate([
                 'categories_id' => 'required',
                 'sub_categories' => 'nullable',
+                'chart_type' => 'nullable',
                 'post_title' => 'required|max:255',
                 'post_teaser' => 'required',
                 // 'post_content' => 'required',
@@ -145,6 +146,7 @@ class StatistikService
             $validatedData = $request->validate([
                 'categories_id' => 'required',
                 'sub_categories' => 'nullable',
+                'chart_type' => 'nullable',
                 'post_title' => 'required|max:255',
                 'post_teaser' => 'required',
                 // 'post_content' => 'required',
