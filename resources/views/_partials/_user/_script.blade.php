@@ -32,3 +32,5 @@
 <script src="{{ asset('user/js/components/themes/rubick/top-bar.js') }}"></script> <!-- END: Vendor JS Assets-->
 <!-- BEGIN: Pages, layouts, components JS Assets-->
 <!-- END: Pages, layouts, components JS Assets-->
+
+@stack('addon-script')

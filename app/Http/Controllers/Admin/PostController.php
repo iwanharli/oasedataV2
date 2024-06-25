@@ -19,52 +19,52 @@ class PostController extends Controller
     public function index()
     {
         if (request()->ajax()) {
-            if(Auth::user()->roles == 'Administrator' || Auth::user()->roles == 'Editor'){
-                $query = Post::with(['user','category'])->latest()->get();
-            }else{
-                $query = Post::where('users_id', Auth::user()->id)->with(['user','category'])->latest()->get();
+            if (Auth::user()->roles == 'Administrator' || Auth::user()->roles == 'Editor') {
+                $query = Post::with(['user', 'category'])->latest()->get();
+            } else {
+                $query = Post::where('users_id', Auth::user()->id)->with(['user', 'category'])->latest()->get();
             }
 
             return Datatables::of($query)
                 ->addColumn('action', function ($item) {
-                    return Auth::user()->roles == 'Administrator'? '
+                    return Auth::user()->roles == 'Administrator' ? '
                         <a class="btn btn-primary btn-xs" href="' . route('post.edit', $item->id) . '">
                             <i class="fas fa-edit"></i> &nbsp; Ubah
                         </a>
-                        <form action="' . route('post.destroy', $item->id) . '" method="POST" onsubmit="return confirm('."'Anda akan menghapus item ini dari situs anda?'".')">
+                        <form action="' . route('post.destroy', $item->id) . '" method="POST" onsubmit="return confirm(' . "'Anda akan menghapus item ini dari situs anda?'" . ')">
                             ' . method_field('delete') . csrf_field() . '
                             <button class="btn btn-danger btn-xs">
                                 <i class="far fa-trash-alt"></i> &nbsp; Hapus
                             </button>
                         </form>
-                    ':'
+                    ' : '
                         <a class="btn btn-primary btn-xs" href="' . route('post.edit', $item->id) . '">
                             <i class="fas fa-edit"></i> &nbsp; Ubah
                         </a>
                     ';
                 })
                 ->editColumn('post_status', function ($item) {
-                   return $item->post_status == 'Published' ? '<div class="badge bg-green-soft text-green">'.$item->post_status.'</div>':'<div class="badge bg-gray-200 text-dark">'.$item->post_status.'</div>';
+                    return $item->post_status == 'Published' ? '<div class="badge bg-green-soft text-green">' . $item->post_status . '</div>' : '<div class="badge bg-gray-200 text-dark">' . $item->post_status . '</div>';
                 })
                 ->addIndexColumn()
                 ->removeColumn('id')
-                ->rawColumns(['action','post_status'])
+                ->rawColumns(['action', 'post_status'])
                 ->make();
         }
 
-        if(Auth::user()->roles == 'Administrator' || Auth::user()->roles == 'Editor'){
+        if (Auth::user()->roles == 'Administrator' || Auth::user()->roles == 'Editor') {
             $all = Post::count();
-            $published = Post::where('post_status','Published')->count();
-            $draft = Post::where('post_status','Draft')->count();
+            $published = Post::where('post_status', 'Published')->count();
+            $draft = Post::where('post_status', 'Draft')->count();
             $trash = Post::onlyTrashed()->count();
-        }else{
+        } else {
             $all = Post::where('users_id', Auth::user()->id)->count();
             $published = Post::where(['post_status' => 'Published', 'users_id' => Auth::user()->id])->count();
-            $draft = Post::where(['post_status'=>'Draft', 'users_id' => Auth::user()->id])->count();
+            $draft = Post::where(['post_status' => 'Draft', 'users_id' => Auth::user()->id])->count();
             $trash = Post::onlyTrashed()->count();
         }
 
-        return view('pages.admin.post.index',[
+        return view('pages.admin.post.index', [
             'all' => $all,
             'published' => $published,
             'draft' => $draft,
@@ -75,51 +75,51 @@ class PostController extends Controller
     public function published()
     {
         if (request()->ajax()) {
-            if(Auth::user()->roles == 'Administrator' || Auth::user()->roles == 'Editor'){
-                $query = Post::where('post_status','Published')->with(['user','category'])->latest()->get();
-            }else{
-                $query = Post::where(['post_status' => 'Published', 'users_id' => Auth::user()->id])->with(['user','category'])->latest()->get();
+            if (Auth::user()->roles == 'Administrator' || Auth::user()->roles == 'Editor') {
+                $query = Post::where('post_status', 'Published')->with(['user', 'category'])->latest()->get();
+            } else {
+                $query = Post::where(['post_status' => 'Published', 'users_id' => Auth::user()->id])->with(['user', 'category'])->latest()->get();
             }
             return Datatables::of($query)
                 ->addColumn('action', function ($item) {
-                    return Auth::user()->roles == 'Administrator'? '
+                    return Auth::user()->roles == 'Administrator' ? '
                         <a class="btn btn-primary btn-xs" href="' . route('post.edit', $item->id) . '">
                             <i class="fas fa-edit"></i> &nbsp; Ubah
                         </a>
-                        <form action="' . route('post.destroy', $item->id) . '" method="POST" onsubmit="return confirm('."'Anda akan menghapus item ini dari situs anda?'".')">
+                        <form action="' . route('post.destroy', $item->id) . '" method="POST" onsubmit="return confirm(' . "'Anda akan menghapus item ini dari situs anda?'" . ')">
                             ' . method_field('delete') . csrf_field() . '
                             <button class="btn btn-danger btn-xs">
                                 <i class="far fa-trash-alt"></i> &nbsp; Hapus
                             </button>
                         </form>
-                    ':'
+                    ' : '
                         <a class="btn btn-primary btn-xs" href="' . route('post.edit', $item->id) . '">
                             <i class="fas fa-edit"></i> &nbsp; Ubah
                         </a>
                     ';
                 })
                 ->editColumn('post_status', function ($item) {
-                   return $item->post_status == 'Published' ? '<div class="badge bg-green-soft text-green">'.$item->post_status.'</div>':'<div class="badge bg-gray-200 text-dark">'.$item->post_status.'</div>';
+                    return $item->post_status == 'Published' ? '<div class="badge bg-green-soft text-green">' . $item->post_status . '</div>' : '<div class="badge bg-gray-200 text-dark">' . $item->post_status . '</div>';
                 })
                 ->addIndexColumn()
                 ->removeColumn('id')
-                ->rawColumns(['action','post_status'])
+                ->rawColumns(['action', 'post_status'])
                 ->make();
         }
 
-        if(Auth::user()->roles == 'Administrator' || Auth::user()->roles == 'Editor'){
+        if (Auth::user()->roles == 'Administrator' || Auth::user()->roles == 'Editor') {
             $all = Post::count();
-            $published = Post::where('post_status','Published')->count();
-            $draft = Post::where('post_status','Draft')->count();
+            $published = Post::where('post_status', 'Published')->count();
+            $draft = Post::where('post_status', 'Draft')->count();
             $trash = Post::onlyTrashed()->count();
-        }else{
+        } else {
             $all = Post::where('users_id', Auth::user()->id)->count();
             $published = Post::where(['post_status' => 'Published', 'users_id' => Auth::user()->id])->count();
-            $draft = Post::where(['post_status'=>'Draft', 'users_id' => Auth::user()->id])->count();
+            $draft = Post::where(['post_status' => 'Draft', 'users_id' => Auth::user()->id])->count();
             $trash = Post::onlyTrashed()->count();
         }
 
-        return view('pages.admin.post.index',[
+        return view('pages.admin.post.index', [
             'all' => $all,
             'published' => $published,
             'draft' => $draft,
@@ -130,52 +130,52 @@ class PostController extends Controller
     public function draft()
     {
         if (request()->ajax()) {
-            if(Auth::user()->roles == 'Administrator' || Auth::user()->roles == 'Editor'){
-                $query = Post::where('post_status','Draft')->with(['user','category'])->latest()->get();
-            }else{
-                $query = Post::where(['post_status' => 'Draft', 'users_id' => Auth::user()->id])->with(['user','category'])->latest()->get();
+            if (Auth::user()->roles == 'Administrator' || Auth::user()->roles == 'Editor') {
+                $query = Post::where('post_status', 'Draft')->with(['user', 'category'])->latest()->get();
+            } else {
+                $query = Post::where(['post_status' => 'Draft', 'users_id' => Auth::user()->id])->with(['user', 'category'])->latest()->get();
             }
 
             return Datatables::of($query)
                 ->addColumn('action', function ($item) {
-                    return Auth::user()->roles == 'Administrator'? '
+                    return Auth::user()->roles == 'Administrator' ? '
                         <a class="btn btn-primary btn-xs" href="' . route('post.edit', $item->id) . '">
                             <i class="fas fa-edit"></i> &nbsp; Ubah
                         </a>
-                        <form action="' . route('post.destroy', $item->id) . '" method="POST" onsubmit="return confirm('."'Anda akan menghapus item ini dari situs anda?'".')">
+                        <form action="' . route('post.destroy', $item->id) . '" method="POST" onsubmit="return confirm(' . "'Anda akan menghapus item ini dari situs anda?'" . ')">
                             ' . method_field('delete') . csrf_field() . '
                             <button class="btn btn-danger btn-xs">
                                 <i class="far fa-trash-alt"></i> &nbsp; Hapus
                             </button>
                         </form>
-                    ':'
+                    ' : '
                         <a class="btn btn-primary btn-xs" href="' . route('post.edit', $item->id) . '">
                             <i class="fas fa-edit"></i> &nbsp; Ubah
                         </a>
                     ';
                 })
                 ->editColumn('post_status', function ($item) {
-                   return $item->post_status == 'Published' ? '<div class="badge bg-green-soft text-green">'.$item->post_status.'</div>':'<div class="badge bg-gray-200 text-dark">'.$item->post_status.'</div>';
+                    return $item->post_status == 'Published' ? '<div class="badge bg-green-soft text-green">' . $item->post_status . '</div>' : '<div class="badge bg-gray-200 text-dark">' . $item->post_status . '</div>';
                 })
                 ->addIndexColumn()
                 ->removeColumn('id')
-                ->rawColumns(['action','post_status'])
+                ->rawColumns(['action', 'post_status'])
                 ->make();
         }
 
-        if(Auth::user()->roles == 'Administrator' || Auth::user()->roles == 'Editor'){
+        if (Auth::user()->roles == 'Administrator' || Auth::user()->roles == 'Editor') {
             $all = Post::count();
-            $published = Post::where('post_status','Published')->count();
-            $draft = Post::where('post_status','Draft')->count();
+            $published = Post::where('post_status', 'Published')->count();
+            $draft = Post::where('post_status', 'Draft')->count();
             $trash = Post::onlyTrashed()->count();
-        }else{
+        } else {
             $all = Post::where('users_id', Auth::user()->id)->count();
             $published = Post::where(['post_status' => 'Published', 'users_id' => Auth::user()->id])->count();
-            $draft = Post::where(['post_status'=>'Draft', 'users_id' => Auth::user()->id])->count();
+            $draft = Post::where(['post_status' => 'Draft', 'users_id' => Auth::user()->id])->count();
             $trash = Post::onlyTrashed()->count();
         }
 
-        return view('pages.admin.post.index',[
+        return view('pages.admin.post.index', [
             'all' => $all,
             'published' => $published,
             'draft' => $draft,
@@ -186,7 +186,7 @@ class PostController extends Controller
     public function trash()
     {
         if (request()->ajax()) {
-            $query = Post::onlyTrashed()->with(['user','category'])->latest()->get();
+            $query = Post::onlyTrashed()->with(['user', 'category'])->latest()->get();
 
             return Datatables::of($query)
                 ->addColumn('action', function ($item) {
@@ -194,7 +194,7 @@ class PostController extends Controller
                         <a class="btn btn-primary btn-xs" href="' . route('post-restore', $item->id) . '">
                             <i class="fas fa-sync"></i> &nbsp; Kembalikan
                         </a>
-                        <form action="' . route('post-force-delete', $item->id) . '" method="POST" onsubmit="return confirm('."'Anda akan menghapus item ini secara permanen dari situs anda?'".')">
+                        <form action="' . route('post-force-delete', $item->id) . '" method="POST" onsubmit="return confirm(' . "'Anda akan menghapus item ini secara permanen dari situs anda?'" . ')">
                             ' . method_field('delete') . csrf_field() . '
                             <button class="btn btn-danger btn-xs">
                                 <i class="far fa-trash-alt"></i> &nbsp; Hapus Permanen
@@ -203,20 +203,20 @@ class PostController extends Controller
                     ';
                 })
                 ->editColumn('post_status', function ($item) {
-                   return $item->post_status == 'Published' ? '<div class="badge bg-green-soft text-green">'.$item->post_status.'</div>':'<div class="badge bg-gray-200 text-dark">'.$item->post_status.'</div>';
+                    return $item->post_status == 'Published' ? '<div class="badge bg-green-soft text-green">' . $item->post_status . '</div>' : '<div class="badge bg-gray-200 text-dark">' . $item->post_status . '</div>';
                 })
                 ->addIndexColumn()
                 ->removeColumn('id')
-                ->rawColumns(['action','post_status'])
+                ->rawColumns(['action', 'post_status'])
                 ->make();
         }
 
         $all = Post::count();
-        $published = Post::where('post_status','Published')->count();
-        $draft = Post::where('post_status','Draft')->count();
+        $published = Post::where('post_status', 'Published')->count();
+        $draft = Post::where('post_status', 'Draft')->count();
         $trash = Post::onlyTrashed()->count();
 
-        return view('pages.admin.post.index',[
+        return view('pages.admin.post.index', [
             'all' => $all,
             'published' => $published,
             'draft' => $draft,
@@ -229,7 +229,7 @@ class PostController extends Controller
         $categories = Category::where('parent_id', null)->orderby('name', 'asc')->get();
         $tags = Tag::all();
 
-        return view('pages.admin.post.create',[
+        return view('pages.admin.post.create', [
             'categories' => $categories,
             'tags' => $tags,
         ]);
@@ -253,13 +253,13 @@ class PostController extends Controller
         $validatedData['post_content'] = $content;
         $validatedData['post_teaser'] = Str::limit(strip_tags($request->post_teaser), 140);
 
-        if($request->file('post_image')){
+        if ($request->file('post_image')) {
 
             $image = $request->file('post_image');
             $path = $image->hashName('public/assets/post-images');
 
             $image_resize = Image::make($image->getRealPath());
-            $image_resize->resize(1200,675);
+            $image_resize->resize(1200, 675);
 
             Storage::put($path, (string) $image_resize->encode());
 
@@ -267,15 +267,15 @@ class PostController extends Controller
             //$validatedData['post_image'] = $request->file('post_image')->store('assets/post-images');
         }
 
-        if($request->publish){
+        if ($request->publish) {
             $validatedData['post_status'] = 'Published';
-        }else{
+        } else {
             $validatedData['post_status'] = 'Draft';
         }
 
-        if($request->is_schedule == 'Ya'){
+        if ($request->is_schedule == 'Ya') {
             $validatedData['published_at'] = $request->published_at;
-        }else{
+        } else {
             $validatedData['published_at'] = date('Y-m-d H:i:s');
         }
 
@@ -287,8 +287,8 @@ class PostController extends Controller
         $post->tag()->attach($request->tags);
 
         return redirect()
-                    ->route('post.index')
-                    ->with('success', 'Sukses! Pos Berhasil Disimpan');
+            ->route('post.index')
+            ->with('success', 'Sukses! Pos Berhasil Disimpan');
     }
 
     public function edit($id)
@@ -298,7 +298,7 @@ class PostController extends Controller
         $sub_categories = Category::where('parent_id', $item->categories_id)->orderby('name', 'asc')->get();
         $tags = Tag::all();
 
-        return view('pages.admin.post.edit',[
+        return view('pages.admin.post.edit', [
             'item' => $item,
             'categories' => $categories,
             'sub_categories' => $sub_categories,
@@ -320,13 +320,13 @@ class PostController extends Controller
 
         $item = Post::findOrFail($id);
 
-        if($request->file('post_image')){
+        if ($request->file('post_image')) {
             Storage::delete($item->post_image);
             $image = $request->file('post_image');
             $path = $image->hashName('assets/post-images');
 
             $image_resize = Image::make($image->getRealPath());
-            $image_resize->resize(1200,675);
+            $image_resize->resize(1200, 675);
 
             Storage::put($path, (string) $image_resize->encode());
 
@@ -334,9 +334,9 @@ class PostController extends Controller
             //$validatedData['post_image'] = $request->file('post_image')->store('assets/post-images');
         }
 
-        if($request->publish){
+        if ($request->publish) {
             $validatedData['post_status'] = 'Published';
-        }else{
+        } else {
             $validatedData['post_status'] = 'Draft';
         }
 
@@ -350,8 +350,8 @@ class PostController extends Controller
         $item->tag()->sync($request->tags);
 
         return redirect()
-                    ->route('post.edit',$item->id)
-                    ->with('success', 'Sukses! Pos Berhasil Diubah');
+            ->route('post.edit', $item->id)
+            ->with('success', 'Sukses! Pos Berhasil Diubah');
     }
 
     public function destroy($id)
@@ -361,8 +361,8 @@ class PostController extends Controller
         $item->delete();
 
         return redirect()
-                    ->route('post.index')
-                    ->with('success', 'Sukses! Pos Berhasil Dihapus');
+            ->route('post.index')
+            ->with('success', 'Sukses! Pos Berhasil Dihapus');
     }
 
     public function force_delete($id)
@@ -374,8 +374,8 @@ class PostController extends Controller
         $item->forceDelete();
 
         return redirect()
-                    ->route('post-trash')
-                    ->with('success', 'Sukses! 1 Pos dihapus secara permanen.');
+            ->route('post-trash')
+            ->with('success', 'Sukses! 1 Pos dihapus secara permanen.');
     }
 
     public function restore_data($id)
@@ -383,17 +383,17 @@ class PostController extends Controller
         Post::withTrashed()->find($id)->restore();
 
         return redirect()
-                    ->route('post-trash')
-                    ->with('success', 'Sukses! 1 Pos berhasil dikembalikan dari sampah.');
+            ->route('post-trash')
+            ->with('success', 'Sukses! 1 Pos berhasil dikembalikan dari sampah.');
     }
 
     public function get_sub_categories(Request $request)
     {
         $parent_id = $request->cat_id;
 
-        $subcategories = Category::where('id',$parent_id)
-                          ->with('subcategory')
-                          ->get();
+        $subcategories = Category::where('id', $parent_id)
+            ->with('subcategory')
+            ->get();
 
         return response()->json([
             'subcategories' => $subcategories

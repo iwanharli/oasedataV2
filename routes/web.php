@@ -1,6 +1,4 @@
 <?php
-
-use App\Http\Controllers\Admin\StatistikController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 
@@ -10,6 +8,9 @@ use App\Http\Controllers\Portal\StatisticController;
 
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+
+use App\Http\Controllers\Admin\UserNewsController;
+use App\Http\Controllers\Admin\StatistikController;
 
 use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\PostController;
@@ -37,7 +38,8 @@ use App\Http\Controllers\Admin\AppsController;
 |
 */
 
-Route::view('/test', 'layouts.user');
+// Route::view('/test', 'pages.user.dashboard');
+Route::view('/test', 'pages.user.news.index');
 
 Route::get('/foo', function () {
 	$targetFolder = base_path() . '/storage/app/public';
@@ -88,8 +90,6 @@ Route::prefix('/')
 
 		Route::get('/statistic', [StatisticController::class, 'index'])->name('statistic-all');
 		Route::get('/statistic/{slug}', [StatisticController::class, 'statisticDetail'])->name('statistic-detail');
-
-		
 	});
 
 
@@ -99,6 +99,12 @@ Route::prefix('admin')
 	->middleware('auth')
 	->group(function () {
 		Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin-dashboard');
+
+		// NEWS 
+		Route::resource('news', UserNewsController::class);
+
+
+
 
 		//POS
 		Route::resource('pos/post', PostController::class);

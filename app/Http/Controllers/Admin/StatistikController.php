@@ -19,16 +19,16 @@ class StatistikController extends Controller
             return StatistikService::datatable_get_all();
         }
 
-        // $all = Category::count();
-        // $published = Category::where('status', 'published')->count();
-        // $draft = Category::where('status', 'draft')->count();
-        // $trash = Category::onlyTrashed()->count();
+        $all = StatisticPost::count();
+        $published = StatisticPost::where('post_status', 'published')->count();
+        $draft = StatisticPost::where('post_status', 'draft')->count();
+        $trash = StatisticPost::onlyTrashed()->count();
 
         return view('pages.admin.statistik.index', [
-            'all' => @$all,
-            'published' => @$published,
-            'draft' => @$draft,
-            'trash' => @$trash
+            'all' => $all,
+            'published' => $published,
+            'draft' => $draft,
+            'trash' => $trash
         ]);
     } // end func
 
