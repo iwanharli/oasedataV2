@@ -66,12 +66,12 @@
                                 <div class="mb-3">
                                     <label for="post_title">Jenis Grafik</label>
                                     <div class="chart-selector">
-                                        <label class="card" for="inlineradioBar">
+                                        <label class="card" for="inlineradioBarVertical">
                                             <div class="card-header">
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="radio" name="chart_type"
-                                                        id="inlineradioBar" value="bar" checked>
-                                                    <label class="form-check-label" for="inlineradioBar">Bar Chart</label>
+                                                        id="inlineradioBarVertical" value="bar" checked>
+                                                    <label class="form-check-label" for="inlineradioBarVertical">Bar Vertical Chart</label>
                                                 </div>
                                             </div>
                                             <div class="card-body">
@@ -81,6 +81,24 @@
                                                 </div>
                                                 <br />
                                                 <p class="card-text text-center">Grafik berbentuk bar vertikal yang berjajar
+                                                </p>
+                                            </div>
+                                        </label>
+                                        <label class="card" for="inlineradioBarHorizontal">
+                                            <div class="card-header">
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="chart_type"
+                                                        id="inlineradioBarHorizontal" value="bar" checked>
+                                                    <label class="form-check-label" for="inlineradioBarHorizontal">Bar Horizontal Chart</label>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <div>
+                                                    <img src="{{ asset('assets/imgs/chartbar.png') }}"
+                                                        class="img-thumbnail rounded mx-auto d-block">
+                                                </div>
+                                                <br />
+                                                <p class="card-text text-center">Grafik berbentuk bar horizontal yang berjajar
                                                 </p>
                                             </div>
                                         </label>
@@ -175,7 +193,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card card-header-actions mb-4">
+                        {{-- <div class="card card-header-actions mb-4">
                             <div class="card-header">
                                 Tags
                             </div>
@@ -189,7 +207,7 @@
                                     </select>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="card card-header-actions mb-4">
                             <div class="card-header">
                                 Thumbnail

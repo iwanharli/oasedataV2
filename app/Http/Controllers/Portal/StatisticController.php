@@ -15,7 +15,7 @@ class StatisticController extends Controller
     public function index()
     {
 
-        $statistic_all = StatisticPost::with(['user'])->where([
+        $statistic = StatisticPost::with(['user'])->where([
             ['post_status', '=', 'Published'],
             ['created_at', '<', now()],
         ])->latest()->paginate(9);
@@ -23,7 +23,7 @@ class StatisticController extends Controller
         // var_dump($statistik_all);
 
         return view('pages.portal.statistic', [
-            'statistics' => $statistic_all,
+            'statistics' => $statistic,
         ]);
     }
 
@@ -64,7 +64,7 @@ class StatisticController extends Controller
         endforeach;
 
         $apex_data = [
-            'name' => 'Test Chart',
+            'name' => 'Nilai',
             'data' => $data_fix['values'],
             'categories' => $data_fix['labels'],
         ];

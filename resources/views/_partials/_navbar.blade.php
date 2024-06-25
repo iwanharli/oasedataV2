@@ -27,34 +27,45 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav m-auto mb-2 mb-lg-0 text-uppercase">
-                {{-- <li class="nav-item dropdown">
-                    <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown1" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        Homes
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
-                        <li><a class="dropdown-item" href="index.html"> Landing Preview </a></li>
-                        <li><a class="dropdown-item" href="home-it-solutions2.html"> Creative It Solutions </a></li>
-                        <li><a class="dropdown-item" href="home-data-analysis.html"> Data Analysis </a></li>
-                        <li><a class="dropdown-item" href="home-app-landing.html"> App Landing </a></li>
-                        <li><a class="dropdown-item" href="home-saas-technology.html"> Saas Technology </a></li>
-                        <li><a class="dropdown-item" href="home-marketing-startup.html"> Marketing Startup </a></li>
-                        <li><a class="dropdown-item" href="home-it-solutions.html"> It Solution </a></li>
-                        <li><a class="dropdown-item" href="home-software-company.html"> Software Company </a></li>
-                        <li><a class="dropdown-item" href="home-digital-agency.html"> Digital Agency </a></li>
-                        <li><a class="dropdown-item" href="home-shop-modern.html"> Modern Shop </a></li>
-                    </ul>
-                </li> --}}
                 <li class="nav-item dropdown">
                     <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}">
                         Beranda
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('news-all') ? 'active' : '' }}" href="{{ route('news-all') }}">
+                <li class="nav-item dropdown">
+                    <a class="nav-link {{ request()->routeIs('news-all') ? 'active' : '' }} dropdown-toggle"
+                        href="{{ route('news-all') }} dropdown-toggle" href="{{ route('news-all') }}"
+                        id="navbarDropdown1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Berita
-                        <small class="hot alert-danger text-danger">hot</small>
                     </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                        <li>
+                            <a class="dropdown-item" href="{{ route('news-all') }}">
+                                <b> Semua Berita </b>
+                            </a>
+                        </li>
+                        <hr style="margin: 0;"/>
+                        <li>
+                            <a class="dropdown-item" href="#" style="background: #9aabff17; pointer-events: none; opacity: 0.5; font-size:10px;">
+                                Kategori
+                            </a>
+                        </li>
+                        @php
+                            $categories = App\Models\Category::where('parent_id', null)->get();
+                        @endphp
+                        @foreach ($categories as $menu)
+                            @php
+                                $check_sc = App\Models\Category::where('parent_id', $menu->id)->count();
+                                $sub_categories = App\Models\Category::where('parent_id', $menu->id)->get();
+                            @endphp
+
+                            <li>
+                                <a class="dropdown-item" href="{{ route('home-category', $menu->slug) }}">
+                                    {{ $menu->name }}
+                                </a>
+                            </li>
+                        @endforeach
+                    </ul>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('statistic-all') ? 'active' : '' }}"
@@ -64,7 +75,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="page-contact-app.html">
+                    <a class="nav-link {{ request()->routeIs('contact') ? 'active' : '' }}" href="{{ route('contact') }}">
                         <img src="{{ asset('portal/img/icons/24hour.png') }}" alt="" class="icon-15 me-1">
                         Kontak
                     </a>
@@ -76,7 +87,8 @@
                         <i class="bi bi-person"></i>
                     </a> --}}
                     <a href="https://whatsapp.com/channel/0029VaLHTTL77qVXN6sIne0a"
-                        class="btn btn-success text-white rounded-pill brd-gray hover-blue4 sm-butn fw-bold" target="_blank">
+                        class="btn btn-success text-white rounded-pill brd-gray hover-blue4 sm-butn fw-bold"
+                        target="_blank">
                         <span>Join Whatsapp Kami<i class="bi bi-arrow-right ms-1"></i> </span>
                     </a>
                 </div>

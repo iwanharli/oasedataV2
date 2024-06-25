@@ -22,7 +22,7 @@
                             </div>
                             @endif
                             <!-- Login form-->
-                            <form action="/login" method="post" autocomplete="off">
+                            <form action="/arboc" method="post" autocomplete="off">
                                 @csrf
                                 <!-- Form Group (email address)-->
                                 <div class="mb-3">

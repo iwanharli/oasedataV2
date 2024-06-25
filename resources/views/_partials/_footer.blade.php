@@ -14,16 +14,16 @@
                 <div class="col-lg-8">
                     <ul class="links">
                         <li>
-                            <a href="#" class="active">Beranda</a>
+                            <a href="{{ route('home') }}" class="active">Beranda</a>
                         </li>
                         <li>
-                            <a href="#">Berita</a>
+                            <a href="{{ route('news-all') }}">Berita</a>
                         </li>
                         <li>
-                            <a href="#">Statistik</a>
+                            <a href="{{ route('statistic-all') }}">Statistik</a>
                         </li>
                         <li>
-                            <a href="#">Kontak</a>
+                            <a href="{{ route('contact') }}">Kontak</a>
                         </li>
                     </ul>
                 </div>
@@ -45,7 +45,8 @@
         <div class="copywrite text-center mt-10 mb-50">
             <small class="small">
                 © 2024 Copyrights by <a href="#" class="fw-bold text-decoration-underline">OASEDATA</a> All
-                Rights Reserved. Designed by <a href="#" class="fw-bold text-decoration-underline">ArbocLi</a>
+                Rights Reserved. 
+                {{-- Designed by <a href="#" class="fw-bold text-decoration-underline">ArbocLi</a> --}}
             </small>
         </div>
     </div>

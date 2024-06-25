@@ -273,11 +273,11 @@ class HomeController extends Controller
         ]);
     }
 
-    public function kontak()
+    public function contact()
     {
         $item = Contact::first();
 
-        return view('pages.home.contact', [
+        return view('pages.portal.contact', [
             'item' => $item
         ]);
     }

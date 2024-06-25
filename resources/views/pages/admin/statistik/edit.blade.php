@@ -149,7 +149,6 @@
                                                 </tr>
                                             @endforeach
                                         </table>
-
                                     </div>
                                 </div>
 
@@ -193,7 +192,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card card-header-actions mb-4">
+                        {{-- <div class="card card-header-actions mb-4">
                             <div class="card-header">
                                 Tags
                             </div>
@@ -213,7 +212,7 @@
                                     </select>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="card card-header-actions mb-4">
                             <div class="card-header">
                                 Thumbnail

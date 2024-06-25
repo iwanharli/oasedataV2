@@ -30,3 +30,22 @@
 <link rel="stylesheet" href="{{ asset('portal/css/lib/swiper.min.css') }}" />
 <!-- ====== global style ====== -->
 <link rel="stylesheet" href="{{ asset('portal/css/style.css') }}" />
+
+{{-- SHARE BUTTON  --}}
+<script type="text/javascript"
+    src="https://platform-api.sharethis.com/js/sharethis.js#property=66793746b8d4eb001bcc88ff&product=inline-share-buttons&source=platform"
+    async="async"></script>
+
+<style>
+    .st-logo { 
+        display: none !important;
+    }
+
+    .st-disclaimer {
+        display: none !important;
+    }
+
+    .blog-content-info p {
+        margin-bottom: 20px !important;
+    }
+</style>

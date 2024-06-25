@@ -12,7 +12,7 @@ class LoginController extends Controller
     {
         $app = App::where('id', '1')->first();
         
-        return view('login.index',[
+        return view('auth.login',[
             'title' => 'Login',
             'app' => $app,
         ]);
@@ -42,6 +42,6 @@ class LoginController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/login');
+        return redirect('/arboc');
     }
 }

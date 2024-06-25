@@ -64,7 +64,7 @@
         <!-- ====== end breaking news ====== -->
 
         <!-- ====== start news ====== -->
-        <section class="blog style-8" style="background: #dedbeb;">
+        <section class="blog style-8">
             <div class="container">
                 <div class="content section-padding wow fadeInUp">
                     <div class="section-head mb-40 d-flex justify-content-between align-items-center style-6">
@@ -192,6 +192,36 @@
         </section>
         <!-- ====== end news ====== -->
 
+        <!-- ====== start solutions  ====== -->
+        <section class="solutions style-10 section-padding bg-light">
+            <div class="container">
+                <div class="text-center mb-20">
+                    <p class="color-blue7 mb-10"> Berita & Statistik </p>
+                    <h2> Jelajahi setiap Kategori </h2>
+                </div>
+                <div class="content">
+                    <div class="row justify-content-center">
+                        @php
+                            $categories = App\Models\Category::where('parent_id', null)->get();
+                        @endphp
+                        @foreach ($categories as $menu)
+                            @php
+                                $check_sc = App\Models\Category::where('parent_id', $menu->id)->count();
+                                $sub_categories = App\Models\Category::where('parent_id', $menu->id)->get();
+                            @endphp
+                            <div class="col-lg-3 col-sm-6">
+                                <a href="#" class="solution-card">
+                                    <h6> {{ $menu->name }} </h6>
+                                    <span class="icon"> <img src="{{ asset('portal/img/icons/solution/4.png') }}" alt=""> </span>
+                                </a>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ====== end solutions  ====== -->
+
         <!-- ====== start statistics ====== -->
         <section class="portfolio section-padding style-1" data-scroll-index="4">
             <div class="container">
@@ -200,7 +230,8 @@
                         <span> <small>Statistik</small> </span>
                         terbaru
                     </h2>
-                    <a href="{{ route('statistic-all') }}" class="btn btn-icon-circle rounded-pill bg-blue7 fw-bold text-white">
+                    <a href="{{ route('statistic-all') }}"
+                        class="btn btn-icon-circle rounded-pill bg-blue7 fw-bold text-white">
                         <small> Lihat semua statistik <i class="fas fa-long-arrow-alt-right"></i> </small>
                     </a>
                 </div>
@@ -249,10 +280,10 @@
                                                     <div class="text">
                                                         {{ $item->post_teaser }}
                                                     </div>
-                                                    <div class="tags">
+                                                    {{-- <div class="tags">
                                                         <a href="#">Consultation</a>
                                                         <a href="#">Management</a>
-                                                    </div>
+                                                    </div> --}}
                                                 </div>
                                             </div>
                                         </div>
@@ -306,10 +337,10 @@
                                                     <div class="text">
                                                         {{ $item->post_teaser }}
                                                     </div>
-                                                    <div class="tags">
+                                                    {{-- <div class="tags">
                                                         <a href="#">Consultation</a>
                                                         <a href="#">Management</a>
-                                                    </div>
+                                                    </div> --}}
                                                 </div>
                                             </div>
                                         </div>

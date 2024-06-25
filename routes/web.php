@@ -37,6 +37,8 @@ use App\Http\Controllers\Admin\AppsController;
 |
 */
 
+Route::view('/test', 'layouts.user');
+
 Route::get('/foo', function () {
 	$targetFolder = base_path() . '/storage/app/public';
 	$linkFolder = $_SERVER['DOCUMENT_ROOT'] . '/storage';
@@ -68,11 +70,10 @@ Route::get('/search', [HomeController::class, 'searchArticle'])->name('search-ar
 Route::get('/redaksi', [HomeController::class, 'redaksi'])->name('redaksi');
 Route::get('/pedoman', [HomeController::class, 'pedoman'])->name('pedoman');
 Route::get('/disclaimer', [HomeController::class, 'disclaimer'])->name('disclaimer');
-Route::get('/kontak', [HomeController::class, 'kontak'])->name('kontak');
 
 // Authentication
-Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
-Route::post('/login', [LoginController::class, 'authenticate']);
+Route::get('/arboc', [LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::post('/arboc', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
 // PORTAL BERITA
@@ -80,12 +81,15 @@ Route::prefix('/')
 	->namespace('Portal')
 	->group(function () {
 		Route::get('/', [HomeController::class, 'index'])->name('home');
+		Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 
 		Route::get('/news', [NewsController::class, 'index'])->name('news-all');
 		Route::get('/news/{slug}', [NewsController::class, 'newsDetail'])->name('news-detail');
 
 		Route::get('/statistic', [StatisticController::class, 'index'])->name('statistic-all');
 		Route::get('/statistic/{slug}', [StatisticController::class, 'statisticDetail'])->name('statistic-detail');
+
+		
 	});
 
 

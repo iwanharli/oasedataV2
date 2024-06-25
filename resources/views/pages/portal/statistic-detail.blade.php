@@ -18,6 +18,10 @@
                     Home
                 </a>
                 <span class="me-2">/</span>
+                <a href="{{ route('statistic-all') }}" class="me-2">
+                    Statistik
+                </a>
+                <span class="me-2">/</span>
                 <a href="{{ route('home-category', $post->category->slug) }}" class="me-2">
                     {{ $post->category->name }}
                 </a>
@@ -43,7 +47,8 @@
                     <div class="section-head text-center mb-60 style-5">
                         <h2 class="mb-20 color-000"> {{ $post->post_title }} </h2>
                         <small class="d-block date text">
-                            <a href="{{ route('home-category', $post->category->slug) }}" class="text-uppercase border-end brd-gray pe-3 me-3 color-blue5 fw-bold">
+                            <a href="{{ route('home-category', $post->category->slug) }}"
+                                class="text-uppercase border-end brd-gray pe-3 me-3 color-blue5 fw-bold">
                                 {{ $post->category->name }}
                             </a>
                             <i class="bi bi-clock me-1"></i>
@@ -53,8 +58,12 @@
                     <div class="content-card">
                         <div class="img">
                             <img src="{{ Storage::url($post->post_image) }}" alt="">
-                            <div class="credit mt-15 font-small color-grey" style="margin-left: 10px;">
-                                <i class="ti-credit-card mr-5"></i><span>{{ $post->post_image_description }}</span>
+                            <div class="credit font-small color-grey"
+                                style="padding: 13px 13px 13px 20px; background: beige;">
+                                <i class="ti-credit-card mr-5"></i>
+                                <span>
+                                    <strong> Keterangan Foto </strong> : {{ $post->post_image_description }}
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -137,6 +146,12 @@
 
                             {!! $post->post_content !!}
 
+                            <br />
+                            <br />
+                            <br />
+                            <span class="mb-20"> Bagikan :</span>
+                            <div class="sharethis-inline-share-buttons"></div>
+
                             {{-- @if ($post->tag->count() > 0)
                                 <div class="side-tags mt-50"
                                     style="background: rgba(0, 0, 0, 0.096); padding: 10px; border-radius: 5px;">
@@ -190,6 +205,9 @@
                                 </div>
                             </div>
                         </div>
+
+
+                        <div id="disqus_thread" class="mt-50"></div>
                     </div>
 
 
@@ -240,6 +258,28 @@
         </section>
         <!-- ====== end Statistic ====== -->
 
+
+        {{-- DISQUSS KOMENTAR  --}}
+        <script>
+            /**
+             *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+             *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    
+             **/
+
+            var disqus_config = function() {
+                this.page.url = '{{ URL::current() }}'; // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier =
+                    {{ $post->slug }}; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            };
+
+            (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document,
+                    s = d.createElement('script');
+                s.src = 'https://oasedata.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
 
         <!-- ====== start Related Statistic ====== -->
         {{-- <section class="popular-posts related Posts section-padding pb-100 bg-gray5">
@@ -344,6 +384,10 @@
 
         chart.render();
     </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 @endsection
 
 @push('addon-style')

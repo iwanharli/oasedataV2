@@ -24,6 +24,10 @@
                     Home
                 </a>
                 <span class="me-2">/</span>
+                <a href="{{ route('news-all') }}" class="me-2">
+                    Berita
+                </a>
+                <span class="me-2">/</span>
                 <a href="{{ route('home-category', $post->category->slug) }}" class="me-2">
                     {{ $post->category->name }}
                 </a>
@@ -61,7 +65,8 @@
                     <div class="content-card">
                         <div class="img">
                             <img src="{{ Storage::url($post->post_image) }}" alt="">
-                            <div class="credit mt-15 font-small color-grey" style="margin-left: 10px;">
+                            <div class="credit font-small color-grey"
+                                style="padding: 13px 13px 13px 20px; background: beige;">
                                 <i class="ti-credit-card mr-5"></i><span>{{ $post->post_image_description }}</span>
                             </div>
                         </div>
@@ -96,6 +101,12 @@
                         <div class="blog-content-info">
                             {!! $post->post_content !!}
 
+                            <br />
+                            <br />
+                            <br />
+                            <span class="mb-20"> Bagikan :</span>
+                            <div class="sharethis-inline-share-buttons"></div>
+
                             @if ($post->tag->count() > 0)
                                 <div class="side-tags mt-50"
                                     style="background: rgba(0, 0, 0, 0.096); padding: 10px; border-radius: 5px;">
@@ -110,34 +121,8 @@
                                     </div>
                                 </div>
                             @endif
+
                         </div>
-
-                        {{-- DISQUSS KOMENTAR  --}}
-                        <div id="disqus_thread"></div>
-
-                        <script>
-                            /**
-                             *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-                             *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    
-                             **/
-
-                            var disqus_config = function() {
-                                this.page.url = '{{ URL::current() }}'; // Replace PAGE_URL with your page's canonical URL variable
-                                this.page.identifier =
-                                    {{ $post->slug }}; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-                            };
-
-                            (function() { // DON'T EDIT BELOW THIS LINE
-                                var d = document,
-                                    s = d.createElement('script');
-                                s.src = 'https://oasedata.disqus.com/embed.js';
-                                s.setAttribute('data-timestamp', +new Date());
-                                (d.head || d.body).appendChild(s);
-                            })();
-                        </script>
-                        <noscript>Please enable JavaScript to view the <a href="#">comments powered by
-                                Licuanqus.</a>
-                        </noscript>
 
                         <div class="blog-comments mt-70">
                             <div class="comment-card card p-5 radius-5 border-0 mt-50">
@@ -176,6 +161,8 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div id="disqus_thread" class="mt-50"></div>
                     </div>
 
 
@@ -219,6 +206,7 @@
                                     @endforeach
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -312,4 +300,26 @@
 
     </main>
     <!--End-Contents-->
+
+    {{-- DISQUSS KOMENTAR  --}}
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    
+         **/
+
+        var disqus_config = function() {
+            this.page.url = '{{ URL::current() }}'; // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier =
+                {{ $post->slug }}; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document,
+                s = d.createElement('script');
+            s.src = 'https://oasedata.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
 @endsection
