@@ -34,6 +34,7 @@ class StatisticPost extends Model
         'post_status',
         'categories_id',
         'chart_type',
+        'chart_description',
         'post_image',
         'post_image_description',
         'published_at',

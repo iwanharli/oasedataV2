@@ -66,48 +66,111 @@
                                 <div class="mb-3">
                                     <label for="post_title">Jenis Grafik</label>
                                     <div class="chart-selector">
-                                        <label class="card" for="inlineradioBar">
-                                            <div class="card-header">
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="chart_type"
-                                                        id="inlineradioBar" value="bar" checked>
-                                                    <label class="form-check-label" for="inlineradioBar">Bar Chart</label>
-                                                </div>
+                                        <div class="row">
+                                            <div class="col-6 col-lg-3 mt-2">
+                                                <label class="card h-100" for="inlineradioBar">
+                                                    <div class="card-header">
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="chart_type"
+                                                                id="inlineradioBar" value="bar" checked>
+                                                            <label class="form-check-label" for="inlineradioBar">Bar
+                                                                Chart</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <div>
+                                                            <img src="{{ asset('assets/imgs/chartbar.png') }}"
+                                                                class="img-thumbnail rounded mx-auto d-block">
+                                                        </div>
+                                                        <br />
+                                                        <p class="card-text text-center">Grafik berbentuk bar vertikal yang
+                                                            berjajar kesamping
+                                                        </p>
+                                                    </div>
+                                                </label>
                                             </div>
-                                            <div class="card-body">
-                                                <div>
-                                                    <img src="{{ asset('assets/imgs/chartbar.png') }}"
-                                                        class="img-thumbnail rounded mx-auto d-block">
-                                                </div>
-                                                <br />
-                                                <p class="card-text text-center">Grafik berbentuk bar vertikal yang berjajar
-                                                </p>
+
+                                            <div class="col-6 col-lg-3 mt-2">
+                                                <label class="card h-100" for="inlineradioBarHori">
+                                                    <div class="card-header">
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="chart_type"
+                                                                id="inlineradioBarHori" value="barhorizontal">
+                                                            <label class="form-check-label" for="inlineradioBarHori">Bar Chart
+                                                                Horizontal</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <div>
+                                                            <img src="{{ asset('assets/imgs/chartbar2.png') }}"
+                                                                class="img-thumbnail rounded mx-auto d-block">
+                                                        </div>
+                                                        <br />
+                                                        <p class="card-text text-center">Grafik berbentuk bar vertikal yang
+                                                            berjajar kebawah
+                                                        </p>
+                                                    </div>
+                                                </label>
                                             </div>
-                                        </label>
-                                        <label class="card" for="inlineradioLine">
-                                            <div class="card-header">
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="chart_type"
-                                                        id="inlineradioLine" value="line">
-                                                    <label class="form-check-label" for="inlineradioLine">Line Chart</label>
-                                                </div>
+
+                                            <div class="col-6 col-lg-3 mt-2">
+                                                <label class="card h-100" for="inlineradioLine">
+                                                    <div class="card-header">
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="chart_type"
+                                                                id="inlineradioLine" value="line">
+                                                            <label class="form-check-label" for="inlineradioLine">Line
+                                                                Chart</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <div>
+                                                            <img src="{{ asset('assets/imgs/chartline.png') }}"
+                                                                class="img-thumbnail rounded mx-auto d-block">
+                                                        </div>
+                                                        <br />
+                                                        <p class="card-text text0center">Grafik berbentuk garis sederhana
+                                                            dan
+                                                            mudah
+                                                            dipahami</p>
+                                                    </div>
+                                                </label>
                                             </div>
-                                            <div class="card-body">
-                                                <div>
-                                                    <img src="{{ asset('assets/imgs/chartline.png') }}"
-                                                        class="img-thumbnail rounded mx-auto d-block">
-                                                </div>
-                                                <br />
-                                                <p class="card-text text0center">Grafik berbentuk garis sederhana dan mudah
-                                                    dipahami</p>
+
+                                            <div class="col-6 col-lg-3 mt-2">
+                                                <label class="card h-100" for="inlineradioPie">
+                                                    <div class="card-header">
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="chart_type"
+                                                                id="inlineradioPie" value="pie">
+                                                            <label class="form-check-label" for="inlineradioPie">Pie
+                                                                Chart</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <div>
+                                                            <img src="{{ asset('assets/imgs/chartpie.png') }}"
+                                                                class="img-thumbnail rounded mx-auto d-block">
+                                                        </div>
+                                                        <br />
+                                                        <p class="card-text text0center">Grafik berbentuk pie yang bundar
+                                                            seperti pie</p>
+                                                    </div>
+                                                </label>
                                             </div>
-                                        </label>
+                                        </div>
                                     </div>
                                     {{-- <select name="chart_type" class="form-control">
                                         <option value="bar" selected>Bar Chart</option>
                                         <option value="bar" selected>Line Chart</option>
                                     </select> --}}
                                 </div>
+
+                                <div class="mb-3">
+                                    <label for="chart_description">Deskripsi Chart</label>
+                                    <textarea name="chart_description" class="form-control"></textarea>
+                                </div>
+
                                 <div class="mb-3">
                                     <label for="json_data">Input Data Statistik</label>
                                     <div class="mt-3 mb-3">
@@ -119,12 +182,12 @@
                                                 <th>Value Data</th>
                                                 <th>Action</th>
                                             </tr>
-                                            @for ($i = 1; $i <= 5; $i++)
+                                            @for ($i = 1; $i <= 3; $i++)
                                                 <tr data-rowid="{{ $i }}" id="data-rowid-{{ $i }}">
                                                     {{-- <td>{{ $i }}</td> --}}
                                                     <td>
-                                                        <input type="text" name="data_label[]"
-                                                            value="" class="form-control" />
+                                                        <input type="text" name="data_label[]" value=""
+                                                            class="form-control" />
                                                     </td>
                                                     <td>
                                                         <input type="number" name="data_value[]" step="any"
@@ -175,7 +238,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card card-header-actions mb-4">
+                        <div class="card card-header-actions mb-4 d-none">
                             <div class="card-header">
                                 Tags
                             </div>
@@ -269,11 +332,11 @@
 @endsection
 
 @push('addon-style')
-
     <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.1.1/dist/select2-bootstrap-5-theme.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" />
-    <script src="https://cdn.tiny.cloud/1/2mnuvdumk629n5613zlidutt34hfejr3ebqvxqiw7jgtq55z/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/2mnuvdumk629n5613zlidutt34hfejr3ebqvxqiw7jgtq55z/tinymce/7/tinymce.min.js"
+        referrerpolicy="origin"></script>
 @endpush
 
 @push('addon-script')

@@ -43,7 +43,8 @@
                     <div class="section-head text-center mb-60 style-5">
                         <h2 class="mb-20 color-000"> {{ $post->post_title }} </h2>
                         <small class="d-block date text">
-                            <a href="{{ route('home-category', $post->category->slug) }}" class="text-uppercase border-end brd-gray pe-3 me-3 color-blue5 fw-bold">
+                            <a href="{{ route('home-category', $post->category->slug) }}"
+                                class="text-uppercase border-end brd-gray pe-3 me-3 color-blue5 fw-bold">
                                 {{ $post->category->name }}
                             </a>
                             <i class="bi bi-clock me-1"></i>
@@ -86,7 +87,7 @@
                         </div>
 
                         <div class="blog-content-info">
-                            <div>
+                            <div class="mb-4" style="background: #F4F8FC; padding: 20px; border-radius: 20px">
                                 <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                                     <li class="nav-item" role="presentation">
                                         <button class="nav-link active" id="pills-chart-tab" data-toggle="pill"
@@ -132,6 +133,12 @@
                                     </div>
                                 </div>
 
+                                @if (!empty($post->chart_description))
+                                    <div class="mt-1 mb-2 pt-2 pb-2 text-center"
+                                        style="background: rgba(255,255,255,.8); border-radius: 20px;box-shadow: 0px 1px 1px 1px rgba(0,0,0,0.1);">
+                                        {!! $post->chart_description !!}
+                                    </div>
+                                @endif
 
                             </div>
 
@@ -327,23 +334,61 @@
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
     <script>
-        var options = {
-            chart: {
-                type: "{{ $post->chart_type ?? 'bar' }}"
-            },
-            series: [{
-                name: "{{ $apex_data['name'] }}",
-                data: {!! json_encode($apex_data['data']) !!},
-            }],
-            xaxis: {
-                categories: {!! json_encode($apex_data['categories']) !!},
+        @if (in_array($post->chart_type, ['pie']))
+            var options = {
+                series: {!! str_replace('"', '', json_encode($apex_data['data'])) !!},
+                chart: {
+                    width: "100%",
+                    type: 'pie',
+                },
+                labels: {!! json_encode($apex_data['categories']) !!},
+            };
+        @elseif (in_array($post->chart_type, ['barhorizontal']))
+            var options = {
+                series: [{
+                    data: {!! json_encode($apex_data['data']) !!}
+                }],
+                chart: {
+                    type: 'bar',
+                    // height: 350
+                },
+                plotOptions: {
+                    bar: {
+                        borderRadius: 4,
+                        borderRadiusApplication: 'end',
+                        horizontal: true,
+                    }
+                },
+                dataLabels: {
+                    enabled: false
+                },
+                xaxis: {
+                    categories: {!! json_encode($apex_data['categories']) !!},
+                }
+            };
+        @else
+            var options = {
+                chart: {
+                    type: "{{ $post->chart_type ?? 'bar' }}"
+                },
+                series: [{
+                    name: "{{ $apex_data['name'] }}",
+                    data: {!! json_encode($apex_data['data']) !!},
+                }],
+                xaxis: {
+                    categories: {!! json_encode($apex_data['categories']) !!},
+                }
             }
-        }
+        @endif
 
         var chart = new ApexCharts(document.querySelector("#chart"), options);
 
         chart.render();
     </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 @endsection
 
 @push('addon-style')
