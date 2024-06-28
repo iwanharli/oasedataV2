@@ -14,16 +14,22 @@
                 <div class="col-lg-8">
                     <ul class="links">
                         <li>
-                            <a href="#" class="active">Beranda</a>
+                            <a href="{{ route('home') }}" class="active">Beranda</a>
                         </li>
                         <li>
-                            <a href="#">Berita</a>
+                            <a href="{{ route('news-all') }}">Berita</a>
                         </li>
                         <li>
-                            <a href="#">Statistik</a>
+                            <a href="{{ route('statistic-all') }}">Statistik</a>
                         </li>
                         <li>
-                            <a href="#">Kontak</a>
+                            <a href="{{ route('contact') }}">Kontak</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('termOS') }}">Term of service</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('disclaimer') }}">Disclaimer</a>
                         </li>
                     </ul>
                 </div>
