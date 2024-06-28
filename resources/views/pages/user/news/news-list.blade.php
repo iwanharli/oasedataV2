@@ -63,7 +63,13 @@
                 </td>
                 <td
                     class="px-5 py-3 border-b dark:border-darkmode-300 box rounded-l-none rounded-r-none border-x-0 text-center shadow-[5px_3px_5px_#00000005] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:bg-darkmode-600">
-                    {{ date('d M Y H:i:s', strtotime($item->created_at)) }}
+                    {{-- {{ date('d M Y H:i:s', strtotime($item->created_at)) }} --}}
+                    <a class="whitespace-nowrap" href="#">
+                        {{ date('d M Y', strtotime($item->created_at)) }}
+                    </a>
+                    <div class="mt-0.5 whitespace-nowrap text-xs text-slate-500">
+                        {{ date('H:i:s', strtotime($item->created_at)) }}
+                    </div>
                 </td>
                 <td
                     class="px-5 py-3 border-b dark:border-darkmode-300 box w-40 rounded-l-none rounded-r-none border-x-0 shadow-[5px_3px_5px_#00000005] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:bg-darkmode-600">
@@ -83,7 +89,7 @@
                             <i data-lucide="pencil" class="stroke-1.5 mr-1 h-4 w-4"></i>
                         </a>
                         <a class="flex items-center text-danger" data-tw-toggle="modal"
-                            data-tw-target="#delete-confirmation-modal" href="{{ route('post.destroy', $item->id) }}">
+                            data-tw-target="#delete-confirmation-modal" href="{{ route('news.destroy', $item->id) }}">
                             <i data-lucide="trash" class="stroke-1.5 mr-1 h-4 w-4"></i>
                         </a>
                     </div>

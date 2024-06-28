@@ -29,7 +29,7 @@ class DashboardController extends Controller
 
         $app = App::where('id', '1')->first();
 
-        return view('pages.admin.dashboard',[
+        return view('pages.user.dashboard',[
             'draft' => $draft,
             'published' => $published,
             'user' => $user,

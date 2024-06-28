@@ -38,10 +38,12 @@
                 <nav class="sidenav-menu-nested nav" id="pos-menu">
                     <a class="nav-link {{ request()->is('admin/pos/post') || request()->is('admin/pos/post/*/edit') || request()->is('admin/pos/published') || request()->is('admin/pos/draft') || request()->is('admin/pos/trash') ? 'active' : '' }}"
                         href="{{ route('post.index') }}" href="animations.html">Semua Post</a>
+
                     @if (Auth::user()->roles == 'Administrator' || Auth::user()->roles == 'Penulis')
                         <a class="nav-link {{ request()->is('admin/pos/post/create') ? 'active' : '' }}"
                             href="{{ route('post.create') }}">Tambah Baru</a>
                     @endif
+                    
                     @if (Auth::user()->roles == 'Administrator')
                         <a class="nav-link {{ request()->is('admin/pos/category*') ? 'active' : '' }}"
                             href="{{ route('category.index') }}">Kategori</a>

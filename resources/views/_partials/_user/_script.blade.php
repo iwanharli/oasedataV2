@@ -1,4 +1,6 @@
 <!-- BEGIN: Vendor JS Assets-->
+@stack('prepend-script')
+
 <script src="{{ asset('user/js/vendors/dom.js') }}"></script>
 <script src="{{ asset('user/js/vendors/tailwind-merge.js') }}"></script>
 <script src="{{ asset('user/js/vendors/lucide.js') }}"></script>
@@ -29,8 +31,7 @@
 <script src="{{ asset('user/js/themes/rubick.js') }}"></script>
 <script src="{{ asset('user/js/components/base/leaflet-map-loader.js') }}"></script>
 <script src="{{ asset('user/js/components/mobile-menu.js') }}"></script>
-<script src="{{ asset('user/js/components/themes/rubick/top-bar.js') }}"></script> <!-- END: Vendor JS Assets-->
-<!-- BEGIN: Pages, layouts, components JS Assets-->
-<!-- END: Pages, layouts, components JS Assets-->
+<script src="{{ asset('user/js/components/themes/rubick/top-bar.js') }}"></script>
+<!-- END: Vendor JS Assets-->
 
 @stack('addon-script')

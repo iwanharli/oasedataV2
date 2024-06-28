@@ -1,4 +1,5 @@
 <?php
+
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 
@@ -10,6 +11,8 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 
 use App\Http\Controllers\Admin\UserNewsController;
+use App\Http\Controllers\Admin\UserStatisticController;
+
 use App\Http\Controllers\Admin\StatistikController;
 
 use App\Http\Controllers\Admin\TagController;
@@ -39,7 +42,7 @@ use App\Http\Controllers\Admin\AppsController;
 */
 
 // Route::view('/test', 'pages.user.dashboard');
-Route::view('/test', 'pages.user.news.index');
+// Route::view('/test', 'pages.user.news.index');
 
 Route::get('/foo', function () {
 	$targetFolder = base_path() . '/storage/app/public';
@@ -101,7 +104,32 @@ Route::prefix('admin')
 		Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin-dashboard');
 
 		// NEWS 
-		Route::resource('news', UserNewsController::class);
+		Route::resource('/news', UserNewsController::class, [
+			'except' => ['show']
+		]);
+		Route::post('/news/send', [UserNewsController::class, 'store'])->name('store-news');
+		Route::get('/news/published', [UserNewsController::class, 'published'])->name('news-published');
+		Route::get('/news/draft', [UserNewsController::class, 'draft'])->name('news-draft');
+		Route::get('/news/trash', [UserNewsController::class, 'trash'])->name('news-trash');
+		Route::get('/news/restore/{id}', [UserNewsController::class, 'restore_data'])->name('news-restore');
+
+
+		// STATISTIK
+		Route::resource('/statistic', UserStatisticController::class);
+		Route::post('/statistic/send', [UserStatisticController::class, 'store'])->name('store-statistic');
+
+		Route::get('/statistic/published', [UserStatisticController::class, 'published'])->name('statistic-published');
+		Route::get('/statistic/draft', [UserStatisticController::class, 'draft'])->name('statistic-draft');
+		Route::get('/statistic/trash', [UserStatisticController::class, 'trash'])->name('statistic-trash');
+		Route::get('/statistic/restore/{id}', [UserStatisticController::class, 'restore_data'])->name('statistic-restore');
+
+
+
+
+
+
+
+
 
 
 
@@ -110,10 +138,12 @@ Route::prefix('admin')
 		Route::resource('pos/post', PostController::class);
 		Route::post('/post', [PostController::class, 'store'])->name('store-post');
 		Route::post('/get-sub-categories', [PostController::class, 'get_sub_categories'])->name('get-sub-categories');
+
 		Route::get('/pos/published', [PostController::class, 'published'])->name('post-published');
 		Route::get('/pos/draft', [PostController::class, 'draft'])->name('post-draft');
 		Route::get('/pos/trash', [PostController::class, 'trash'])->name('post-trash');
 		Route::get('/pos/restore/{id}', [PostController::class, 'restore_data'])->name('post-restore');
+
 		Route::delete('/pos/force-delete/{id}', [PostController::class, 'force_delete'])->name('post-force-delete');
 		Route::resource('pos/category', CategoryController::class);
 		Route::resource('pos/tag', TagController::class);
@@ -123,10 +153,10 @@ Route::prefix('admin')
 			'except' => ['show']
 		]);
 		Route::post('statistik', [StatistikController::class, 'store'])->name('store-statistik');
-		Route::get('statistik/published', [StatistikController::class, 'published'])->name('statistik-published');
-		Route::get('statistik/draft', [StatistikController::class, 'draft'])->name('statistik-draft');
-		Route::get('statistik/trash', [StatistikController::class, 'trash'])->name('statistik-trash');
-		Route::get('statistik/restore/{id}', [StatistikController::class, 'restore_data'])->name('statistik-restore');
+		// Route::get('statistik/published', [StatistikController::class, 'published'])->name('statistik-published');
+		// Route::get('statistik/draft', [StatistikController::class, 'draft'])->name('statistik-draft');
+		// Route::get('statistik/trash', [StatistikController::class, 'trash'])->name('statistik-trash');
+		// Route::get('statistik/restore/{id}', [StatistikController::class, 'restore_data'])->name('statistik-restore');
 		Route::delete('statistik/force-delete/{id}', [StatistikController::class, 'force_delete'])->name('statistik-force-delete');
 
 

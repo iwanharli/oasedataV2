@@ -1,17 +1,17 @@
 @extends('layouts.user')
 
 @section('title')
-    Berita
+    Statistic
 @endsection
 
 @section('user_content')
-    <h2 class="intro-y mt-10 text-lg font-medium">Daftar Berita</h2>
-    <div class="mt-5 grid grid-cols-12 gap-6">
+    <h2 class="intro-y mt-10 text-lg font-medium">Daftar Statistic</h2>
+    <div class="intro-y mt-5 grid grid-cols-12 gap-6">
         <div class="intro-y col-span-12 mt-2 flex flex-wrap items-center sm:flex-nowrap">
             @if (Auth::user()->roles == 'Administrator' || Auth::user()->roles == 'Penulis')
                 <button
                     class="transition duration-200 border inline-flex items-center justify-center py-2 px-3 rounded-md font-medium cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed bg-primary border-primary text-white dark:border-primary mr-2 shadow-md">
-                    <i data-lucide="plus" class="stroke-1.5 h-4 w-4"></i> &nbsp; Tambah Berita
+                    <i data-lucide="plus" class="stroke-1.5 h-4 w-4"></i> &nbsp; Tambah Statistic
                 </button>
             @endif
 
@@ -47,20 +47,20 @@
 
             {{-- FILTER  --}}
             <div class="mx-auto hidden text-slate-500 md:block">
-                <a href="{{ route('news.index') }}"
+                <a href="{{ route('statistic.index') }}"
                     class="transition duration-200 border shadow-sm inline-flex items-center justify-center py-2 px-3 rounded-md font-medium cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed border-primary text-primary dark:border-primary [&:hover:not(:disabled)]:bg-primary/10 mb-2 mr-1 inline-block w-24 mb-2 mr-1 inline-block w-24">Semua
                     <br /> ({{ $all }})
                 </a>
-                <a href="{{ route('news-published') }}"
+                <a href="{{ route('statistic-published') }}"
                     class="transition duration-200 border shadow-sm inline-flex items-center justify-center py-2 px-3 rounded-md font-medium cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed border-success text-success dark:border-success [&:hover:not(:disabled)]:bg-success/10 mb-2 mr-1 inline-block w-24 mb-2 mr-1 inline-block w-24">Published
                     <br /> ({{ $published }})
                 </a>
-                <a href="{{ route('news-draft') }}"
+                <a href="{{ route('statistic-draft') }}"
                     class="transition duration-200 border shadow-sm inline-flex items-center justify-center py-2 px-3 rounded-md font-medium cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed border-warning text-warning dark:border-warning [&:hover:not(:disabled)]:bg-warning/10 mb-2 mr-1 inline-block w-24 mb-2 mr-1 inline-block w-24">Draft
                     <br /> ({{ $draft }})
                 </a>
                 @if (Auth::user()->roles == 'Administrator')
-                    <a href="{{ route('news-trash') }}"
+                    <a href="{{ route('statistic-trash') }}"
                         class="transition duration-200 border shadow-sm inline-flex items-center justify-center py-2 px-3 rounded-md font-medium cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed border-danger text-danger dark:border-danger [&:hover:not(:disabled)]:bg-danger/10 mb-2 mr-1 inline-block w-24 mb-2 mr-1 inline-block w-24">Trash
                         <br /> ({{ $trash }})
                     </a>
@@ -70,7 +70,7 @@
             <button id="changeViewList"
                 class="transition duration-100 border inline-flex items-center justify-center py-2 px-3 rounded-md font-medium cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed bg-dark border-primary text-white dark:border-primary mr-5 shadow-md">
                 <i data-lucide="layout-grid" class="stroke-1.5 w-5 h-5 newsList" id="newsList"></i>
-                <i data-lucide="align-justify" class="stroke-1.5 w-5 h-5 newsGrid hidden" id="newsGrid"></i>
+                <i data-lucide="align-justify" class="stroke-1.5 w-5 h-5 statisticGrid hidden" id="statisticGrid"></i>
             </button>
 
             <div class="mt-3 w-full sm:ml-auto sm:mt-0 sm:w-auto md:ml-0">
@@ -82,22 +82,52 @@
             </div>
         </div>
 
-        {{-- <div class="statistics">
-            <p>Total Posts: {{ $all }}</p>
-            <p>Published Posts: {{ $published }}</p>
-            <p>Draft Posts: {{ $draft }}</p>
-            <p>Trashed Posts: {{ $trash }}</p>
-        </div> --}}
-
-        <!-- BEGIN: NEWS ------------------------------------------------------------------------------>
-        {{-- LIST --}}
-        <div class="intro-y col-span-12 overflow-auto lg:overflow-visible newsList" id="newsList">
-            @include('pages.user.news.news-list')
-        </div>
-
-        {{-- GRID --}}
-        @include('pages.user.news.news-grid')
-        <!-- END: NEWS -------------------------------------------------------------------------------->
+        <!-- BEGIN: STATISTIC ------------------------------------------------------------------------------>
+        @foreach ($statistic as $item)
+            <div class="intro-y box col-span-12 md:col-span-4">
+                <div
+                    class="image-fit h-[320px] before:absolute before:left-0 before:top-0 before:z-10 before:block before:h-full before:w-full before:bg-gradient-to-t before:from-black/90 before:to-black/10">
+                    <img class="rounded-t-md" src="{{ Storage::url($item->post_image) }}" alt="{{ $item->post_teaser }}">
+                    <div class="absolute z-10 flex w-full items-center px-5 pt-6">
+                        <div class="image-fit h-10 w-10 flex-none">
+                            <img class="rounded-full" src="{{ Storage::url($item->user->profile) }}"
+                                alt="{{ $item->user->name }}">
+                        </div>
+                        <div class="ml-3 mr-auto text-white">
+                            <a class="font-medium" href="#">
+                                {{ $item->user->name }}
+                            </a>
+                            <div class="mt-0.5 text-xs">
+                                {{ $item->user->roles }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="absolute bottom-0 z-10 px-5 pb-6 text-white">
+                        <span class="rounded bg-white/20 px-2 py-1">
+                            {{ $item->category->name }}
+                        </span>
+                        <a class="mt-3 block text-xl font-medium" href="#">
+                            {{ $item->post_title }}
+                        </a>
+                        <div class="mt-0.5 text-xs">
+                            {{ date('d M Y H:i:s', strtotime($item->created_at)) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center border-t border-slate-200/60 px-5 py-3 dark:border-darkmode-400">
+                    <a data-placement="top" title="Bookmark" href="#"
+                        class="tooltip cursor-pointer intro-x mr-2 flex h-8 w-8 items-center justify-center rounded-full border border-slate-300 text-slate-500 dark:border-darkmode-400 dark:bg-darkmode-300 dark:text-slate-300"><i
+                            data-tw-merge="" data-lucide="bookmark" class="stroke-1.5 h-3 w-3"></i></a>
+                    <a data-placement="top" title="Share" href="#"
+                        class="tooltip cursor-pointer intro-x ml-auto flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary dark:bg-darkmode-300 dark:text-slate-300"><i
+                            data-tw-merge="" data-lucide="share" class="stroke-1.5 h-3 w-3"></i></a>
+                    <a data-placement="top" title="Download PDF" href="#"
+                        class="tooltip cursor-pointer intro-x ml-2 flex h-8 w-8 items-center justify-center rounded-full bg-primary text-white"><i
+                            data-tw-merge="" data-lucide="share" class="stroke-1.5 h-3 w-3"></i></a>
+                </div>
+            </div>
+        @endforeach
+        <!-- END: STATISTIC -------------------------------------------------------------------------------->
 
         <!-- BEGIN: Pagination -->
         <div class="intro-y col-span-12 flex flex-wrap items-center sm:flex-row sm:flex-nowrap">
@@ -194,7 +224,7 @@
         <script>
             jQuery(document).ready(function($) {
                 $('#changeViewList').click(function() {
-                    $('#newsList, #newsGrid').toggleClass('hidden');
+                    $('#statisticList, #statisticGrid').toggleClass('hidden');
                 });
             });
         </script>
