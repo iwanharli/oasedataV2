@@ -236,7 +236,7 @@
                                 <div class="mb-3">
                                     <label for="categories_id">Kategori</label>
                                     <select class="form-control cat" id="category" name="categories_id" required>
-                                        <option>Pilih..</option>
+                                        <option disabled>Pilih..</option>
                                         @foreach ($categories as $category)
                                             <option value="{{ $category->id }}"
                                                 {{ $item->categories_id == $category->id ? 'selected' : '' }}>
