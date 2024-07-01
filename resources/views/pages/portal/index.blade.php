@@ -249,10 +249,10 @@
                                                     <div class="text">
                                                         {{ $item->post_teaser }}
                                                     </div>
-                                                    <div class="tags">
+                                                    {{-- <div class="tags">
                                                         <a href="#">Consultation</a>
                                                         <a href="#">Management</a>
-                                                    </div>
+                                                    </div> --}}
                                                 </div>
                                             </div>
                                         </div>
@@ -306,10 +306,10 @@
                                                     <div class="text">
                                                         {{ $item->post_teaser }}
                                                     </div>
-                                                    <div class="tags">
+                                                    {{-- <div class="tags">
                                                         <a href="#">Consultation</a>
                                                         <a href="#">Management</a>
-                                                    </div>
+                                                    </div> --}}
                                                 </div>
                                             </div>
                                         </div>

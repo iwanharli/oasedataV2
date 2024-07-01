@@ -51,7 +51,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('news-all') ? 'active' : '' }}" href="{{ route('news-all') }}">
+                    <a class="nav-link {{ request()->routeIs('news-all') ? 'active' : '' }}"
+                        href="{{ route('news-all') }}">
                         Berita
                         <small class="hot alert-danger text-danger">hot</small>
                     </a>
@@ -64,7 +65,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="page-contact-app.html">
+                    <a class="nav-link {{ request()->routeIs('contact') ? 'active' : '' }}"
+                        href="{{ route('contact') }}">
                         <img src="{{ asset('portal/img/icons/24hour.png') }}" alt="" class="icon-15 me-1">
                         Kontak
                     </a>
@@ -76,7 +78,8 @@
                         <i class="bi bi-person"></i>
                     </a> --}}
                     <a href="https://whatsapp.com/channel/0029VaLHTTL77qVXN6sIne0a"
-                        class="btn btn-success text-white rounded-pill brd-gray hover-blue4 sm-butn fw-bold" target="_blank">
+                        class="btn btn-success text-white rounded-pill brd-gray hover-blue4 sm-butn fw-bold"
+                        target="_blank">
                         <span>Join Whatsapp Kami<i class="bi bi-arrow-right ms-1"></i> </span>
                     </a>
                 </div>

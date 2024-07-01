@@ -64,15 +64,9 @@ Route::get('/author/{id}', [HomeController::class, 'author'])->name('author');
 Route::get('/autocomplete', [HomeController::class, 'autocomplete'])->name('autocomplete');
 Route::get('/search', [HomeController::class, 'searchArticle'])->name('search-article');
 
-//Page
-Route::get('/redaksi', [HomeController::class, 'redaksi'])->name('redaksi');
-Route::get('/pedoman', [HomeController::class, 'pedoman'])->name('pedoman');
-Route::get('/disclaimer', [HomeController::class, 'disclaimer'])->name('disclaimer');
-Route::get('/kontak', [HomeController::class, 'kontak'])->name('kontak');
-
 // Authentication
-Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
-Route::post('/login', [LoginController::class, 'authenticate']);
+Route::get('/arboc', [LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::post('/arboc', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
 // PORTAL BERITA
@@ -80,6 +74,10 @@ Route::prefix('/')
 	->namespace('Portal')
 	->group(function () {
 		Route::get('/', [HomeController::class, 'index'])->name('home');
+		Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+		Route::get('/editorial', [HomeController::class, 'editorial'])->name('editorial');
+		Route::get('/term-of-service', [HomeController::class, 'termOS'])->name('termOS');
+		Route::get('/disclaimer', [HomeController::class, 'disclaimer'])->name('disclaimer');
 
 		Route::get('/news', [NewsController::class, 'index'])->name('news-all');
 		Route::get('/news/{slug}', [NewsController::class, 'newsDetail'])->name('news-detail');

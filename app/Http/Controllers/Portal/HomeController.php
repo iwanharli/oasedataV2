@@ -246,20 +246,22 @@ class HomeController extends Controller
         ]);
     }
 
-    public function redaksi()
+    // DETAIL PAGE
+
+    public function editorial()
     {
         $item = Redaction::first();
 
-        return view('pages.home.redaksi', [
+        return view('pages.portal._editorial', [
             'item' => $item
         ]);
     }
 
-    public function pedoman()
+    public function termOS()
     {
         $item = Guideline::first();
 
-        return view('pages.home.pedoman', [
+        return view('pages.portal._term-of-service', [
             'item' => $item
         ]);
     }
@@ -268,19 +270,21 @@ class HomeController extends Controller
     {
         $item = Disclaimer::first();
 
-        return view('pages.home.disclaimer', [
+        return view('pages.portal._disclaimer', [
             'item' => $item
         ]);
     }
 
-    public function kontak()
+    public function contact()
     {
         $item = Contact::first();
 
-        return view('pages.home.contact', [
+        return view('pages.portal._contact', [
             'item' => $item
         ]);
     }
+
+
 
     // statistik
     public function statistikAll()
@@ -319,8 +323,8 @@ class HomeController extends Controller
 
         // var_dump($json_data); exit;
 
-        foreach ($json_data as $key => $value):
-            if(empty($value['label']))
+        foreach ($json_data as $key => $value) :
+            if (empty($value['label']))
                 continue;
 
             $data_fix['labels'][] = $value['label'];
