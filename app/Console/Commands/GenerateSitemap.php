@@ -48,7 +48,7 @@ class GenerateSitemap extends Command
         // Example: Adding blog posts
         $posts = \App\Models\Post::all();
         foreach ($posts as $post) {
-            $sitemap->add(Url::create("/posts/{$post->slug}")
+            $sitemap->add(Url::create("/news/{$post->slug}")
                 ->setPriority(0.8)
                 ->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY)
                 ->setLastModificationDate($post->updated_at));
