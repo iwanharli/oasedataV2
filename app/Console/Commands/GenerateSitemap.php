@@ -44,8 +44,22 @@ class GenerateSitemap extends Command
         // Add URLs to the sitemap
         $sitemap->add(Url::create('/')->setPriority(1.0)->setChangeFrequency(Url::CHANGE_FREQUENCY_DAILY)->setLastModificationDate(now()));
 
-        // Add more URLs dynamically, e.g., from the database
-        // Example: Adding blog posts
+        $categories = \App\Models\Category::all();
+        foreach ($categories as $cat) {
+            $sitemap->add(Url::create("/category/{$cat->slug}")
+                ->setPriority(0.6)
+                ->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY)
+                ->setLastModificationDate($cat->updated_at));
+        }
+
+        $tags = \App\Models\Tag::all();
+        foreach ($tags as $tag) {
+            $sitemap->add(Url::create("/tag/{$tag->slug}")
+                ->setPriority(0.6)
+                ->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY)
+                ->setLastModificationDate($tag->updated_at));
+        }
+
         $posts = \App\Models\Post::all();
         foreach ($posts as $post) {
             $sitemap->add(Url::create("/news/{$post->slug}")
@@ -53,6 +67,16 @@ class GenerateSitemap extends Command
                 ->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY)
                 ->setLastModificationDate($post->updated_at));
         }
+
+        $statistics = \App\Models\StatisticPost::all();
+        foreach ($statistics as $statistic) {
+            $sitemap->add(Url::create("/statistic/{$statistic->slug}")
+                ->setPriority(1.0)
+                ->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY)
+                ->setLastModificationDate($statistic->updated_at));
+        }
+
+
 
         // Save the sitemap
         $sitemap->writeToFile(public_path('sitemap.xml'));

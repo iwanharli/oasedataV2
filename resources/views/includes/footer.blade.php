@@ -14,7 +14,7 @@
                         <div class="footer-menu float-lg-right mt-lg-0 mt-3">
                             <ul class="font-medium">
                                 <li><a href="{{ route('editorial') }}">Redaksi</a></li>
-                                <li><a href="{{ route('term-of-service') }}">Pedoman</a></li>
+                                <li><a href="{{ route('termOS') }}">Pedoman</a></li>
                                 <li><a href="{{ route('disclaimer') }}">Disclaimer</a></li>
                                 <li><a href="{{ route('contact') }}">Kontak</a></li>
                             </ul>

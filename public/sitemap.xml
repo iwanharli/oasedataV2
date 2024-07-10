@@ -2,158 +2,344 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
     <url>
         <loc>http://localhost:8000</loc>
-        <lastmod>2024-07-08T15:49:13+07:00</lastmod>
+        <lastmod>2024-07-10T21:00:48+07:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
             </url>
     <url>
-        <loc>http://localhost:8000/posts/pemerataan-akses-internet-dapat-menjadi-kunci-kemajuan-bangsa</loc>
+        <loc>http://localhost:8000/category/news-update</loc>
+        <lastmod>2023-09-05T04:36:28+07:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+            </url>
+    <url>
+        <loc>http://localhost:8000/category/hiburan</loc>
+        <lastmod>2023-09-05T04:37:18+07:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+            </url>
+    <url>
+        <loc>http://localhost:8000/category/olahraga</loc>
+        <lastmod>2023-09-05T04:37:47+07:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+            </url>
+    <url>
+        <loc>http://localhost:8000/category/sosmed</loc>
+        <lastmod>2023-09-05T04:38:10+07:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+            </url>
+    <url>
+        <loc>http://localhost:8000/category/nusantara</loc>
+        <lastmod>2023-09-05T04:38:31+07:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+            </url>
+    <url>
+        <loc>http://localhost:8000/category/niaga</loc>
+        <lastmod>2023-09-05T04:39:22+07:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+            </url>
+    <url>
+        <loc>http://localhost:8000/category/peristiwa</loc>
+        <lastmod>2023-09-05T04:40:01+07:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+            </url>
+    <url>
+        <loc>http://localhost:8000/category/srikandi</loc>
+        <lastmod>2023-09-05T04:39:32+07:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+            </url>
+    <url>
+        <loc>http://localhost:8000/category/teknologi</loc>
+        <lastmod>2023-09-05T04:39:39+07:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+            </url>
+    <url>
+        <loc>http://localhost:8000/category/healing</loc>
+        <lastmod>2023-09-05T04:39:44+07:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+            </url>
+    <url>
+        <loc>http://localhost:8000/category/hukum</loc>
+        <lastmod>2023-09-05T04:40:12+07:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+            </url>
+    <url>
+        <loc>http://localhost:8000/category/politik</loc>
+        <lastmod>2023-09-05T04:40:26+07:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+            </url>
+    <url>
+        <loc>http://localhost:8000/category/pemerintahan</loc>
+        <lastmod>2023-09-05T04:40:35+07:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+            </url>
+    <url>
+        <loc>http://localhost:8000/category/kalimantan-barat</loc>
+        <lastmod>2023-09-05T04:40:51+07:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+            </url>
+    <url>
+        <loc>http://localhost:8000/category/riau</loc>
+        <lastmod>2023-09-05T04:41:04+07:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+            </url>
+    <url>
+        <loc>http://localhost:8000/category/kepualauan-riau</loc>
+        <lastmod>2023-09-05T04:41:17+07:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+            </url>
+    <url>
+        <loc>http://localhost:8000/category/asean</loc>
+        <lastmod>2024-05-31T01:16:09+07:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+            </url>
+    <url>
+        <loc>http://localhost:8000/category/papua-barat</loc>
+        <lastmod>2024-05-31T01:19:50+07:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+            </url>
+    <url>
+        <loc>http://localhost:8000/tag/berita-terbaru</loc>
+        <lastmod>2021-11-20T02:13:34+07:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+            </url>
+    <url>
+        <loc>http://localhost:8000/tag/berita-teknologi</loc>
+        <lastmod>2021-11-20T02:13:34+07:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+            </url>
+    <url>
+        <loc>http://localhost:8000/tag/android</loc>
+        <lastmod>2021-11-20T06:11:52+07:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+            </url>
+    <url>
+        <loc>http://localhost:8000/tag/smartphone</loc>
+        <lastmod>2021-11-20T06:12:07+07:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+            </url>
+    <url>
+        <loc>http://localhost:8000/news/pemerataan-akses-internet-dapat-menjadi-kunci-kemajuan-bangsa</loc>
         <lastmod>2023-09-07T08:27:12+07:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>http://localhost:8000/posts/jenis-gerhana-matahari-berikut-ini-pengertian-dan-proses-terjadinya</loc>
+        <loc>http://localhost:8000/news/jenis-gerhana-matahari-berikut-ini-pengertian-dan-proses-terjadinya</loc>
         <lastmod>2022-03-30T03:13:33+07:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>http://localhost:8000/posts/bisnis-internet-cafe-game-begini-cara-memulai-usahanya-agar-sukses</loc>
+        <loc>http://localhost:8000/news/bisnis-internet-cafe-game-begini-cara-memulai-usahanya-agar-sukses</loc>
         <lastmod>2022-03-30T03:13:19+07:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>http://localhost:8000/posts/oppo-reno6-5g-hp-terjangkau-dengan-kapasitas-kamera-yang-besar</loc>
+        <loc>http://localhost:8000/news/oppo-reno6-5g-hp-terjangkau-dengan-kapasitas-kamera-yang-besar</loc>
         <lastmod>2022-03-30T03:08:35+07:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>http://localhost:8000/posts/game-crypto-nft-sebagai-cara-mudah-dapatkan-uang-digital</loc>
+        <loc>http://localhost:8000/news/game-crypto-nft-sebagai-cara-mudah-dapatkan-uang-digital</loc>
         <lastmod>2022-03-30T03:12:42+07:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>http://localhost:8000/posts/memindahkan-foto-dari-hp-ke-laptop-gunakan-beberapa-metode-berikut</loc>
+        <loc>http://localhost:8000/news/memindahkan-foto-dari-hp-ke-laptop-gunakan-beberapa-metode-berikut</loc>
         <lastmod>2022-03-30T03:12:24+07:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>http://localhost:8000/posts/cara-memperkecil-ukuran-foto-di-hp-tanpa-mengurangi-kualitas</loc>
+        <loc>http://localhost:8000/news/cara-memperkecil-ukuran-foto-di-hp-tanpa-mengurangi-kualitas</loc>
         <lastmod>2022-03-30T03:12:07+07:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>http://localhost:8000/posts/forza-horizon-5-game-mobil-racing-besutan-microsoft-akan-segera-rilis</loc>
+        <loc>http://localhost:8000/news/forza-horizon-5-game-mobil-racing-besutan-microsoft-akan-segera-rilis</loc>
         <lastmod>2022-03-30T03:11:16+07:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>http://localhost:8000/posts/hp-sony-xperia-pro-i-telah-rilis-dengan-mengandalkan-kamera-canggih</loc>
+        <loc>http://localhost:8000/news/hp-sony-xperia-pro-i-telah-rilis-dengan-mengandalkan-kamera-canggih</loc>
         <lastmod>2022-03-30T03:11:00+07:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>http://localhost:8000/posts/hp-oppo-k9s-telah-hadir-di-china-dengan-mengusung-baterai-5000-mah</loc>
+        <loc>http://localhost:8000/news/hp-oppo-k9s-telah-hadir-di-china-dengan-mengusung-baterai-5000-mah</loc>
         <lastmod>2022-03-30T03:10:45+07:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>http://localhost:8000/posts/hp-apple-iphone-13-pro-max-terbaru-dengan-baterai-yang-lebih-hemat</loc>
+        <loc>http://localhost:8000/news/hp-apple-iphone-13-pro-max-terbaru-dengan-baterai-yang-lebih-hemat</loc>
         <lastmod>2022-03-30T03:10:16+07:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>http://localhost:8000/posts/hp-realme-8i-hadir-membawa-sejumlah-spesifikasi-dan-fitur-menarik</loc>
+        <loc>http://localhost:8000/news/hp-realme-8i-hadir-membawa-sejumlah-spesifikasi-dan-fitur-menarik</loc>
         <lastmod>2022-03-30T03:09:25+07:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>http://localhost:8000/posts/samsung-galaxy-wide5-mengusung-dimensity-700-dan-kamera-64-mp</loc>
+        <loc>http://localhost:8000/news/samsung-galaxy-wide5-mengusung-dimensity-700-dan-kamera-64-mp</loc>
         <lastmod>2022-03-30T03:03:56+07:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>http://localhost:8000/posts/game-moba-lokapala-rilis-dan-digelar-dalam-ajang-pon-xx-papua-2021</loc>
+        <loc>http://localhost:8000/news/game-moba-lokapala-rilis-dan-digelar-dalam-ajang-pon-xx-papua-2021</loc>
         <lastmod>2022-03-30T03:07:07+07:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>http://localhost:8000/posts/apex-legends-mobile-segera-hadir-intip-informasinya-berikut-ini</loc>
+        <loc>http://localhost:8000/news/apex-legends-mobile-segera-hadir-intip-informasinya-berikut-ini</loc>
         <lastmod>2022-03-30T03:06:30+07:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>http://localhost:8000/posts/game-marvel-future-revolution-dibuka-pra-registrasinya-secara-global</loc>
+        <loc>http://localhost:8000/news/game-marvel-future-revolution-dibuka-pra-registrasinya-secara-global</loc>
         <lastmod>2022-03-30T03:06:07+07:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>http://localhost:8000/posts/tips-memilih-laptop-untuk-pelajar-sesuai-dengan-kebutuhan-sekolah</loc>
+        <loc>http://localhost:8000/news/tips-memilih-laptop-untuk-pelajar-sesuai-dengan-kebutuhan-sekolah</loc>
         <lastmod>2022-03-30T03:05:40+07:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>http://localhost:8000/posts/kargo-mobil-listrik-pengantar-paket-di-masa-depan</loc>
+        <loc>http://localhost:8000/news/kargo-mobil-listrik-pengantar-paket-di-masa-depan</loc>
         <lastmod>2022-03-30T03:05:02+07:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>http://localhost:8000/posts/cara-privasi-pp-whatsapp-dari-orang-tertentu-berikut-cara-mudahnya</loc>
+        <loc>http://localhost:8000/news/cara-privasi-pp-whatsapp-dari-orang-tertentu-berikut-cara-mudahnya</loc>
         <lastmod>2022-03-30T03:04:38+07:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>http://localhost:8000/posts/internet-5g-indosat-dalam-proses-uji-kelayakan-berikut-ulasannya</loc>
+        <loc>http://localhost:8000/news/internet-5g-indosat-dalam-proses-uji-kelayakan-berikut-ulasannya</loc>
         <lastmod>2022-03-30T03:04:14+07:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>http://localhost:8000/posts/cloud-song-saga-of-skywalker-akan-rilis-di-indonesia-simak-ulasannya</loc>
+        <loc>http://localhost:8000/news/cloud-song-saga-of-skywalker-akan-rilis-di-indonesia-simak-ulasannya</loc>
         <lastmod>2022-03-30T03:02:24+07:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>http://localhost:8000/posts/google-pixel-6-pro-hadir-dengan-baterai-5000-mah-ini-spesifikasinya</loc>
+        <loc>http://localhost:8000/news/google-pixel-6-pro-hadir-dengan-baterai-5000-mah-ini-spesifikasinya</loc>
         <lastmod>2023-09-07T08:09:19+07:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>http://localhost:8000/posts/5-tren-bahasa-pemrograman-yang-wajib-dikuasai-2022</loc>
+        <loc>http://localhost:8000/news/5-tren-bahasa-pemrograman-yang-wajib-dikuasai-2022</loc>
         <lastmod>2023-09-07T09:04:10+07:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>http://localhost:8000/posts/test</loc>
+        <loc>http://localhost:8000/news/test</loc>
         <lastmod>2024-06-21T04:11:48+07:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>http://localhost:8000/posts/cara-mendownload-sertifikat-vaksin-dengan-aplikasi-maupun-website</loc>
+        <loc>http://localhost:8000/news/cara-mendownload-sertifikat-vaksin-dengan-aplikasi-maupun-website</loc>
         <lastmod>2022-03-30T03:11:43+07:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://localhost:8000/statistic/memindahkan-foto-dari-hp-ke-laptop-gunakan-beberapa-metode-berikut</loc>
+        <lastmod>2023-09-07T14:19:18+07:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+            </url>
+    <url>
+        <loc>http://localhost:8000/statistic/benarkah-mayoritas-masyarakat-punya-pengalaman-buruk-dengan-polisi</loc>
+        <lastmod>2024-06-25T21:53:57+07:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+            </url>
+    <url>
+        <loc>http://localhost:8000/statistic/jenis-gerhana-matahari-berikut-ini-pengertian-dan-proses-terjadinya</loc>
+        <lastmod>2023-09-07T14:19:18+07:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+            </url>
+    <url>
+        <loc>http://localhost:8000/statistic/bisnis-internet-cafe-game-begini-cara-memulai-usahanya-agar-sukses</loc>
+        <lastmod>2023-09-07T14:19:18+07:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+            </url>
+    <url>
+        <loc>http://localhost:8000/statistic/game-crypto-nft-sebagai-cara-mudah-dapatkan-uang-digital</loc>
+        <lastmod>2023-09-07T14:19:18+07:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+            </url>
+    <url>
+        <loc>http://localhost:8000/statistic/cara-memperkecil-ukuran-foto-di-hp-tanpa-mengurangi-kualitas</loc>
+        <lastmod>2023-09-07T14:19:18+07:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+            </url>
+    <url>
+        <loc>http://localhost:8000/statistic/cara-mendownload-sertifikat-vaksin-dengan-aplikasi-maupun-website</loc>
+        <lastmod>2023-09-07T14:19:18+07:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+            </url>
+    <url>
+        <loc>http://localhost:8000/statistic/forza-horizon-5-game-mobil-racing-besutan-microsoft-akan-segera-rilis</loc>
+        <lastmod>2023-09-07T14:19:18+07:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+            </url>
+    <url>
+        <loc>http://localhost:8000/statistic/hp-sony-xperia-pro-i-telah-rilis-dengan-mengandalkan-kamera-canggih</loc>
+        <lastmod>2023-09-07T14:19:18+07:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
             </url>
 </urlset>
